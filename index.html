@@ -3,117 +3,849 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anandha Nursery and Primary School - Melpattampakkam</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Anandha Nursery and Primary School in Melpattampakkam, Cuddalore District, Tamil Nadu. Committed to quality education in a caring and child-friendly environment.">
+    <title>Anandha Nursery and Primary School | Melpattampakkam</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>Anandha Nursery and Primary School</h1>
+    <!-- Background Ambient Glow Blobs -->
+    <div class="ambient-glow glow-blob-1" aria-hidden="true"></div>
+    <div class="ambient-glow glow-blob-2" aria-hidden="true"></div>
+    <div class="ambient-glow glow-blob-3" aria-hidden="true"></div>
+
+    <!-- Header / Navbar -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-container">
+            <a href="#home" class="brand-link" aria-label="Anandha Nursery & Primary School Home">
+                <div class="brand-logo-frame">
+                    <img src="logo.jpeg" alt="Anandha Nursery & Primary School Logo" class="brand-logo">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">Anandha</span>
+                    <span class="brand-subtitle">Nursery &amp; Primary School</span>
+                    <span class="brand-location">Melpattampakkam</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav" aria-label="Primary Navigation">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#classes" class="nav-link">Classes</a></li>
+                    <li><a href="#activities" class="nav-link">Activities</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#contact" class="nav-link nav-contact-btn">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Hamburger Button -->
+            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle mobile navigation menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav-drawer" id="mobileNav" aria-hidden="true">
+            <div class="mobile-nav-inner">
+                <div class="mobile-nav-brand">
+                    <img src="logo.jpeg" alt="School Logo" class="mobile-brand-logo">
+                    <div>
+                        <div class="mobile-brand-title">Anandha School</div>
+                        <div class="mobile-brand-sub">Melpattampakkam</div>
+                    </div>
+                </div>
+                <ul class="mobile-nav-links">
+                    <li><a href="#home" class="mobile-nav-link">Home</a></li>
+                    <li><a href="#about" class="mobile-nav-link">About Us</a></li>
+                    <li><a href="#classes" class="mobile-nav-link">Classes</a></li>
+                    <li><a href="#activities" class="mobile-nav-link">Activities</a></li>
+                    <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+                    <li><a href="#contact" class="mobile-nav-link mobile-contact-link">Contact Us</a></li>
+                </ul>
+                <div class="mobile-nav-footer">
+                    <p class="mobile-motto">“The Future Begins Here!”</p>
+                    <p class="mobile-timing">Mon – Sat: 9.00am – 5.00pm</p>
+                </div>
             </div>
-            <ul class="nav-links">
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#classes">Classes</a></li>
-                <li><a href="#activities">Activities</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Welcome to Anandha Nursery and Primary School</h2>
-            <p>Where every child is encouraged to learn, explore, grow and shine</p>
-            <a href="#about" class="btn">Learn More</a>
-        </div>
-    </section>
+    <main id="mainContent">
+        <!-- Hero Section -->
+        <section class="hero-section" id="home" aria-label="Hero Showcase">
+            <div class="hero-carousel" id="heroCarousel" role="region" aria-roledescription="carousel" aria-label="School Highlights Carousel">
+                
+                <!-- Carousel Slides -->
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="1 of 4" data-slide-index="0">
+                        <div class="hero-image-placeholder" data-hero-key="hero1" aria-hidden="true">
+                            <div class="placeholder-graphic">
+                                <div class="placeholder-icon-ring">
+                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/>
+                                        <path d="M12 7v5l3 3"/>
+                                    </svg>
+                                </div>
+                                <span class="placeholder-label">Campus Photography Reserved</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <main>
-        <section id="about" class="about">
-            <h2>About Us</h2>
-            <p>Anandha Nursery and Primary School is committed to providing quality education in a caring and child-friendly environment. We focus on creating a strong foundation during the early years of a child's education.</p>
-            <div class="vision-mission">
-                <div class="vision">
-                    <h3>Vision</h3>
-                    <p>To nurture confident, knowledgeable, responsible and compassionate young learners who are prepared to face the future with confidence.</p>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 4" data-slide-index="1">
+                        <div class="hero-image-placeholder" data-hero-key="hero2" aria-hidden="true">
+                            <div class="placeholder-graphic">
+                                <div class="placeholder-icon-ring">
+                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                    </svg>
+                                </div>
+                                <span class="placeholder-label">Early Learning Environments</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 4" data-slide-index="2">
+                        <div class="hero-image-placeholder" data-hero-key="hero3" aria-hidden="true">
+                            <div class="placeholder-graphic">
+                                <div class="placeholder-icon-ring">
+                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </div>
+                                <span class="placeholder-label">Creative &amp; Activity Spaces</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 4" data-slide-index="3">
+                        <div class="hero-image-placeholder" data-hero-key="hero4" aria-hidden="true">
+                            <div class="placeholder-graphic">
+                                <div class="placeholder-icon-ring">
+                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                                    </svg>
+                                </div>
+                                <span class="placeholder-label">Holistic Growth &amp; Development</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mission">
-                    <h3>Mission</h3>
-                    <p>Our mission is to provide quality and meaningful education, build a strong academic foundation, encourage curiosity and independent thinking, develop communication and social skills, and promote discipline and good values.</p>
+
+                <!-- Subtle Pattern Overlay for Depth -->
+                <div class="hero-pattern-overlay" aria-hidden="true"></div>
+
+                <!-- Hero Glassmorphism Card -->
+                <div class="hero-container">
+                    <div class="hero-glass-card">
+                        <div class="hero-badge">
+                            <span class="badge-dot"></span>
+                            <span class="badge-text">The Future Begins Here!</span>
+                        </div>
+                        
+                        <div class="hero-header-lockup">
+                            <div class="hero-logo-badge">
+                                <img src="logo.jpeg" alt="School Emblem" class="hero-emblem-img">
+                            </div>
+                            <div class="hero-location-tag">Melpattampakkam, Cuddalore Dist.</div>
+                        </div>
+
+                        <h1 class="hero-title">
+                            Welcome to <span class="text-gradient">Anandha Nursery</span> &amp; Primary School
+                        </h1>
+
+                        <p class="hero-subtitle">
+                            Where every child is encouraged to learn, explore, grow and shine
+                        </p>
+
+                        <div class="hero-actions">
+                            <a href="#about" class="btn btn-primary" id="heroCtaBtn">
+                                <span>Discover Our School</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                            <a href="#classes" class="btn btn-secondary">
+                                <span>Explore Classes</span>
+                            </a>
+                        </div>
+
+                        <!-- Slide Quick Indicator within Glass Card -->
+                        <div class="hero-slide-status">
+                            <div class="status-counter">
+                                <span class="current-slide" id="currentSlideNum">01</span>
+                                <span class="counter-divider">/</span>
+                                <span class="total-slides">04</span>
+                            </div>
+                            <div class="status-bars" id="slideProgressBars" aria-hidden="true">
+                                <span class="progress-bar active" data-index="0"></span>
+                                <span class="progress-bar" data-index="1"></span>
+                                <span class="progress-bar" data-index="2"></span>
+                                <span class="progress-bar" data-index="3"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="carousel-nav-controls">
+                    <button type="button" class="carousel-arrow carousel-arrow-prev" id="carouselPrev" aria-label="Previous slide">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button type="button" class="carousel-arrow carousel-arrow-next" id="carouselNext" aria-label="Next slide">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Scroll Down Hint Indicator -->
+                <a href="#about" class="hero-scroll-hint" aria-label="Scroll down to About section">
+                    <span class="scroll-mouse">
+                        <span class="scroll-wheel"></span>
+                    </span>
+                    <span class="scroll-text">Scroll to explore</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="section about-section" aria-labelledby="aboutHeading">
+            <div class="section-container">
+                <div class="section-header reveal-item">
+                    <div class="section-tag">
+                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <span>Foundational Excellence</span>
+                    </div>
+                    <h2 class="section-title" id="aboutHeading">About Anandha</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="about-hero-card reveal-item">
+                    <div class="about-quote-mark" aria-hidden="true">“</div>
+                    <p class="about-lead-text">
+                        Anandha Nursery and Primary School is committed to providing quality education in a caring and child-friendly environment. We focus on creating a strong foundation during the early years of a child's education.
+                    </p>
+                    <div class="about-signature">
+                        <div class="signature-line"></div>
+                        <span class="signature-text">Melpattampakkam · Nurturing Young Minds</span>
+                    </div>
+                </div>
+
+                <!-- Vision & Mission Dual Modern Glass Cards -->
+                <div class="vision-mission-grid">
+                    <!-- Vision Card -->
+                    <div class="pillar-card vision-card reveal-item">
+                        <div class="pillar-card-glow" aria-hidden="true"></div>
+                        <div class="pillar-header">
+                            <div class="pillar-icon-box vision-icon-box">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                </svg>
+                            </div>
+                            <div class="pillar-title-group">
+                                <span class="pillar-pretitle">Guiding Light</span>
+                                <h3 class="pillar-title">Our Vision</h3>
+                            </div>
+                        </div>
+                        <p class="pillar-description">
+                            To nurture confident, knowledgeable, responsible and compassionate young learners who are prepared to face the future with confidence.
+                        </p>
+                        <div class="pillar-accent-bar vision-bar"></div>
+                    </div>
+
+                    <!-- Mission Card -->
+                    <div class="pillar-card mission-card reveal-item">
+                        <div class="pillar-card-glow" aria-hidden="true"></div>
+                        <div class="pillar-header">
+                            <div class="pillar-icon-box mission-icon-box">
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                                </svg>
+                            </div>
+                            <div class="pillar-title-group">
+                                <span class="pillar-pretitle">Our Purpose</span>
+                                <h3 class="pillar-title">Our Mission</h3>
+                            </div>
+                        </div>
+                        <p class="pillar-description">
+                            Our mission is to provide quality and meaningful education, build a strong academic foundation, encourage curiosity and independent thinking, develop communication and social skills, and promote discipline and good values.
+                        </p>
+                        <div class="pillar-accent-bar mission-bar"></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="classes" class="classes">
-            <h2>Classes Offered</h2>
-            <div class="classes-grid">
-                <div class="class-card">
-                    <h3>Pre-KG</h3>
-                    <p>Early learning foundation</p>
+        <!-- Classes Section -->
+        <section id="classes" class="section classes-section" aria-labelledby="classesHeading">
+            <div class="section-container">
+                <div class="section-header reveal-item">
+                    <div class="section-tag">
+                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                        <span>Academic Pathways</span>
+                    </div>
+                    <h2 class="section-title" id="classesHeading">Classes Offered</h2>
+                    <p class="section-subtitle">A progressive learning continuum structured for each developmental stage</p>
+                    <div class="title-underline"></div>
                 </div>
-                <div class="class-card">
-                    <h3>LKG</h3>
-                    <p>Building confidence and creativity</p>
-                </div>
-                <div class="class-card">
-                    <h3>UKG</h3>
-                    <p>Academic preparation</p>
-                </div>
-                <div class="class-card">
-                    <h3>Grade 1-7</h3>
-                    <p>Holistic development</p>
+
+                <div class="classes-grid">
+                    <!-- Pre-KG -->
+                    <div class="class-card reveal-item" data-class="pre-kg">
+                        <div class="card-glass-glow" aria-hidden="true"></div>
+                        <div class="class-watermark" aria-hidden="true">01</div>
+                        <div class="class-icon-wrapper pre-kg-icon">
+                            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="class-stage-pill">Early Childhood</div>
+                        <h3 class="class-title">Pre-KG</h3>
+                        <p class="class-description">Early learning foundation</p>
+                        <div class="class-card-footer">
+                            <span class="footer-highlight">Care &amp; Discovery</span>
+                            <span class="footer-dot"></span>
+                        </div>
+                    </div>
+
+                    <!-- LKG -->
+                    <div class="class-card reveal-item" data-class="lkg">
+                        <div class="card-glass-glow" aria-hidden="true"></div>
+                        <div class="class-watermark" aria-hidden="true">02</div>
+                        <div class="class-icon-wrapper lkg-icon">
+                            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                            </svg>
+                        </div>
+                        <div class="class-stage-pill">Kindergarten I</div>
+                        <h3 class="class-title">LKG</h3>
+                        <p class="class-description">Building confidence and creativity</p>
+                        <div class="class-card-footer">
+                            <span class="footer-highlight">Play &amp; Expression</span>
+                            <span class="footer-dot"></span>
+                        </div>
+                    </div>
+
+                    <!-- UKG -->
+                    <div class="class-card reveal-item" data-class="ukg">
+                        <div class="card-glass-glow" aria-hidden="true"></div>
+                        <div class="class-watermark" aria-hidden="true">03</div>
+                        <div class="class-icon-wrapper ukg-icon">
+                            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div class="class-stage-pill">Kindergarten II</div>
+                        <h3 class="class-title">UKG</h3>
+                        <p class="class-description">Academic preparation</p>
+                        <div class="class-card-footer">
+                            <span class="footer-highlight">School Readiness</span>
+                            <span class="footer-dot"></span>
+                        </div>
+                    </div>
+
+                    <!-- Grade 1–7 -->
+                    <div class="class-card class-card-featured reveal-item" data-class="grades">
+                        <div class="card-glass-glow" aria-hidden="true"></div>
+                        <div class="class-watermark" aria-hidden="true">04</div>
+                        <div class="class-icon-wrapper grades-icon">
+                            <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <div class="class-stage-pill">Primary &amp; Upper Primary</div>
+                        <h3 class="class-title">Grade 1–7</h3>
+                        <p class="class-description">Holistic development</p>
+                        <div class="class-card-footer">
+                            <span class="footer-highlight">Knowledge &amp; Values</span>
+                            <span class="footer-dot"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="activities" class="activities">
-            <h2>School Activities</h2>
-            <ul>
-                <li>Cultural programmes</li>
-                <li>Sports activities</li>
-                <li>Competitions</li>
-                <li>Special-day celebrations</li>
-                <li>Classroom activities</li>
-                <li>Art and creative activities</li>
-                <li>Educational activities</li>
-                <li>School celebrations</li>
-            </ul>
+        <!-- Activities Section -->
+        <section id="activities" class="section activities-section" aria-labelledby="activitiesHeading">
+            <div class="section-container">
+                <div class="section-header reveal-item">
+                    <div class="section-tag">
+                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <span>Co-Curricular Life</span>
+                    </div>
+                    <h2 class="section-title" id="activitiesHeading">School Activities</h2>
+                    <p class="section-subtitle">Engaging experiences that foster teamwork, character, and individual talents</p>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="activities-grid">
+                    <!-- 1. Cultural programmes -->
+                    <div class="activity-card reveal-item">
+                        <div class="activity-icon-container">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18V5l12-2v13"/>
+                                <circle cx="6" cy="18" r="3"/>
+                                <circle cx="18" cy="16" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-name">Cultural programmes</h3>
+                            <span class="activity-badge">Expression &amp; Arts</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. Sports activities -->
+                    <div class="activity-card reveal-item">
+                        <div class="activity-icon-container">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                <path d="M2 12h20"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-name">Sports activities</h3>
+                            <span class="activity-badge">Fitness &amp; Team Spirit</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Competitions -->
+                    <div class="activity-card reveal-item">
+                        <div class="activity-icon-container">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="7"/>
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-name">Competitions</h3>
+                            <span class="activity-badge">Excellence &amp; Skill</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. Special-day celebrations -->
+                    <div class="activity-card reveal-item">
+                        <div class="activity-icon-container">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2l2.4 7.2h7.6l-6.2 4.5 2.4 7.3-6.2-4.5-6.2 4.5 2.4-7.3-6.2-4.5h7.6z"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-name">Special-day celebrations</h3>
+                            <span class="activity-badge">Tradition &amp; Joy</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. Classroom activities -->
+                    <div class="activity-card reveal-item">
+                        <div class="activity-icon-container">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-name">Classroom activities</h3>
+                            <span class="activity-badge">Interactive Learning</span>
+                        </div>
+                    </div>
+
+                    <!-- 6. Art and creative activities -->
+                    <div class="activity-card reveal-item">
+                        <div class="activity-icon-container">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="13.5" cy="6.5" r=".5"/>
+                                <circle cx="17.5" cy="10.5" r=".5"/>
+                                <circle cx="8.5" cy="7.5" r=".5"/>
+                                <circle cx="6.5" cy="12.5" r=".5"/>
+                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-name">Art and creative activities</h3>
+                            <span class="activity-badge">Imagination &amp; Craft</span>
+                        </div>
+                    </div>
+
+                    <!-- 7. Educational activities -->
+                    <div class="activity-card reveal-item">
+                        <div class="activity-icon-container">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-name">Educational activities</h3>
+                            <span class="activity-badge">Inquiry &amp; Discovery</span>
+                        </div>
+                    </div>
+
+                    <!-- 8. School celebrations -->
+                    <div class="activity-card reveal-item">
+                        <div class="activity-icon-container">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5.8 11.3 2 22l10.7-3.79M4 3h.01M22 8h.01M15 2h.01M22 20h.01M20 13a4 4 0 1 0-8 0"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h3 class="activity-name">School celebrations</h3>
+                            <span class="activity-badge">Togetherness &amp; Pride</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="gallery" class="gallery">
-            <h2>Our Gallery</h2>
-            <p>Explore memorable moments from Anandha Nursery and Primary School</p>
+        <!-- Gallery Section -->
+        <section id="gallery" class="section gallery-section" aria-labelledby="galleryHeading">
+            <div class="section-container">
+                <div class="section-header reveal-item">
+                    <div class="section-tag">
+                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                        <span>Visual Journey</span>
+                    </div>
+                    <h2 class="section-title" id="galleryHeading">Our Gallery</h2>
+                    <p class="section-subtitle">Explore memorable moments from Anandha Nursery and Primary School</p>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Modern Bento Gallery Grid with Elegant Ready Placeholders -->
+                <div class="gallery-bento-grid">
+                    <!-- Featured Placeholder 1 -->
+                    <div class="gallery-item gallery-featured reveal-item" data-gallery-id="gallery1" tabindex="0" role="button" aria-label="View School Highlights Gallery Photo">
+                        <div class="gallery-placeholder-wrapper" id="galleryWrapper1">
+                            <div class="gallery-empty-state">
+                                <div class="empty-state-lens">
+                                    <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                        <circle cx="12" cy="13" r="4"/>
+                                    </svg>
+                                </div>
+                                <span class="empty-state-tag">Featured Photograph Area</span>
+                                <h4 class="empty-state-caption">Campus Life &amp; Celebrations</h4>
+                                <span class="empty-state-note">Photo frame reserved for official school photography</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder 2 -->
+                    <div class="gallery-item reveal-item" data-gallery-id="gallery2" tabindex="0" role="button" aria-label="View Classroom Learning Moments Photo">
+                        <div class="gallery-placeholder-wrapper" id="galleryWrapper2">
+                            <div class="gallery-empty-state">
+                                <div class="empty-state-lens">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                                    </svg>
+                                </div>
+                                <span class="empty-state-tag">Gallery Space 02</span>
+                                <h4 class="empty-state-caption">Classroom Moments</h4>
+                                <span class="empty-state-note">Reserved for school photographs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder 3 -->
+                    <div class="gallery-item reveal-item" data-gallery-id="gallery3" tabindex="0" role="button" aria-label="View Creative Arts & Culture Photo">
+                        <div class="gallery-placeholder-wrapper" id="galleryWrapper3">
+                            <div class="gallery-empty-state">
+                                <div class="empty-state-lens">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="13.5" cy="6.5" r=".5"/>
+                                        <circle cx="17.5" cy="10.5" r=".5"/>
+                                        <circle cx="8.5" cy="7.5" r=".5"/>
+                                        <circle cx="6.5" cy="12.5" r=".5"/>
+                                        <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/>
+                                    </svg>
+                                </div>
+                                <span class="empty-state-tag">Gallery Space 03</span>
+                                <h4 class="empty-state-caption">Creative Arts &amp; Expression</h4>
+                                <span class="empty-state-note">Reserved for school photographs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder 4 -->
+                    <div class="gallery-item reveal-item" data-gallery-id="gallery4" tabindex="0" role="button" aria-label="View Sports & Activities Photo">
+                        <div class="gallery-placeholder-wrapper" id="galleryWrapper4">
+                            <div class="gallery-empty-state">
+                                <div class="empty-state-lens">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                        <path d="M2 12h20"/>
+                                    </svg>
+                                </div>
+                                <span class="empty-state-tag">Gallery Space 04</span>
+                                <h4 class="empty-state-caption">Sports &amp; Athletics</h4>
+                                <span class="empty-state-note">Reserved for school photographs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder 5 -->
+                    <div class="gallery-item reveal-item" data-gallery-id="gallery5" tabindex="0" role="button" aria-label="View School Events & Celebrations Photo">
+                        <div class="gallery-placeholder-wrapper" id="galleryWrapper5">
+                            <div class="gallery-empty-state">
+                                <div class="empty-state-lens">
+                                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                    </svg>
+                                </div>
+                                <span class="empty-state-tag">Gallery Space 05</span>
+                                <h4 class="empty-state-caption">Special Celebrations</h4>
+                                <span class="empty-state-note">Reserved for school photographs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section" aria-labelledby="contactHeading">
+            <div class="section-container">
+                <div class="section-header reveal-item">
+                    <div class="section-tag">
+                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>Communication</span>
+                    </div>
+                    <h2 class="section-title" id="contactHeading">Contact Us</h2>
+                    <p class="section-subtitle">Reach out to Anandha Nursery and Primary School</p>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="contact-cards-grid">
+                    <!-- Location Card -->
+                    <div class="contact-card reveal-item">
+                        <div class="contact-card-glow" aria-hidden="true"></div>
+                        <div class="contact-icon-frame">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-meta-label">Campus Address</span>
+                            <h3 class="contact-title">Location</h3>
+                            <address class="contact-value">
+                                Barakath Nagar, Melpattampakkam,<br>Tamil Nadu – 607104
+                            </address>
+                        </div>
+                    </div>
+
+                    <!-- Phone Card -->
+                    <div class="contact-card reveal-item">
+                        <div class="contact-card-glow" aria-hidden="true"></div>
+                        <div class="contact-icon-frame">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-meta-label">Telephone</span>
+                            <h3 class="contact-title">Phone Numbers</h3>
+                            <div class="contact-phone-links">
+                                <a href="tel:8489588489" class="phone-link">8489 58 8489</a>
+                                <span class="phone-separator">/</span>
+                                <a href="tel:9566669566" class="phone-link">95 66 66 95 66</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="contact-card reveal-item">
+                        <div class="contact-card-glow" aria-hidden="true"></div>
+                        <div class="contact-icon-frame">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-meta-label">Email Enquiries</span>
+                            <h3 class="contact-title">Official Email</h3>
+                            <div class="contact-value">
+                                <a href="mailto:anandhaschoolmpm@gmail.com" class="email-link">anandhaschoolmpm@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hours Card -->
+                    <div class="contact-card reveal-item">
+                        <div class="contact-card-glow" aria-hidden="true"></div>
+                        <div class="contact-icon-frame">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <span class="contact-meta-label">Campus Timings</span>
+                            <h3 class="contact-title">School Hours</h3>
+                            <div class="contact-value">
+                                <strong>9.00am to 5.00pm</strong>
+                                <span class="hours-sub">Regular academic week</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="contact-info">
-                <h3>Contact Us</h3>
-                <p>Barakath Nagar, Melpattampakkam, Tamil Nadu</p>
-                <p>Phone: 8489 58 8489 95 66 66 95 66</p>
-                <p>Email: anandhaschoolmpm@gmail.com</p>
-                <p>School Hours: 9.00am to 5.00pm</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-ambient" aria-hidden="true"></div>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <!-- Col 1: Identity -->
+                <div class="footer-col footer-col-identity">
+                    <div class="footer-brand">
+                        <div class="footer-logo-frame">
+                            <img src="logo.jpeg" alt="Anandha Nursery and Primary School Logo" class="footer-logo">
+                        </div>
+                        <div>
+                            <h3 class="footer-brand-title">Anandha</h3>
+                            <p class="footer-brand-subtitle">Nursery &amp; Primary School</p>
+                        </div>
+                    </div>
+                    <p class="footer-description">
+                        Committed to providing quality education in a caring, nurturing and child-friendly environment. Where every child is encouraged to learn, explore, grow and shine.
+                    </p>
+                    <div class="footer-motto-badge">
+                        <span>“The Future Begins Here!”</span>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#classes">Classes Offered</a></li>
+                        <li><a href="#activities">School Activities</a></li>
+                        <li><a href="#gallery">Our Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Academic Levels -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Classes</h4>
+                    <ul class="footer-class-list">
+                        <li><span>Pre-KG</span> <small>Early Foundation</small></li>
+                        <li><span>LKG</span> <small>Confidence &amp; Play</small></li>
+                        <li><span>UKG</span> <small>School Preparation</small></li>
+                        <li><span>Grade 1–7</span> <small>Holistic Growth</small></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Summary -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">School Office</h4>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-row">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Barakath Nagar, Melpattampakkam, Tamil Nadu</span>
+                        </div>
+                        <div class="footer-contact-row">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>8489 58 8489 / 95 66 66 95 66</span>
+                        </div>
+                        <div class="footer-contact-row">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>anandhaschoolmpm@gmail.com</span>
+                        </div>
+                        <div class="footer-contact-row">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <span>9.00am to 5.00pm</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="quick-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#classes">Classes</a></li>
-                    <li><a href="#activities">Activities</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                </ul>
+
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 Anandha Nursery and Primary School. All rights reserved.</p>
+                <div class="footer-bottom-tagline">Melpattampakkam, Cuddalore District, Tamil Nadu – 607104</div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Anandha Nursery and Primary School. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Lightbox Modal for Gallery Photos -->
+    <div class="lightbox-modal" id="lightboxModal" aria-hidden="true" role="dialog" aria-label="Photo Preview Lightbox">
+        <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox-content">
+            <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close photo preview">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="lightbox-image-container" id="lightboxImageContainer">
+                <!-- Dynamically populated or shows preview placeholder message -->
+            </div>
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <!-- Floating Scroll-to-Top Button -->
+    <button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll back to top">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
 
     <script src="script.js"></script>
 </body>
