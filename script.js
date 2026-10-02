@@ -8,16 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
     /* ==========================================================================
-       1. Centralized School Image Configuration
+       1. School Image Configuration (Local Photographs)
        --------------------------------------------------------------------------
-       Leave empty ("") to show high-end designed placeholders.
-       Add image URLs when actual school photographs are ready.
+       Slide 1: School Main Building — FIRST / default slide
+       Slide 2: School Reception — SECOND slide
+       Slide 3: Students Group Photo — THIRD slide
        ========================================================================== */
-    const schoolImages = {
-        hero1: "",
-        hero2: "",
-        hero3: "",
-        hero4: "",
+    const heroImages = [
+        "school/school-building.jpg", // 1. School main building (First / default)
+        "school/reception.jpg",       // 2. School reception (Second slide)
+        "school/students.jpg"         // 3. Students group photo (Third slide)
+    ];
+
+    const galleryImages = {
         gallery1: "",
         gallery2: "",
         gallery3: "",
@@ -35,36 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apply configured images if any exist
     function initConfiguredImages() {
-        // Apply Hero images if present
-        Object.keys(schoolImages).forEach(key => {
-            const url = schoolImages[key];
+        // Apply gallery images if present
+        Object.keys(galleryImages).forEach(key => {
+            const url = galleryImages[key];
             if (!url) return;
 
-            if (key.startsWith('hero')) {
-                const placeholder = document.querySelector(`.hero-image-placeholder[data-hero-key="${key}"]`);
-                if (placeholder) {
-                    const img = document.createElement('img');
-                    img.src = url;
-                    img.alt = "Anandha Nursery and Primary School Campus";
-                    img.className = "hero-bg-img";
-                    img.loading = "lazy";
-                    placeholder.prepend(img);
-                    const tag = placeholder.querySelector('.placeholder-graphic');
-                    if (tag) tag.style.display = 'none';
-                }
-            } else if (key.startsWith('gallery')) {
-                const galleryWrapper = document.getElementById(`galleryWrapper${key.replace('gallery', '')}`);
-                if (galleryWrapper) {
-                    galleryWrapper.innerHTML = `
-                        <img src="${url}" alt="${galleryCaptions[key] || 'Anandha School Gallery Photo'}" class="gallery-populated-img" loading="lazy">
-                        <div class="gallery-img-overlay">
-                            <div>
-                                <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 4px;">${galleryCaptions[key] || 'Anandha Moments'}</h4>
-                                <span style="font-size: 0.8rem; color: var(--sky-blue); font-weight: 600;">View High Resolution</span>
-                            </div>
+            const galleryWrapper = document.getElementById(`galleryWrapper${key.replace('gallery', '')}`);
+            if (galleryWrapper) {
+                galleryWrapper.innerHTML = `
+                    <img src="${url}" alt="${galleryCaptions[key] || 'Anandha School Gallery Photo'}" class="gallery-populated-img" loading="lazy">
+                    <div class="gallery-img-overlay">
+                        <div>
+                            <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 4px;">${galleryCaptions[key] || 'Anandha Moments'}</h4>
+                            <span style="font-size: 0.8rem; color: var(--sky-blue); font-weight: 600;">View High Resolution</span>
                         </div>
-                    `;
-                }
+                    </div>
+                `;
             }
         });
     }
@@ -158,28 +147,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       4. Hero Carousel System (Smooth, Cinematic, Accessible)
+       4. Hero Carousel System (3 Local Photographs, Fullscreen Cinematic)
        ========================================================================== */
     const heroCarousel = document.getElementById('heroCarousel');
     const slides = document.querySelectorAll('.carousel-slide');
     const prevBtn = document.getElementById('carouselPrev');
     const nextBtn = document.getElementById('carouselNext');
     const currentSlideNum = document.getElementById('currentSlideNum');
-    const progressBars = document.querySelectorAll('.progress-bar');
+    const progressPills = document.querySelectorAll('.hero-progress-pill');
     
     let currentSlide = 0;
-    const totalSlides = slides.length;
+    const totalSlides = slides.length; // 3 slides
     let slideInterval = null;
-    const autoPlayDelay = 6000; // 6 seconds
+    const autoPlayDelay = 5500; // 5.5 seconds per photograph
 
     function goToSlide(index) {
+        if (!slides.length) return;
+
         slides[currentSlide].classList.remove('active');
-        progressBars[currentSlide]?.classList.remove('active');
+        if (progressPills[currentSlide]) {
+            progressPills[currentSlide].classList.remove('active');
+            progressPills[currentSlide].setAttribute('aria-selected', 'false');
+        }
 
         currentSlide = (index + totalSlides) % totalSlides;
 
         slides[currentSlide].classList.add('active');
-        progressBars[currentSlide]?.classList.add('active');
+        if (progressPills[currentSlide]) {
+            progressPills[currentSlide].classList.add('active');
+            progressPills[currentSlide].setAttribute('aria-selected', 'true');
+        }
 
         if (currentSlideNum) {
             currentSlideNum.textContent = String(currentSlide + 1).padStart(2, '0');
@@ -222,9 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Click on progress bars to jump
-        progressBars.forEach((bar, idx) => {
-            bar.addEventListener('click', () => {
+        // Click on progress pills to jump directly to slide
+        progressPills.forEach((pill, idx) => {
+            pill.addEventListener('click', () => {
                 goToSlide(idx);
                 startAutoPlay();
             });
@@ -236,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroCarousel.addEventListener('mouseleave', startAutoPlay);
         }
 
-        // Keyboard navigation
+        // Keyboard navigation (Left / Right Arrow)
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') {
                 nextSlide();
@@ -268,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
 
-        // Start autoplay
+        // Start autoplay on page load
         startAutoPlay();
     }
 
@@ -359,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     function openLightbox(galleryKey) {
-        const imageUrl = schoolImages[galleryKey];
+        const imageUrl = galleryImages[galleryKey];
         const caption = galleryCaptions[galleryKey] || "Anandha Nursery & Primary School";
 
         lightboxImageContainer.innerHTML = '';

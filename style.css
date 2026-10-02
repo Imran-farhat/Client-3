@@ -186,7 +186,7 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
-   4. Floating Sticky Glass Navbar
+   4. Floating Sticky Glass Navbar (Transparent Overlay on Hero)
    -------------------------------------------------------------------------- */
 .site-header {
     position: fixed;
@@ -194,7 +194,7 @@ ul {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 16px 24px;
+    padding: 18px 24px;
     transition: padding 0.35s ease, background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
 }
 
@@ -205,12 +205,12 @@ ul {
     align-items: center;
     justify-content: space-between;
     padding: 8px 18px 8px 14px;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(14, 27, 56, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-full);
-    box-shadow: 0 10px 30px -5px rgba(10, 18, 38, 0.08), 0 2px 6px -1px rgba(10, 18, 38, 0.03);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35), 0 2px 6px -1px rgba(0, 0, 0, 0.15);
     transition: all 0.35s ease;
 }
 
@@ -220,11 +220,11 @@ ul {
 }
 
 .site-header.scrolled .nav-container {
-    background: rgba(14, 27, 56, 0.92);
+    background: rgba(14, 27, 56, 0.94);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.35), 0 4px 12px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.45), 0 4px 12px -2px rgba(0, 0, 0, 0.2);
 }
 
 /* Brand Link */
@@ -240,7 +240,7 @@ ul {
     border-radius: 50%;
     overflow: hidden;
     background: #ffffff;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     border: 2px solid rgba(255, 255, 255, 0.9);
     display: flex;
     align-items: center;
@@ -269,7 +269,7 @@ ul {
     font-weight: 700;
     font-size: 1.15rem;
     line-height: 1.1;
-    color: var(--navy-900);
+    color: #ffffff;
     letter-spacing: -0.01em;
     transition: color 0.3s ease;
 }
@@ -277,7 +277,7 @@ ul {
 .brand-subtitle {
     font-size: 0.72rem;
     font-weight: 600;
-    color: var(--navy-700);
+    color: var(--sky-blue);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     transition: color 0.3s ease;
@@ -285,7 +285,7 @@ ul {
 
 .brand-location {
     font-size: 0.65rem;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.75);
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -320,19 +320,19 @@ ul {
     padding: 8px 16px;
     font-size: 0.92rem;
     font-weight: 600;
-    color: var(--navy-850);
+    color: rgba(255, 255, 255, 0.9);
     border-radius: var(--radius-full);
     transition: all var(--transition-fast);
 }
 
 .nav-link:hover {
-    color: var(--royal-blue);
-    background: rgba(37, 99, 235, 0.08);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .nav-link.active {
-    color: var(--royal-blue);
-    background: rgba(37, 99, 235, 0.1);
+    color: var(--sky-blue);
+    background: rgba(56, 189, 248, 0.18);
 }
 
 .site-header.scrolled .nav-link {
@@ -518,26 +518,24 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
-   5. Hero Section & Modern Fullscreen Carousel
+   5. Hero Section & Fullscreen Cinematic Photo Showcase
    -------------------------------------------------------------------------- */
 .hero-section {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 640px;
+    max-height: 1080px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--navy-950);
     overflow: hidden;
-    padding-top: 80px;
 }
 
 .hero-carousel {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
 }
 
 /* Carousel Track & Slides */
@@ -555,445 +553,274 @@ ul {
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    transform: scale(1.04);
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-slide.active {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
     z-index: 1;
 }
 
-/* Hero Image Placeholder Area (Strictly NO external stock images) */
-.hero-image-placeholder {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background: radial-gradient(ellipse at 75% 30%, #1e3a8a 0%, #0e1b38 45%, #060b17 100%);
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    padding: 60px;
-}
-
-/* Subtle Shimmer across Placeholder */
-.hero-image-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        115deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(56, 189, 248, 0.05) 45%,
-        rgba(255, 255, 255, 0.08) 50%,
-        rgba(56, 189, 248, 0.05) 55%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    background-size: 200% 200%;
-    animation: placeholderShimmer 14s infinite linear;
-    pointer-events: none;
-}
-
-@keyframes placeholderShimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-/* When a real image is dynamically populated via script.js */
-.hero-bg-img {
-    position: absolute;
-    inset: 0;
+/* Hero Photography (Covers Complete Area without Distortion) */
+.hero-slide-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.65) saturate(1.1);
-    transition: transform 6s ease;
-}
-
-.carousel-slide.active .hero-bg-img {
-    transform: scale(1.05);
-}
-
-/* Placeholder graphic tag (subtle and high-tech) */
-.placeholder-graphic {
-    position: absolute;
-    bottom: 40px;
-    right: 40px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--radius-full);
-    padding: 10px 20px;
-    color: rgba(255, 255, 255, 0.6);
-    pointer-events: none;
-    z-index: 2;
-}
-
-.placeholder-icon-ring {
-    color: var(--sky-blue);
-    display: flex;
-    align-items: center;
-}
-
-.placeholder-label {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-/* Hero Pattern Overlay for Depth */
-.hero-pattern-overlay {
+    object-position: center;
     position: absolute;
     inset: 0;
-    background-image: 
-        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(6, 11, 23, 0.4) 0%, rgba(6, 11, 23, 0.7) 100%);
-    background-size: 32px 32px, 100% 100%;
+    transform: scale(1);
+    transition: transform 6.5s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+}
+
+/* Subtle Ken Burns Zoom */
+.carousel-slide.active .hero-slide-img {
+    transform: scale(1.055);
+}
+
+/* Subtle Dark/Transparent Gradient Overlay (Text readability without heavily darkening photos) */
+.hero-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(
+            to top,
+            rgba(6, 11, 23, 0.82) 0%,
+            rgba(6, 11, 23, 0.22) 42%,
+            rgba(6, 11, 23, 0.45) 100%
+        ),
+        radial-gradient(
+            ellipse at 25% 75%,
+            rgba(6, 11, 23, 0.45) 0%,
+            transparent 70%
+        );
     pointer-events: none;
     z-index: 2;
 }
 
-/* Hero Center Container */
-.hero-container {
-    position: relative;
+/* Overlay Content (Positioned towards bottom-left gracefully) */
+.hero-overlay-content {
+    position: absolute;
+    inset: 0;
     z-index: 10;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 40px 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Hero Glassmorphism Content Card */
-.hero-glass-card {
-    position: relative;
-    max-width: 860px;
-    width: 100%;
-    background: var(--hero-glass-bg);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
-    border: 1px solid var(--hero-glass-border);
-    border-radius: var(--radius-xl);
-    padding: 56px 48px 48px;
-    box-shadow: var(--hero-glass-shadow);
-    text-align: center;
-    color: #ffffff;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    overflow: hidden;
+    justify-content: flex-end;
+    padding: 0 4vw 48px;
+    max-width: 1360px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    pointer-events: none;
 }
 
-/* Glowing top border accent */
-.hero-glass-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 20%;
-    right: 20%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent 0%, var(--sky-blue) 50%, transparent 100%);
-    opacity: 0.9;
-}
-
-/* Hero Badge */
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(245, 158, 11, 0.15);
-    border: 1px solid rgba(245, 158, 11, 0.35);
-    border-radius: var(--radius-full);
-    padding: 6px 18px;
+.hero-content-wrapper {
+    max-width: 860px;
+    pointer-events: auto;
     margin-bottom: 24px;
 }
 
-.badge-dot {
-    width: 7px;
-    height: 7px;
-    background-color: var(--accent-gold);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent-gold);
-    animation: pulseDot 2s infinite ease-in-out;
-}
-
-@keyframes pulseDot {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-.badge-text {
-    font-family: var(--font-display);
-    font-size: 0.84rem;
-    font-weight: 700;
-    color: var(--accent-gold);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-/* Hero Header Emblem Lockup */
-.hero-header-lockup {
-    display: flex;
+/* Location & Emblem Badge */
+.hero-meta-badge {
+    display: inline-flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 18px;
+    gap: 10px;
+    background: rgba(14, 27, 56, 0.5);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-full);
+    padding: 5px 16px 5px 6px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-.hero-logo-badge {
-    width: 52px;
-    height: 52px;
+.hero-emblem-ring {
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: #ffffff;
     padding: 2px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-    border: 2px solid rgba(255, 255, 255, 0.85);
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
 }
 
-.hero-emblem-img {
+.hero-mini-emblem {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.hero-location-tag {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
+.hero-meta-location {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
     letter-spacing: 0.04em;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 4px 14px;
-    border-radius: var(--radius-full);
-    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-/* Hero Titles */
+/* Main Heading */
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(2.2rem, 5.2vw, 3.8rem);
+    font-size: clamp(2.3rem, 5.2vw, 4.3rem);
     font-weight: 700;
-    line-height: 1.15;
-    margin-bottom: 18px;
+    line-height: 1.14;
+    color: #ffffff;
     letter-spacing: -0.02em;
-    max-width: 760px;
+    margin-bottom: 16px;
+    text-shadow: 0 3px 22px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
-.text-gradient {
-    background: linear-gradient(135deg, #ffffff 20%, var(--sky-blue) 75%, var(--accent-gold) 100%);
+.hero-title-highlight {
+    background: linear-gradient(135deg, #ffffff 40%, var(--sky-blue) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
 }
 
+/* Supporting Subtitle */
 .hero-subtitle {
-    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.96);
     font-weight: 400;
-    max-width: 640px;
-    margin-bottom: 34px;
+    max-width: 700px;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
-/* Hero Actions / Buttons */
-.hero-actions {
+/* Bottom Controls Bar (Counter, Indicators, Subtle Arrows) */
+.hero-bottom-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 36px;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 30px;
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 700;
-    border-radius: var(--radius-full);
-    transition: all var(--transition-bounce);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--royal-blue) 0%, #1e40af 100%);
-    color: #ffffff;
-    box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 14px 30px -4px rgba(37, 99, 235, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-    background: linear-gradient(135deg, #3b82f6 0%, var(--royal-blue) 100%);
-}
-
-.btn-primary .btn-icon {
-    transition: transform var(--transition-fast);
-}
-
-.btn-primary:hover .btn-icon {
-    transform: translateX(4px);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(10px);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.45);
-}
-
-/* Slide Status Indicator Inside Glass Card */
-.hero-slide-status {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    width: 100%;
-    max-width: 320px;
-    justify-content: center;
-}
-
-.status-counter {
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--sky-blue);
-    letter-spacing: 0.1em;
-}
-
-.counter-divider {
-    color: rgba(255, 255, 255, 0.4);
-    margin: 0 4px;
-}
-
-.total-slides {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.status-bars {
-    display: flex;
-    gap: 6px;
-}
-
-.progress-bar {
-    width: 28px;
-    height: 4px;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.2);
-    transition: all 0.4s ease;
-}
-
-.progress-bar.active {
-    width: 44px;
-    background: var(--sky-blue);
-    box-shadow: 0 0 10px var(--sky-blue);
-}
-
-/* Carousel Prev/Next Buttons */
-.carousel-nav-controls {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 20;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 32px;
-}
-
-.carousel-arrow {
+    width: 100%;
     pointer-events: auto;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* Slide Counter: 01 / 03 */
+.hero-slide-counter {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 700;
     color: #ffffff;
+    letter-spacing: 0.08em;
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    transition: all var(--transition-bounce);
+    gap: 5px;
 }
 
-.carousel-arrow:hover {
-    background: rgba(255, 255, 255, 0.28);
-    transform: scale(1.1);
+.counter-current {
     color: var(--sky-blue);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+    font-size: 1.15rem;
 }
 
-/* Hero Scroll Down Hint */
-.hero-scroll-hint {
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 20;
+.counter-separator {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.counter-total {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Minimal Slide Progress Bars */
+.hero-progress-indicators {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 8px;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
 }
 
-.hero-scroll-hint:hover {
-    color: var(--sky-blue);
+.hero-progress-pill {
+    width: 32px;
+    height: 4px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.32);
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    padding: 0;
 }
 
-.scroll-mouse {
-    width: 22px;
-    height: 34px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 12px;
-    position: relative;
+.hero-progress-pill:hover {
+    background: rgba(255, 255, 255, 0.65);
 }
 
-.scroll-wheel {
+.hero-progress-pill.active {
+    width: 58px;
+    background: var(--sky-blue);
+    box-shadow: 0 0 14px var(--sky-blue);
+}
+
+/* Subtle Navigation Arrows */
+.hero-arrow-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-arrow-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(14, 27, 56, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.hero-arrow-btn:hover {
+    background: rgba(37, 99, 235, 0.7);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.08);
+}
+
+/* Minimal Scroll Indicator */
+.hero-scroll-indicator {
     position: absolute;
-    top: 6px;
+    bottom: 14px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 10;
+    width: 22px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+    transition: border-color 0.3s ease;
+}
+
+.hero-scroll-indicator:hover {
+    border-color: var(--sky-blue);
+}
+
+.hero-scroll-bar {
     width: 3px;
-    height: 6px;
-    background: var(--sky-blue);
+    height: 7px;
     border-radius: 2px;
+    background: var(--sky-blue);
     animation: mouseScroll 2s infinite ease-in-out;
 }
 
 @keyframes mouseScroll {
-    0% { transform: translate(-50%, 0); opacity: 1; }
-    80% { transform: translate(-50%, 12px); opacity: 0; }
-    100% { transform: translate(-50%, 0); opacity: 0; }
+    0% { transform: translateY(0); opacity: 1; }
+    80% { transform: translateY(12px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 0; }
 }
 
 /* --------------------------------------------------------------------------
@@ -2123,16 +1950,43 @@ ul {
         display: block;
     }
 
-    .hero-glass-card {
-        padding: 36px 24px;
-        border-radius: var(--radius-lg);
+    .hero-section {
+        height: 100vh;
+        min-height: 560px;
+    }
+
+    .hero-overlay-content {
+        padding: 0 20px 32px;
     }
 
     .hero-title {
-        font-size: 2.2rem;
+        font-size: clamp(1.85rem, 6.8vw, 2.5rem);
+        margin-bottom: 12px;
     }
 
-    .carousel-nav-controls {
+    .hero-subtitle {
+        font-size: 0.98rem;
+        line-height: 1.5;
+    }
+
+    .hero-bottom-controls {
+        padding-top: 14px;
+    }
+
+    .hero-arrow-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero-progress-pill {
+        width: 24px;
+    }
+
+    .hero-progress-pill.active {
+        width: 44px;
+    }
+
+    .hero-scroll-indicator {
         display: none;
     }
 
@@ -2186,13 +2040,27 @@ ul {
         display: none;
     }
 
-    .hero-actions {
-        flex-direction: column;
-        width: 100%;
+    .hero-meta-badge {
+        padding: 4px 12px 4px 4px;
+        gap: 8px;
+        margin-bottom: 14px;
     }
 
-    .hero-actions .btn {
-        width: 100%;
+    .hero-emblem-ring {
+        width: 28px;
+        height: 28px;
+    }
+
+    .hero-meta-location {
+        font-size: 0.75rem;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.88rem;
     }
 
     .about-hero-card {

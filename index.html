@@ -82,146 +82,87 @@
 
     <main id="mainContent">
         <!-- Hero Section -->
-        <section class="hero-section" id="home" aria-label="Hero Showcase">
-            <div class="hero-carousel" id="heroCarousel" role="region" aria-roledescription="carousel" aria-label="School Highlights Carousel">
+        <section class="hero-section" id="home" aria-label="Anandha Nursery and Primary School">
+            <div class="hero-carousel" id="heroCarousel" role="region" aria-roledescription="carousel" aria-label="Campus Showcase">
                 
-                <!-- Carousel Slides -->
+                <!-- Carousel Slides (Strictly 3 Local Photographs) -->
                 <div class="carousel-track" id="carouselTrack">
-                    <!-- Slide 1 -->
-                    <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="1 of 4" data-slide-index="0">
-                        <div class="hero-image-placeholder" data-hero-key="hero1" aria-hidden="true">
-                            <div class="placeholder-graphic">
-                                <div class="placeholder-icon-ring">
-                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/>
-                                        <path d="M12 7v5l3 3"/>
-                                    </svg>
-                                </div>
-                                <span class="placeholder-label">Campus Photography Reserved</span>
-                            </div>
-                        </div>
+                    <!-- Slide 1: School Main Building (Default / First Slide) -->
+                    <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="1 of 3" data-slide-index="0">
+                        <img src="school/school-building.jpg" alt="Anandha Nursery and Primary School Main Building Entrance" class="hero-slide-img" fetchpriority="high">
+                        <div class="hero-image-overlay" aria-hidden="true"></div>
                     </div>
 
-                    <!-- Slide 2 -->
-                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 4" data-slide-index="1">
-                        <div class="hero-image-placeholder" data-hero-key="hero2" aria-hidden="true">
-                            <div class="placeholder-graphic">
-                                <div class="placeholder-icon-ring">
-                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                                    </svg>
-                                </div>
-                                <span class="placeholder-label">Early Learning Environments</span>
-                            </div>
-                        </div>
+                    <!-- Slide 2: School Reception -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" data-slide-index="1">
+                        <img src="school/reception.jpg" alt="Anandha Nursery and Primary School Reception and Lobby" class="hero-slide-img" loading="lazy">
+                        <div class="hero-image-overlay" aria-hidden="true"></div>
                     </div>
 
-                    <!-- Slide 3 -->
-                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 4" data-slide-index="2">
-                        <div class="hero-image-placeholder" data-hero-key="hero3" aria-hidden="true">
-                            <div class="placeholder-graphic">
-                                <div class="placeholder-icon-ring">
-                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                                    </svg>
-                                </div>
-                                <span class="placeholder-label">Creative &amp; Activity Spaces</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 4" data-slide-index="3">
-                        <div class="hero-image-placeholder" data-hero-key="hero4" aria-hidden="true">
-                            <div class="placeholder-graphic">
-                                <div class="placeholder-icon-ring">
-                                    <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5">
-                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                                    </svg>
-                                </div>
-                                <span class="placeholder-label">Holistic Growth &amp; Development</span>
-                            </div>
-                        </div>
+                    <!-- Slide 3: Students Group Photo -->
+                    <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" data-slide-index="2">
+                        <img src="school/students.jpg" alt="Anandha Nursery and Primary School Students" class="hero-slide-img" loading="lazy">
+                        <div class="hero-image-overlay" aria-hidden="true"></div>
                     </div>
                 </div>
 
-                <!-- Subtle Pattern Overlay for Depth -->
-                <div class="hero-pattern-overlay" aria-hidden="true"></div>
-
-                <!-- Hero Glassmorphism Card -->
-                <div class="hero-container">
-                    <div class="hero-glass-card">
-                        <div class="hero-badge">
-                            <span class="badge-dot"></span>
-                            <span class="badge-text">The Future Begins Here!</span>
-                        </div>
-                        
-                        <div class="hero-header-lockup">
-                            <div class="hero-logo-badge">
-                                <img src="logo.jpeg" alt="School Emblem" class="hero-emblem-img">
-                            </div>
-                            <div class="hero-location-tag">Melpattampakkam, Cuddalore Dist.</div>
+                <!-- Hero Elegant Overlay Typography (No large card, no CTA buttons) -->
+                <div class="hero-overlay-content">
+                    <div class="hero-content-wrapper">
+                        <!-- Location & Emblem Badge -->
+                        <div class="hero-meta-badge">
+                            <span class="hero-emblem-ring">
+                                <img src="logo.jpeg" alt="School Emblem" class="hero-mini-emblem">
+                            </span>
+                            <span class="hero-meta-location">Melpattampakkam, Cuddalore Dist.</span>
                         </div>
 
+                        <!-- Main Heading -->
                         <h1 class="hero-title">
-                            Welcome to <span class="text-gradient">Anandha Nursery</span> &amp; Primary School
+                            Welcome to <span class="hero-title-highlight">Anandha Nursery &amp; Primary School</span>
                         </h1>
 
+                        <!-- Supporting Text -->
                         <p class="hero-subtitle">
                             Where every child is encouraged to learn, explore, grow and shine
                         </p>
+                    </div>
 
-                        <div class="hero-actions">
-                            <a href="#about" class="btn btn-primary" id="heroCtaBtn">
-                                <span>Discover Our School</span>
-                                <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                                </svg>
-                            </a>
-                            <a href="#classes" class="btn btn-secondary">
-                                <span>Explore Classes</span>
-                            </a>
+                    <!-- Bottom Bar: Indicators & Subtle Navigation -->
+                    <div class="hero-bottom-controls">
+                        <!-- Slide Counter: 01 / 03 -->
+                        <div class="hero-slide-counter" aria-live="polite">
+                            <span class="counter-current" id="currentSlideNum">01</span>
+                            <span class="counter-separator">/</span>
+                            <span class="counter-total">03</span>
                         </div>
 
-                        <!-- Slide Quick Indicator within Glass Card -->
-                        <div class="hero-slide-status">
-                            <div class="status-counter">
-                                <span class="current-slide" id="currentSlideNum">01</span>
-                                <span class="counter-divider">/</span>
-                                <span class="total-slides">04</span>
-                            </div>
-                            <div class="status-bars" id="slideProgressBars" aria-hidden="true">
-                                <span class="progress-bar active" data-index="0"></span>
-                                <span class="progress-bar" data-index="1"></span>
-                                <span class="progress-bar" data-index="2"></span>
-                                <span class="progress-bar" data-index="3"></span>
-                            </div>
+                        <!-- Elegant Minimal Progress Bars -->
+                        <div class="hero-progress-indicators" id="slideProgressBars" role="tablist" aria-label="Carousel slide indicators">
+                            <button type="button" class="hero-progress-pill active" data-index="0" role="tab" aria-selected="true" aria-label="Slide 1: School Building"></button>
+                            <button type="button" class="hero-progress-pill" data-index="1" role="tab" aria-selected="false" aria-label="Slide 2: Reception"></button>
+                            <button type="button" class="hero-progress-pill" data-index="2" role="tab" aria-selected="false" aria-label="Slide 3: Students Group"></button>
+                        </div>
+
+                        <!-- Subtle Minimal Arrows -->
+                        <div class="hero-arrow-controls">
+                            <button type="button" class="hero-arrow-btn" id="carouselPrev" aria-label="Previous slide">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M15 18l-6-6 6-6"/>
+                                </svg>
+                            </button>
+                            <button type="button" class="hero-arrow-btn" id="carouselNext" aria-label="Next slide">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M9 18l6-6-6-6"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Carousel Controls -->
-                <div class="carousel-nav-controls">
-                    <button type="button" class="carousel-arrow carousel-arrow-prev" id="carouselPrev" aria-label="Previous slide">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M15 18l-6-6 6-6"/>
-                        </svg>
-                    </button>
-                    <button type="button" class="carousel-arrow carousel-arrow-next" id="carouselNext" aria-label="Next slide">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Scroll Down Hint Indicator -->
-                <a href="#about" class="hero-scroll-hint" aria-label="Scroll down to About section">
-                    <span class="scroll-mouse">
-                        <span class="scroll-wheel"></span>
-                    </span>
-                    <span class="scroll-text">Scroll to explore</span>
+                <!-- Minimal Scroll Indicator -->
+                <a href="#about" class="hero-scroll-indicator" aria-label="Scroll to About section">
+                    <span class="hero-scroll-bar"></span>
                 </a>
             </div>
         </section>
