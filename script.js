@@ -147,40 +147,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       4. Hero Carousel System (3 Local Photographs, Fullscreen Cinematic)
+       4. Automatic Hero Carousel (3 Local Photographs, Fullscreen Continuous)
        ========================================================================== */
     const heroCarousel = document.getElementById('heroCarousel');
     const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.getElementById('carouselPrev');
-    const nextBtn = document.getElementById('carouselNext');
-    const currentSlideNum = document.getElementById('currentSlideNum');
-    const progressPills = document.querySelectorAll('.hero-progress-pill');
     
     let currentSlide = 0;
-    const totalSlides = slides.length; // 3 slides
+    const totalSlides = slides.length; // Exactly 3 slides
     let slideInterval = null;
-    const autoPlayDelay = 5500; // 5.5 seconds per photograph
+    const autoPlayDelay = 5500; // 5.5 seconds per slide
 
     function goToSlide(index) {
         if (!slides.length) return;
 
         slides[currentSlide].classList.remove('active');
-        if (progressPills[currentSlide]) {
-            progressPills[currentSlide].classList.remove('active');
-            progressPills[currentSlide].setAttribute('aria-selected', 'false');
-        }
-
         currentSlide = (index + totalSlides) % totalSlides;
-
         slides[currentSlide].classList.add('active');
-        if (progressPills[currentSlide]) {
-            progressPills[currentSlide].classList.add('active');
-            progressPills[currentSlide].setAttribute('aria-selected', 'true');
-        }
-
-        if (currentSlideNum) {
-            currentSlideNum.textContent = String(currentSlide + 1).padStart(2, '0');
-        }
     }
 
     function nextSlide() {
@@ -204,36 +186,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (slides.length > 0) {
-        // Controls
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                startAutoPlay();
-            });
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-                startAutoPlay();
-            });
-        }
-
-        // Click on progress pills to jump directly to slide
-        progressPills.forEach((pill, idx) => {
-            pill.addEventListener('click', () => {
-                goToSlide(idx);
-                startAutoPlay();
-            });
-        });
-
-        // Pause on hover
+        // Pause on mouse hover if desired
         if (heroCarousel) {
             heroCarousel.addEventListener('mouseenter', stopAutoPlay);
             heroCarousel.addEventListener('mouseleave', startAutoPlay);
         }
 
-        // Keyboard navigation (Left / Right Arrow)
+        // Keyboard navigation (Left / Right Arrow) for accessibility
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') {
                 nextSlide();
@@ -265,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, { passive: true });
 
-        // Start autoplay on page load
+        // Start automatic continuous carousel
         startAutoPlay();
     }
 

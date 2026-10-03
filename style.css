@@ -186,45 +186,45 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
-   4. Floating Sticky Glass Navbar (Transparent Overlay on Hero)
+   4. Minimal Transparent Navbar (Overlaid on Hero)
    -------------------------------------------------------------------------- */
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    width: 100%;
     z-index: 1000;
-    padding: 18px 24px;
-    transition: padding 0.35s ease, background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+    padding: 0;
+    background: linear-gradient(to bottom, rgba(6, 11, 23, 0.55) 0%, rgba(6, 11, 23, 0.15) 70%, transparent 100%);
+    transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
 }
 
 .nav-container {
-    max-width: 1240px;
+    max-width: 1360px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 18px 8px 14px;
-    background: rgba(14, 27, 56, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-full);
-    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35), 0 2px 6px -1px rgba(0, 0, 0, 0.15);
-    transition: all 0.35s ease;
+    padding: 14px 36px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    transition: padding 0.35s ease;
 }
 
 /* Header Scrolled State */
 .site-header.scrolled {
-    padding: 10px 24px;
+    background: rgba(10, 18, 38, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .site-header.scrolled .nav-container {
-    background: rgba(14, 27, 56, 0.94);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.45), 0 4px 12px -2px rgba(0, 0, 0, 0.2);
+    padding: 10px 36px;
 }
 
 /* Brand Link */
@@ -523,8 +523,7 @@ ul {
 .hero-section {
     position: relative;
     height: 100vh;
-    min-height: 640px;
-    max-height: 1080px;
+    min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -553,7 +552,8 @@ ul {
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
 }
 
 .carousel-slide.active {
@@ -567,34 +567,48 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     position: absolute;
     inset: 0;
-    transform: scale(1);
-    transition: transform 6.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: scale(1.00);
+    transition: transform 7s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: transform;
 }
 
-/* Subtle Ken Burns Zoom */
+/* Slow, elegant Ken Burns Zoom */
 .carousel-slide.active .hero-slide-img {
-    transform: scale(1.055);
+    transform: scale(1.04);
 }
 
-/* Subtle Dark/Transparent Gradient Overlay (Text readability without heavily darkening photos) */
+/* Specific Positioning to Guarantee Complete Upper Building & Signboard Visibility */
+.hero-img-building {
+    object-position: center top;
+}
+
+.hero-img-reception {
+    object-position: center 30%;
+}
+
+.hero-img-students {
+    object-position: center 20%;
+}
+
+/* Subtle, Natural Overlay: Slightly shaded only around text, clear across building and signboard */
 .hero-image-overlay {
     position: absolute;
     inset: 0;
     background: 
-        linear-gradient(
-            to top,
-            rgba(6, 11, 23, 0.82) 0%,
-            rgba(6, 11, 23, 0.22) 42%,
-            rgba(6, 11, 23, 0.45) 100%
-        ),
+        /* Localized subtle shade exclusively in the lower-left typography area */
         radial-gradient(
-            ellipse at 25% 75%,
-            rgba(6, 11, 23, 0.45) 0%,
-            transparent 70%
+            ellipse 80% 60% at 0% 100%,
+            rgba(6, 11, 23, 0.58) 0%,
+            rgba(6, 11, 23, 0.25) 45%,
+            transparent 100%
+        ),
+        /* Very faint top gradient for minimal navbar contrast without darkening sky/signboard */
+        linear-gradient(
+            to bottom,
+            rgba(6, 11, 23, 0.35) 0%,
+            transparent 16%
         );
     pointer-events: none;
     z-index: 2;
@@ -608,8 +622,8 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 4vw 48px;
-    max-width: 1360px;
+    padding: 0 5vw 64px;
+    max-width: 1400px;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -617,44 +631,31 @@ ul {
 }
 
 .hero-content-wrapper {
-    max-width: 860px;
+    max-width: 780px;
     pointer-events: auto;
-    margin-bottom: 24px;
 }
 
-/* Location & Emblem Badge */
+/* Location & Status Badge */
 .hero-meta-badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: rgba(14, 27, 56, 0.5);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.22);
+    gap: 8px;
+    background: rgba(14, 27, 56, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-full);
-    padding: 5px 16px 5px 6px;
-    margin-bottom: 20px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    padding: 5px 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-.hero-emblem-ring {
-    width: 32px;
-    height: 32px;
+.hero-meta-dot {
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: #ffffff;
-    padding: 2px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-    flex-shrink: 0;
-}
-
-.hero-mini-emblem {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    background: var(--sky-blue);
+    box-shadow: 0 0 8px var(--sky-blue);
 }
 
 .hero-meta-location {
@@ -664,16 +665,16 @@ ul {
     letter-spacing: 0.04em;
 }
 
-/* Main Heading */
+/* Main Heading (Clean Typography directly over photograph) */
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(2.3rem, 5.2vw, 4.3rem);
+    font-size: clamp(2.3rem, 5vw, 4.1rem);
     font-weight: 700;
     line-height: 1.14;
     color: #ffffff;
     letter-spacing: -0.02em;
     margin-bottom: 16px;
-    text-shadow: 0 3px 22px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 3px 20px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
 .hero-title-highlight {
@@ -682,145 +683,17 @@ ul {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
-    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
 /* Supporting Subtitle */
 .hero-subtitle {
-    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.96);
     font-weight: 400;
-    max-width: 700px;
+    max-width: 640px;
     text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
-}
-
-/* Bottom Controls Bar (Counter, Indicators, Subtle Arrows) */
-.hero-bottom-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    pointer-events: auto;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-/* Slide Counter: 01 / 03 */
-.hero-slide-counter {
-    font-family: var(--font-display);
-    font-size: 0.92rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 0.08em;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.counter-current {
-    color: var(--sky-blue);
-    font-size: 1.15rem;
-}
-
-.counter-separator {
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.counter-total {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Minimal Slide Progress Bars */
-.hero-progress-indicators {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.hero-progress-pill {
-    width: 32px;
-    height: 4px;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.32);
-    border: none;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    padding: 0;
-}
-
-.hero-progress-pill:hover {
-    background: rgba(255, 255, 255, 0.65);
-}
-
-.hero-progress-pill.active {
-    width: 58px;
-    background: var(--sky-blue);
-    box-shadow: 0 0 14px var(--sky-blue);
-}
-
-/* Subtle Navigation Arrows */
-.hero-arrow-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.hero-arrow-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(14, 27, 56, 0.45);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.hero-arrow-btn:hover {
-    background: rgba(37, 99, 235, 0.7);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: scale(1.08);
-}
-
-/* Minimal Scroll Indicator */
-.hero-scroll-indicator {
-    position: absolute;
-    bottom: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    width: 22px;
-    height: 36px;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    padding-top: 6px;
-    transition: border-color 0.3s ease;
-}
-
-.hero-scroll-indicator:hover {
-    border-color: var(--sky-blue);
-}
-
-.hero-scroll-bar {
-    width: 3px;
-    height: 7px;
-    border-radius: 2px;
-    background: var(--sky-blue);
-    animation: mouseScroll 2s infinite ease-in-out;
-}
-
-@keyframes mouseScroll {
-    0% { transform: translateY(0); opacity: 1; }
-    80% { transform: translateY(12px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 0; }
 }
 
 /* --------------------------------------------------------------------------
@@ -1927,15 +1800,15 @@ ul {
 /* Mobile & Small Tablets */
 @media (max-width: 768px) {
     .site-header {
-        padding: 12px 16px;
+        padding: 0;
     }
 
-    .site-header.scrolled {
-        padding: 8px 16px;
+    .site-header.scrolled .nav-container {
+        padding: 8px 18px;
     }
 
     .nav-container {
-        padding: 6px 14px;
+        padding: 10px 18px;
     }
 
     .desktop-nav {
@@ -1952,42 +1825,26 @@ ul {
 
     .hero-section {
         height: 100vh;
-        min-height: 560px;
+        min-height: 540px;
+    }
+
+    /* Intelligent mobile positioning: center on entrance and signboard */
+    .hero-img-building {
+        object-position: 65% top;
     }
 
     .hero-overlay-content {
-        padding: 0 20px 32px;
+        padding: 0 20px 36px;
     }
 
     .hero-title {
-        font-size: clamp(1.85rem, 6.8vw, 2.5rem);
+        font-size: clamp(1.85rem, 6.8vw, 2.4rem);
         margin-bottom: 12px;
     }
 
     .hero-subtitle {
-        font-size: 0.98rem;
+        font-size: 0.95rem;
         line-height: 1.5;
-    }
-
-    .hero-bottom-controls {
-        padding-top: 14px;
-    }
-
-    .hero-arrow-btn {
-        width: 38px;
-        height: 38px;
-    }
-
-    .hero-progress-pill {
-        width: 24px;
-    }
-
-    .hero-progress-pill.active {
-        width: 44px;
-    }
-
-    .hero-scroll-indicator {
-        display: none;
     }
 
     .vision-mission-grid {
