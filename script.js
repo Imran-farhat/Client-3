@@ -84,8 +84,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /* ==========================================================================
+       Scroll-Driven Parallax for Hero Images
+       Applies a fast translateY shift to all three hero photos as the user scrolls.
+       depth: 0.3 → visible, snappy movement with minimal scroll distance.
+       CSS transition (200ms ease-out) makes every shift feel instant.
+       ========================================================================== */
+    const heroSlideImgs = document.querySelectorAll('.hero-slide-img');
+    const PARALLAX_DEPTH = 0.3; // 30% of scrollY → fast and responsive
+
+    function applyHeroParallax() {
+        const scrollY = window.scrollY;
+        // Only apply while the hero section is in view
+        const heroSection = document.getElementById('home');
+        const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+        if (scrollY > heroHeight) return;
+
+        const shift = scrollY * PARALLAX_DEPTH;
+        heroSlideImgs.forEach(img => {
+            // scale(1.12) keeps bleed; translateY shifts the image downward as page scrolls up
+            img.style.transform = `scale(1.12) translateY(${shift}px)`;
+        });
+    }
+
     window.addEventListener('scroll', handleScrollEffects, { passive: true });
+    window.addEventListener('scroll', applyHeroParallax, { passive: true });
     handleScrollEffects();
+    applyHeroParallax();
 
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', () => {
