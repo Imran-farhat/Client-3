@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSlide = 0;
     const totalSlides = slides.length; // Exactly 3 slides
     let slideInterval = null;
-    const autoPlayDelay = 5500; // 5.5 seconds per slide
+    const autoPlayDelay = 3600; // 3.6 seconds per slide for responsive, engaging flow
 
     function goToSlide(index) {
         if (!slides.length) return;
