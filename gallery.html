@@ -12,439 +12,247 @@
     <link rel="icon" type="image/jpeg" href="logo.jpeg">
 
     <style>
-    /* =====================================================================
-       Gallery Page – Page-Specific Styles
-       Carousel, Hero Banner, Thumbnails, Arrows, Dots
-    ===================================================================== */
+        /* Push content below fixed navbar on inner pages */
+        .page-hero-spacer { height: 90px; }
 
-    /* Fixed navbar offset */
-    .page-hero-spacer { height: 0; }
+        /* ---- Gallery page clean layout ---- */
+        .gallery-page-section {
+            background: linear-gradient(to bottom, #ffffff 0%, var(--canvas-bg) 100%);
+        }
 
-    /* ---- Gallery Hero Banner ---- */
-    .gallery-hero-banner {
-        position: relative;
-        min-height: 260px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 120px 24px 56px;
-        background:
-            linear-gradient(160deg, rgba(6,11,23,0.92) 0%, rgba(14,27,56,0.88) 60%, rgba(10,18,38,0.95) 100%),
-            url('school/school-building.jpg') center/cover no-repeat;
-        overflow: hidden;
-    }
-    .gallery-hero-banner::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
-        pointer-events: none;
-    }
-    .gallery-banner-inner {
-        position: relative;
-        z-index: 2;
-    }
-    .gallery-banner-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        background: rgba(56,189,248,0.15);
-        border: 1px solid rgba(56,189,248,0.35);
-        border-radius: 999px;
-        padding: 5px 16px;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #38bdf8;
-        margin-bottom: 18px;
-    }
-    .gallery-banner-tag svg { flex-shrink: 0; }
-    .gallery-banner-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(2rem, 5vw, 3.4rem);
-        font-weight: 800;
-        color: #fff;
-        line-height: 1.12;
-        letter-spacing: -0.02em;
-        margin-bottom: 20px;
-        text-shadow: 0 4px 24px rgba(0,0,0,0.6);
-    }
-    .gallery-banner-title span {
-        background: linear-gradient(135deg, #fff 40%, #38bdf8 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    /* Breadcrumb */
-    .gallery-breadcrumb {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: rgba(255,255,255,0.65);
-        justify-content: center;
-    }
-    .gallery-breadcrumb a {
-        color: #38bdf8;
-        text-decoration: none;
-        transition: color 0.2s ease;
-    }
-    .gallery-breadcrumb a:hover { color: #fff; }
-    .gallery-breadcrumb .bc-sep {
-        opacity: 0.5;
-        font-size: 0.75rem;
-    }
-    .gallery-breadcrumb .bc-current {
-        color: rgba(255,255,255,0.9);
-        font-weight: 600;
-    }
+        .gallery-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+        .gallery-stat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid var(--border-subtle);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            box-shadow: 0 2px 8px rgba(14,27,56,0.05);
+        }
+        .gallery-stat-pill strong { color: var(--navy-900); }
+        .gallery-stat-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sky-blue); }
 
-    /* ---- Gallery Section Wrapper ---- */
-    .gallery-page-section {
-        background: #f8fafc;
-        padding: 64px 0 80px;
-    }
-    .gallery-page-container {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 0 24px;
-    }
-    .gallery-page-heading {
-        text-align: center;
-        margin-bottom: 48px;
-    }
-    .gallery-page-heading p {
-        color: #64748b;
-        font-size: 1.05rem;
-        margin-top: 8px;
-        max-width: 560px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+        /* ---- Album stack: single column, identical widths ---- */
+        .albums-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            width: 100%;
+            max-width: 920px;
+            margin: 0 auto;
+        }
 
-    /* ---- Main Carousel ---- */
-    .gallery-carousel-wrap {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 32px 80px -16px rgba(14,27,56,0.22), 0 8px 24px -4px rgba(14,27,56,0.1);
-        background: #0a1226;
-        aspect-ratio: 16 / 9;
-        max-height: 540px;
-    }
-    .gallery-slider-track {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-        will-change: transform;
-    }
-    .gallery-slide {
-        min-width: 100%;
-        height: 100%;
-        position: relative;
-        flex-shrink: 0;
-    }
-    /* Placeholder slide background (used when no real image is set) */
-    .gallery-slide-bg {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 16px;
-    }
-    .gallery-slide-bg svg {
-        opacity: 0.22;
-        filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
-    }
-    .gallery-slide-bg .slide-placeholder-label {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.9rem;
-        font-weight: 600;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.35);
-    }
-    .gallery-slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    /* Slide vignette + caption */
-    .gallery-slide-caption {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 0;
-        pointer-events: none;
-        background:
-            linear-gradient(to top, rgba(6,11,23,0.82) 0%, rgba(6,11,23,0.35) 38%, transparent 65%),
-            radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 100%);
-        z-index: 2;
-    }
-    .gallery-slide-caption-inner {
-        padding: 28px 36px 32px;
-    }
-    .slide-caption-badge {
-        display: inline-block;
-        background: rgba(56,189,248,0.25);
-        border: 1px solid rgba(56,189,248,0.45);
-        border-radius: 999px;
-        padding: 3px 12px;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #38bdf8;
-        margin-bottom: 8px;
-    }
-    .slide-caption-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-        font-weight: 700;
-        color: #fff;
-        line-height: 1.2;
-        margin-bottom: 6px;
-        text-shadow: 0 2px 12px rgba(0,0,0,0.6);
-    }
-    .slide-caption-desc {
-        font-size: 0.9rem;
-        color: rgba(255,255,255,0.75);
-        font-weight: 400;
-        line-height: 1.5;
-        max-width: 520px;
-    }
+        .album-card {
+            width: 100%;
+            background: #fff;
+            border: 1px solid rgba(226,232,240,0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px -6px rgba(14,27,56,0.08), 0 4px 12px -2px rgba(14,27,56,0.04);
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* Arrow Navigation */
-    .gallery-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        background: rgba(255,255,255,0.12);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255,255,255,0.22);
-        color: #fff;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-    }
-    .gallery-arrow:hover {
-        background: rgba(56,189,248,0.32);
-        border-color: rgba(56,189,248,0.6);
-        transform: translateY(-50%) scale(1.08);
-        box-shadow: 0 6px 24px rgba(56,189,248,0.3);
-    }
-    .gallery-arrow-prev { left: 18px; }
-    .gallery-arrow-next { right: 18px; }
+        .album-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 22px 26px;
+            border-bottom: 1px solid rgba(226,232,240,0.8);
+        }
+        .album-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: #fff;
+            background: linear-gradient(135deg, var(--royal-blue), var(--navy-700));
+            flex-shrink: 0;
+        }
+        .album-card:nth-child(2) .album-number {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+        .album-card:nth-child(3) .album-number {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        .album-titles { flex: 1; min-width: 0; }
+        .album-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--navy-900);
+            line-height: 1.25;
+            margin: 0 0 4px;
+        }
+        .album-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+        .album-count {
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--royal-blue);
+            background: rgba(37,99,235,0.08);
+            border: 1px solid rgba(37,99,235,0.18);
+            padding: 6px 12px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
 
-    /* Dot Indicators */
-    .gallery-dots {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 22px;
-    }
-    .gallery-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: #cbd5e1;
-        cursor: pointer;
-        border: none;
-        padding: 0;
-        transition: background 0.25s ease, width 0.25s ease, box-shadow 0.25s ease;
-    }
-    .gallery-dot.active {
-        width: 26px;
-        background: #2563eb;
-        box-shadow: 0 0 8px rgba(37,99,235,0.5);
-    }
-    .gallery-dot:hover:not(.active) {
-        background: #94a3b8;
-    }
+        /* ---- Carousel viewport: identical size for every album ---- */
+        .gallery-carousel {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #0a1226;
+            overflow: hidden;
+        }
+        .gallery-slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .gallery-slide {
+            flex: 0 0 100%;
+            min-width: 100%;
+            max-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
 
-    /* ---- Thumbnail Strip ---- */
-    .gallery-thumb-strip {
-        display: flex;
-        gap: 10px;
-        margin-top: 18px;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        scrollbar-width: thin;
-        scrollbar-color: #cbd5e1 transparent;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .gallery-thumb-strip::-webkit-scrollbar { height: 4px; }
-    .gallery-thumb-strip::-webkit-scrollbar-track { background: transparent; }
-    .gallery-thumb-strip::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-    .gallery-thumb {
-        flex-shrink: 0;
-        width: 96px;
-        height: 62px;
-        border-radius: 10px;
-        overflow: hidden;
-        cursor: pointer;
-        border: 2px solid transparent;
-        transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-        background: #0a1226;
-        position: relative;
-    }
-    .gallery-thumb.active {
-        border-color: #2563eb;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(37,99,235,0.35);
-    }
-    .gallery-thumb:hover:not(.active) {
-        border-color: #94a3b8;
-        transform: translateY(-1px);
-    }
-    .gallery-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    /* Placeholder thumb */
-    .gallery-thumb-placeholder {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .gallery-thumb-placeholder svg { opacity: 0.3; }
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.14);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.28);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .gallery-arrow:hover {
+            background: rgba(56,189,248,0.38);
+            border-color: rgba(56,189,248,0.65);
+            transform: translateY(-50%) scale(1.06);
+        }
+        .gallery-arrow:active { transform: translateY(-50%) scale(0.96); }
+        .gallery-arrow-prev { left: 16px; }
+        .gallery-arrow-next { right: 16px; }
 
-    /* Autoplay progress bar */
-    .gallery-progress-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #38bdf8, #2563eb);
-        z-index: 11;
-        border-radius: 0;
-        width: 0%;
-        transition: width linear;
-    }
+        .gallery-counter {
+            position: absolute;
+            right: 16px;
+            bottom: 14px;
+            z-index: 10;
+            background: rgba(6,11,23,0.62);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-variant-numeric: tabular-nums;
+            pointer-events: none;
+        }
 
-    /* ---- Info Strip below thumbnails ---- */
-    .gallery-info-strip {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 24px;
-        padding: 18px 24px;
-        background: #fff;
-        border-radius: 14px;
-        border: 1px solid rgba(148,163,184,0.22);
-        box-shadow: 0 4px 16px rgba(14,27,56,0.06);
-        flex-wrap: wrap;
-        gap: 12px;
-    }
-    .gallery-info-label {
-        font-size: 0.82rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: #64748b;
-    }
-    .gallery-info-count {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #0f172a;
-    }
-    .gallery-info-count span { color: #2563eb; }
-    .gallery-autoplay-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 9px 22px;
-        border-radius: 999px;
-        border: 1.5px solid rgba(37,99,235,0.3);
-        background: rgba(37,99,235,0.06);
-        color: #2563eb;
-        font-size: 0.88rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    .gallery-autoplay-btn:hover {
-        background: #2563eb;
-        color: #fff;
-        border-color: #2563eb;
-        box-shadow: 0 4px 14px rgba(37,99,235,0.3);
-    }
-    .gallery-autoplay-btn.paused svg:first-child { display: none; }
-    .gallery-autoplay-btn:not(.paused) svg:last-child { display: none; }
+        /* ---- Album footer: dots + hint, identical for every album ---- */
+        .album-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 26px;
+            border-top: 1px solid rgba(226,232,240,0.8);
+            background: #fbfdff;
+        }
+        .album-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .album-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #cbd5e1;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: width 0.25s ease, background 0.25s ease;
+        }
+        .album-dot.active {
+            width: 26px;
+            background: linear-gradient(90deg, var(--royal-blue), var(--sky-blue));
+        }
+        .album-hint {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            font-weight: 500;
+            white-space: nowrap;
+        }
 
-    /* ---- Note banner for placeholder state ---- */
-    .gallery-placeholder-notice {
-        margin-top: 40px;
-        padding: 20px 28px;
-        background: linear-gradient(135deg, rgba(56,189,248,0.08) 0%, rgba(37,99,235,0.06) 100%);
-        border: 1px solid rgba(56,189,248,0.22);
-        border-radius: 14px;
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-    }
-    .gallery-placeholder-notice svg {
-        flex-shrink: 0;
-        color: #38bdf8;
-        margin-top: 2px;
-    }
-    .gallery-placeholder-notice h4 {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 4px;
-    }
-    .gallery-placeholder-notice p {
-        font-size: 0.88rem;
-        color: #475569;
-        line-height: 1.55;
-    }
-
-    /* ---- Responsive ---- */
-    @media (max-width: 768px) {
-        .gallery-hero-banner { padding: 110px 20px 44px; min-height: 200px; }
-        .gallery-carousel-wrap { border-radius: 14px; aspect-ratio: 4/3; max-height: 360px; }
-        .gallery-slide-caption-inner { padding: 18px 20px 22px; }
-        .gallery-arrow { width: 38px; height: 38px; }
-        .gallery-arrow-prev { left: 10px; }
-        .gallery-arrow-next { right: 10px; }
-        .gallery-thumb { width: 72px; height: 48px; border-radius: 7px; }
-        .gallery-info-strip { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 480px) {
-        .gallery-carousel-wrap { aspect-ratio: 1/1; max-height: 320px; }
-        .gallery-thumb-strip { justify-content: flex-start; }
-    }
+        @media (max-width: 768px) {
+            .gallery-carousel { aspect-ratio: 4 / 3; }
+            .gallery-arrow { width: 38px; height: 38px; }
+            .gallery-arrow-prev { left: 12px; }
+            .gallery-arrow-next { right: 12px; }
+            .album-head { padding: 18px 18px; gap: 12px; }
+            .album-title { font-size: 1.15rem; }
+            .album-count { display: none; }
+            .album-foot { padding: 14px 18px; }
+            .album-hint { display: none; }
+        }
     </style>
 </head>
 <body>
+    <!-- Background Ambient Glow Blobs -->
     <div class="ambient-glow glow-blob-1" aria-hidden="true"></div>
     <div class="ambient-glow glow-blob-2" aria-hidden="true"></div>
     <div class="ambient-glow glow-blob-3" aria-hidden="true"></div>
@@ -462,6 +270,7 @@
                     <span class="brand-location">Melpattampakkam</span>
                 </div>
             </a>
+
             <nav class="desktop-nav" aria-label="Primary Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
@@ -472,12 +281,14 @@
                     <li><a href="contact.html" class="nav-link nav-contact-btn">Contact</a></li>
                 </ul>
             </nav>
+
             <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle mobile navigation menu">
                 <span class="hamburger-bar"></span>
                 <span class="hamburger-bar"></span>
                 <span class="hamburger-bar"></span>
             </button>
         </div>
+
         <div class="mobile-nav-drawer" id="mobileNav" aria-hidden="true">
             <div class="mobile-nav-inner">
                 <div class="mobile-nav-brand">
@@ -503,201 +314,159 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <div class="gallery-hero-banner">
-        <div class="gallery-banner-inner">
-            <div class="gallery-banner-tag">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                </svg>
-                Visual Journey
-            </div>
-            <h1 class="gallery-banner-title">Our <span>Gallery</span></h1>
-            <nav class="gallery-breadcrumb" aria-label="Breadcrumb">
-                <a href="index.html">Home</a>
-                <span class="bc-sep">&#8250;</span>
-                <span class="bc-current">Gallery</span>
-            </nav>
-        </div>
-    </div>
+    <div class="page-hero-spacer" aria-hidden="true"></div>
 
     <main id="mainContent">
-        <section class="gallery-page-section" aria-label="Gallery Carousel">
-            <div class="gallery-page-container">
-
-                <!-- Section intro -->
-                <div class="gallery-page-heading reveal-item">
-                    <p>Explore memorable moments from Anandha Nursery and Primary School — campus life, celebrations, learning and more.</p>
-                </div>
-
-                <!-- ============ Main Carousel ============ -->
-                <div class="gallery-carousel-wrap reveal-item" id="galleryCarouselWrap"
-                     role="region" aria-roledescription="carousel" aria-label="School Photo Gallery">
-
-                    <!-- Slider Track -->
-                    <div class="gallery-slider-track" id="gallerySliderTrack">
-
-<!-- Slide 1: Yellow Day Celebration -->
-                        <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 4" data-slide="0">
-                            <div class="gallery-slide-bg" style="background: url('school/yellow-day/001.jpeg') center/cover no-repeat; background-size: cover;">
-                                <span class="slide-placeholder-label" style="display:none">Yellow Day</span>
-                            </div>
-                            <div class="gallery-slide-caption" aria-hidden="true">
-                                <div class="gallery-slide-caption-inner">
-                                    <div class="slide-caption-badge">Celebration</div>
-                                    <div class="slide-caption-title">Yellow Day Celebration</div>
-                                    <div class="slide-caption-desc">Students dressed in yellow participating in themed activities, games, and classroom learning focused on the color yellow.</div>
-                                </div>
-                            </div>
-                        </div>
-
-<!-- Slide 2: Yellow Day Activities -->
-                        <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 4" data-slide="1">
-                            <div class="gallery-slide-bg" style="background: url('school/yellow-day/002.jpeg') center/cover no-repeat; background-size: cover;">
-                                <span class="slide-placeholder-label" style="display:none">Yellow Day</span>
-                            </div>
-                            <div class="gallery-slide-caption" aria-hidden="true">
-                                <div class="gallery-slide-caption-inner">
-                                    <div class="slide-caption-badge">Activities</div>
-                                    <div class="slide-caption-title">Yellow Day Activities</div>
-                                    <div class="slide-caption-desc">Creative art and craft sessions, coloring activities, and yellow-themed decorations across all classrooms.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide 3: Yellow Day Sports -->
-<div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 4" data-slide="2">
-                            <div class="gallery-slide-bg" style="background: url('school/yellow-day/003.jpeg') center/cover no-repeat; background-size: cover;">
-                                <span class="slide-placeholder-label" style="display:none">Yellow Day</span>
-                            </div>
-                            <div class="gallery-slide-caption" aria-hidden="true">
-                                <div class="gallery-slide-caption-inner">
-                                    <div class="slide-caption-badge">Sports</div>
-                                    <div class="slide-caption-title">Yellow Day Sports</div>
-                                    <div class="slide-caption-desc">Mini sports events and relay races held as part of the Yellow Day festivities, encouraging teamwork and physical activity.</div>
-                                </div>
-                            </div>
-                        </div>
-
-<!-- Slide 4: Yellow Day Cultural -->
-                        <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 4" data-slide="3">
-                            <div class="gallery-slide-bg" style="background: url('school/yellow-day/004.jpeg') center/cover no-repeat; background-size: cover;">
-                                <span class="slide-placeholder-label" style="display:none">Yellow Day</span>
-                            </div>
-                            <div class="gallery-slide-caption" aria-hidden="true">
-                                <div class="gallery-slide-caption-inner">
-                                    <div class="slide-caption-badge">Cultural</div>
-                                    <div class="slide-caption-title">Yellow Day Cultural</div>
-                                    <div class="slide-caption-desc">Cultural performances, music, and dance showcases featuring student talent and creative expression.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div><!-- /.gallery-slider-track -->
-
-                    <!-- Arrow Controls -->
-                    <button class="gallery-arrow gallery-arrow-prev" id="galleryPrev" aria-label="Previous slide">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <path d="M15 18l-6-6 6-6"/>
+        <section class="section gallery-page-section" aria-labelledby="galleryHeading">
+            <div class="section-container">
+                <div class="section-header reveal-item">
+                    <div class="section-tag">
+                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21 15 16 10 5 21"/>
                         </svg>
-                    </button>
-                    <button class="gallery-arrow gallery-arrow-next" id="galleryNext" aria-label="Next slide">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
-                    </button>
-
-                    <!-- Progress Bar -->
-                    <div class="gallery-progress-bar" id="galleryProgressBar"></div>
-
-                </div><!-- /.gallery-carousel-wrap -->
-
-                <!-- Dot Indicators -->
-                <div class="gallery-dots" role="tablist" aria-label="Slide navigation" id="galleryDots">
-                    <button class="gallery-dot active" role="tab" aria-label="Go to slide 1" aria-selected="true" data-dot="0"></button>
-                    <button class="gallery-dot" role="tab" aria-label="Go to slide 2" aria-selected="false" data-dot="1"></button>
-                    <button class="gallery-dot" role="tab" aria-label="Go to slide 3" aria-selected="false" data-dot="2"></button>
-                    <button class="gallery-dot" role="tab" aria-label="Go to slide 4" aria-selected="false" data-dot="3"></button>
-                </div>
-
-                <!-- Thumbnail Strip -->
-                <div class="gallery-thumb-strip" id="galleryThumbStrip" aria-label="Slide thumbnails">
-
-                    <div class="gallery-thumb active" data-thumb="0" role="button" tabindex="0" aria-label="Campus Life and Celebrations">
-                        <div class="gallery-thumb-placeholder" style="background: linear-gradient(135deg, #0e1b38, #1e3a8a);">
-                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#38bdf8" stroke-width="1.5">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9 22 9 12 15 12 15 22"/>
-                            </svg>
-                        </div>
+                        <span>Visual Journey</span>
                     </div>
-
-                    <div class="gallery-thumb" data-thumb="1" role="button" tabindex="0" aria-label="Classroom Learning Moments">
-                        <div class="gallery-thumb-placeholder" style="background: linear-gradient(135deg, #064e3b, #065f46);">
-                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#34d399" stroke-width="1.5">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="gallery-thumb" data-thumb="2" role="button" tabindex="0" aria-label="Creative Arts and Expression">
-                        <div class="gallery-thumb-placeholder" style="background: linear-gradient(135deg, #4c1d95, #6d28d9);">
-                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#c4b5fd" stroke-width="1.5">
-                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="gallery-thumb" data-thumb="3" role="button" tabindex="0" aria-label="Sports and Athletics">
-                        <div class="gallery-thumb-placeholder" style="background: linear-gradient(135deg, #7c2d12, #c2410c);">
-                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fb923c" stroke-width="1.5">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M2 12h20"/>
-                            </svg>
-                        </div>
-                    </div>
-
-                </div><!-- /.gallery-thumb-strip -->
-
-                <!-- Info Strip -->
-                <div class="gallery-info-strip">
-                    <div>
-                        <div class="gallery-info-label">Photo Collection</div>
-                        <div class="gallery-info-count" id="gallerySlideCounter"><span>1</span> / 4</div>
-                    </div>
-                    <div style="font-size:0.88rem; color:#64748b; max-width:340px; line-height:1.55;">
-                        Official photographs will be added here. This gallery is reserved for school events, campus life and student moments.
-                    </div>
-                    <button class="gallery-autoplay-btn" id="galleryAutoplayBtn" aria-label="Toggle autoplay">
-                        <!-- Pause icon (shown while playing) -->
-                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
-                            <rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>
-                        </svg>
-                        <!-- Play icon (shown while paused) -->
-                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
-                            <polygon points="5 3 19 12 5 21 5 3"/>
-                        </svg>
-                        <span id="galleryAutoplayLabel">Pause</span>
-                    </button>
-                </div>
-
-                <!-- Placeholder Notice -->
-                <div class="gallery-placeholder-notice reveal-item">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="12" y1="8" x2="12" y2="12"/>
-                        <line x1="12" y1="16" x2="12.01" y2="16"/>
-                    </svg>
-                    <div>
-                        <h4>Gallery Placeholder Mode</h4>
-                        <p>These slides are reserved for official photographs from Anandha Nursery and Primary School. To populate the gallery with real images, replace the placeholder backgrounds with <code>&lt;img&gt;</code> tags or update the <code>gallerySlides</code> array in the page script below.</p>
+                    <h1 class="section-title" id="galleryHeading">Our Gallery</h1>
+                    <p class="section-subtitle">Memorable moments from Anandha Nursery and Primary School</p>
+                    <div class="title-underline"></div>
+                    <div class="gallery-stats" aria-label="Gallery summary">
+                        <span class="gallery-stat-pill"><strong>3</strong> collections</span>
+                        <span class="gallery-stat-dot" aria-hidden="true"></span>
+                        <span class="gallery-stat-pill"><strong>14</strong> photographs</span>
+                        <span class="gallery-stat-dot" aria-hidden="true"></span>
+                        <span class="gallery-stat-pill">Melpattampakkam campus</span>
                     </div>
                 </div>
 
-            </div><!-- /.gallery-page-container -->
+                <div class="albums-stack">
+
+                    <!-- Album 01 : Yellow Day -->
+                    <article class="album-card reveal-item" data-carousel>
+                        <div class="album-head">
+                            <span class="album-number" aria-hidden="true">01</span>
+                            <div class="album-titles">
+                                <h2 class="album-title">Yellow Day Celebration</h2>
+                                <p class="album-subtitle">Colours, smiles and joyful early learning</p>
+                            </div>
+                            <span class="album-count">4 photos</span>
+                        </div>
+                        <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="Yellow Day Celebration photos">
+                            <div class="gallery-slider-track">
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
+                                    <img src="school/yellow-day/001.jpeg" alt="Yellow Day Celebration — photo 1" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
+                                    <img src="school/yellow-day/002.jpeg" alt="Yellow Day Celebration — photo 2" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
+                                    <img src="school/yellow-day/003.jpeg" alt="Yellow Day Celebration — photo 3" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
+                                    <img src="school/yellow-day/004.jpeg" alt="Yellow Day Celebration — photo 4" loading="lazy">
+                                </div>
+                            </div>
+                            <button type="button" class="gallery-arrow gallery-arrow-prev" data-prev aria-label="Previous photo">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button type="button" class="gallery-arrow gallery-arrow-next" data-next aria-label="Next photo">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                            <span class="gallery-counter" data-counter>1 / 4</span>
+                        </div>
+                        <div class="album-foot">
+                            <div class="album-dots" data-dots role="tablist" aria-label="Choose photo"></div>
+                            <span class="album-hint">Use arrows or swipe to explore</span>
+                        </div>
+                    </article>
+
+                    <!-- Album 02 : Independence Day -->
+                    <article class="album-card reveal-item" data-carousel>
+                        <div class="album-head">
+                            <span class="album-number" aria-hidden="true">02</span>
+                            <div class="album-titles">
+                                <h2 class="album-title">Independence Day</h2>
+                                <p class="album-subtitle">Flag hoisting, parade and cultural pride</p>
+                            </div>
+                            <span class="album-count">6 photos</span>
+                        </div>
+                        <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="Independence Day Celebration photos">
+                            <div class="gallery-slider-track">
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 6">
+                                    <img src="school/independence-day/001.jpeg" alt="Independence Day — flag hoisting" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 6">
+                                    <img src="school/independence-day/002.jpeg" alt="Independence Day — cultural program" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 6">
+                                    <img src="school/independence-day/003.jpeg" alt="Independence Day — student activities" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 6">
+                                    <img src="school/independence-day/004.jpeg" alt="Independence Day — celebration moment" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="5 of 6">
+                                    <img src="school/independence-day/005.jpeg" alt="Independence Day — parade" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="6 of 6">
+                                    <img src="school/independence-day/006.jpeg" alt="Independence Day — school assembly" loading="lazy">
+                                </div>
+                            </div>
+                            <button type="button" class="gallery-arrow gallery-arrow-prev" data-prev aria-label="Previous photo">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button type="button" class="gallery-arrow gallery-arrow-next" data-next aria-label="Next photo">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                            <span class="gallery-counter" data-counter>1 / 6</span>
+                        </div>
+                        <div class="album-foot">
+                            <div class="album-dots" data-dots role="tablist" aria-label="Choose photo"></div>
+                            <span class="album-hint">Use arrows or swipe to explore</span>
+                        </div>
+                    </article>
+
+                    <!-- Album 03 : Kamaraj Birthday -->
+                    <article class="album-card reveal-item" data-carousel>
+                        <div class="album-head">
+                            <span class="album-number" aria-hidden="true">03</span>
+                            <div class="album-titles">
+                                <h2 class="album-title">Kamaraj Birthday Celebration</h2>
+                                <p class="album-subtitle">Honouring a great leader with our children</p>
+                            </div>
+                            <span class="album-count">4 photos</span>
+                        </div>
+                        <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="Kamaraj Birthday Celebration photos">
+                            <div class="gallery-slider-track">
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
+                                    <img src="school/kamaraj-bday-celeb/001.jpeg" alt="Kamaraj Birthday Celebration — photo 1" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
+                                    <img src="school/kamaraj-bday-celeb/002.jpeg" alt="Kamaraj Birthday Celebration — photo 2" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
+                                    <img src="school/kamaraj-bday-celeb/003.jpeg" alt="Kamaraj Birthday Celebration — photo 3" loading="lazy">
+                                </div>
+                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
+                                    <img src="school/kamaraj-bday-celeb/004.jpeg" alt="Kamaraj Birthday Celebration — photo 4" loading="lazy">
+                                </div>
+                            </div>
+                            <button type="button" class="gallery-arrow gallery-arrow-prev" data-prev aria-label="Previous photo">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button type="button" class="gallery-arrow gallery-arrow-next" data-next aria-label="Next photo">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                            <span class="gallery-counter" data-counter>1 / 4</span>
+                        </div>
+                        <div class="album-foot">
+                            <div class="album-dots" data-dots role="tablist" aria-label="Choose photo"></div>
+                            <span class="album-hint">Use arrows or swipe to explore</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
         </section>
     </main>
 
@@ -774,168 +543,100 @@
         </svg>
     </button>
 
-    <!-- Shared script for navbar, scroll-top, mobile drawer, reveal -->
     <script src="script.js"></script>
-
-    <!-- Gallery Carousel Script (self-contained) -->
     <script>
+    // Independent gallery carousel controller — one identical instance per album card.
     (function () {
-        'use strict';
+        function initAlbum(card) {
+            var track = card.querySelector('.gallery-slider-track');
+            var slides = Array.prototype.slice.call(card.querySelectorAll('.gallery-slide'));
+            var prevBtn = card.querySelector('[data-prev]');
+            var nextBtn = card.querySelector('[data-next]');
+            var counter = card.querySelector('[data-counter]');
+            var dotsWrap = card.querySelector('[data-dots]');
+            if (!track || slides.length === 0) return;
 
-        const TOTAL       = 4;
-        const AUTO_DELAY  = 4200; // ms per slide
+            var total = slides.length;
+            var index = 0;
+            var dots = [];
 
-        const track       = document.getElementById('gallerySliderTrack');
-        const prevBtn     = document.getElementById('galleryPrev');
-        const nextBtn     = document.getElementById('galleryNext');
-        const dots        = document.querySelectorAll('.gallery-dot');
-        const thumbs      = document.querySelectorAll('.gallery-thumb');
-        const counter     = document.getElementById('gallerySlideCounter');
-        const progressBar = document.getElementById('galleryProgressBar');
-        const autoBtn     = document.getElementById('galleryAutoplayBtn');
-        const autoLabel   = document.getElementById('galleryAutoplayLabel');
-        const wrap        = document.getElementById('galleryCarouselWrap');
-
-        let current   = 0;
-        let timer     = null;
-        let progTimer = null;
-        let isPlaying = true;
-
-        /* ---------- Core navigation ---------- */
-        function goTo(index) {
-            current = ((index % TOTAL) + TOTAL) % TOTAL;
-            track.style.transform = 'translateX(-' + (current * 100) + '%)';
-
-            dots.forEach((d, i) => {
-                d.classList.toggle('active', i === current);
-                d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+            // Build identical dots for every carousel
+            slides.forEach(function (_, i) {
+                var d = document.createElement('button');
+                d.type = 'button';
+                d.className = 'album-dot' + (i === 0 ? ' active' : '');
+                d.setAttribute('role', 'tab');
+                d.setAttribute('aria-label', 'Go to photo ' + (i + 1) + ' of ' + total);
+                d.addEventListener('click', function () { goTo(i); });
+                dotsWrap.appendChild(d);
+                dots.push(d);
             });
-            thumbs.forEach((t, i) => t.classList.toggle('active', i === current));
-            counter.innerHTML = '<span>' + (current + 1) + '</span> / ' + TOTAL;
-        }
 
-        function next() { goTo(current + 1); }
-        function prev() { goTo(current - 1); }
-
-        /* ---------- Autoplay + progress bar ---------- */
-        function startProgress() {
-            clearTimeout(progTimer);
-            progressBar.style.transition = 'none';
-            progressBar.style.width = '0%';
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    progressBar.style.transition = 'width ' + AUTO_DELAY + 'ms linear';
-                    progressBar.style.width = '100%';
+            function render() {
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                if (counter) counter.textContent = (index + 1) + ' / ' + total;
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('active', i === index);
                 });
-            });
-        }
-
-        function startAutoplay() {
-            stopAutoplay();
-            startProgress();
-            timer = setInterval(function () {
-                next();
-                startProgress();
-            }, AUTO_DELAY);
-            isPlaying = true;
-            autoBtn.classList.remove('paused');
-            autoLabel.textContent = 'Pause';
-        }
-
-        function stopAutoplay() {
-            clearInterval(timer);
-            clearTimeout(progTimer);
-            progressBar.style.transition = 'none';
-            progressBar.style.width = '0%';
-            timer = null;
-        }
-
-        function toggleAutoplay() {
-            if (isPlaying) {
-                stopAutoplay();
-                isPlaying = false;
-                autoBtn.classList.add('paused');
-                autoLabel.textContent = 'Play';
-            } else {
-                startAutoplay();
-            }
-        }
-
-        /* ---------- Event listeners ---------- */
-        prevBtn.addEventListener('click', function () { prev(); if (isPlaying) { stopAutoplay(); startAutoplay(); } });
-        nextBtn.addEventListener('click', function () { next(); if (isPlaying) { stopAutoplay(); startAutoplay(); } });
-
-        dots.forEach(function (d) {
-            d.addEventListener('click', function () {
-                goTo(parseInt(d.dataset.dot, 10));
-                if (isPlaying) { stopAutoplay(); startAutoplay(); }
-            });
-        });
-
-        thumbs.forEach(function (t) {
-            t.addEventListener('click', function () {
-                goTo(parseInt(t.dataset.thumb, 10));
-                if (isPlaying) { stopAutoplay(); startAutoplay(); }
-            });
-            t.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    goTo(parseInt(t.dataset.thumb, 10));
-                    if (isPlaying) { stopAutoplay(); startAutoplay(); }
-                }
-            });
-        });
-
-        autoBtn.addEventListener('click', toggleAutoplay);
-
-        /* Pause on hover */
-        wrap.addEventListener('mouseenter', function () {
-            if (isPlaying) {
-                clearInterval(timer);
-                progressBar.style.transition = 'none';
-                timer = null;
-            }
-        });
-        wrap.addEventListener('mouseleave', function () {
-            if (isPlaying) { stopAutoplay(); startAutoplay(); }
-        });
-
-        /* Touch swipe */
-        var touchStartX = 0;
-        wrap.addEventListener('touchstart', function (e) {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        wrap.addEventListener('touchend', function (e) {
-            var dx = e.changedTouches[0].screenX - touchStartX;
-            if (Math.abs(dx) > 40) {
-                dx < 0 ? next() : prev();
-                if (isPlaying) { stopAutoplay(); startAutoplay(); }
-            }
-        }, { passive: true });
-
-        /* Keyboard arrows */
-        wrap.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowRight') { next(); if (isPlaying) { stopAutoplay(); startAutoplay(); } }
-            if (e.key === 'ArrowLeft')  { prev(); if (isPlaying) { stopAutoplay(); startAutoplay(); } }
-        });
-
-        /* ---------- Init ---------- */
-        goTo(0);
-        startAutoplay();
-
-        /* Scroll-reveal (re-use existing class from shared script.js) */
-        if ('IntersectionObserver' in window) {
-            var obs = new IntersectionObserver(function(entries, o) {
-                entries.forEach(function(en) {
-                    if (en.isIntersecting) { en.target.classList.add('revealed'); o.unobserve(en.target); }
+                slides.forEach(function (s, i) {
+                    s.setAttribute('aria-label', (i + 1) + ' of ' + total);
                 });
-            }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-            document.querySelectorAll('.reveal-item').forEach(function(el) { obs.observe(el); });
-        } else {
-            document.querySelectorAll('.reveal-item').forEach(function(el) { el.classList.add('revealed'); });
+            }
+
+            function goTo(i) {
+                index = ((i % total) + total) % total;
+                render();
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
+            if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); });
+
+            // Touch swipe — same behaviour on all carousels
+            var startX = 0, dx = 0, dragging = false;
+            var viewport = card.querySelector('.gallery-carousel');
+            viewport.addEventListener('touchstart', function (e) {
+                dragging = true;
+                startX = e.touches[0].clientX;
+                dx = 0;
+            }, { passive: true });
+            viewport.addEventListener('touchmove', function (e) {
+                if (!dragging) return;
+                dx = e.touches[0].clientX - startX;
+            }, { passive: true });
+            viewport.addEventListener('touchend', function () {
+                if (!dragging) return;
+                dragging = false;
+                if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
+            }, { passive: true });
+
+            // Mouse drag (desktop) for a clean UX
+            var mDown = false, mStart = 0, mDx = 0;
+            viewport.addEventListener('mousedown', function (e) {
+                mDown = true; mStart = e.clientX; mDx = 0;
+            });
+            window.addEventListener('mouseup', function () {
+                if (!mDown) return;
+                mDown = false;
+                if (Math.abs(mDx) > 40) goTo(index + (mDx < 0 ? 1 : -1));
+            });
+            viewport.addEventListener('mousemove', function (e) {
+                if (mDown) mDx = e.clientX - mStart;
+            });
+            viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+            // Keyboard when focused inside the card
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') goTo(index + 1);
+                if (e.key === 'ArrowLeft') goTo(index - 1);
+            });
+
+            render();
         }
 
-    }());
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('[data-carousel]').forEach(initAlbum);
+        });
+    })();
     </script>
 </body>
 </html>
