@@ -20,45 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "school/students.jpg"         // 3. Students group photo (Third slide)
     ];
 
-    const galleryImages = {
-        gallery1: "",
-        gallery2: "",
-        gallery3: "",
-        gallery4: "",
-        gallery5: ""
-    };
-
-    const galleryCaptions = {
-        gallery1: "Campus Life & Celebrations",
-        gallery2: "Classroom Learning Moments",
-        gallery3: "Creative Arts & Expression",
-        gallery4: "Sports & Athletics",
-        gallery5: "Special Celebrations"
-    };
-
-    // Apply configured images if any exist
-    function initConfiguredImages() {
-        // Apply gallery images if present
-        Object.keys(galleryImages).forEach(key => {
-            const url = galleryImages[key];
-            if (!url) return;
-
-            const galleryWrapper = document.getElementById(`galleryWrapper${key.replace('gallery', '')}`);
-            if (galleryWrapper) {
-                galleryWrapper.innerHTML = `
-                    <img src="${url}" alt="${galleryCaptions[key] || 'Anandha School Gallery Photo'}" class="gallery-populated-img" loading="lazy">
-                    <div class="gallery-img-overlay">
-                        <div>
-                            <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 4px;">${galleryCaptions[key] || 'Anandha Moments'}</h4>
-                            <span style="font-size: 0.8rem; color: var(--sky-blue); font-weight: 600;">View High Resolution</span>
-                        </div>
-                    </div>
-                `;
-            }
-        });
-    }
-
-    initConfiguredImages();
 
     /* ==========================================================================
        2. Sticky & Floating Navbar on Scroll
@@ -307,78 +268,5 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fallback for older browsers
         revealItems.forEach(item => item.classList.add('revealed'));
     }
-
-    /* ==========================================================================
-       8. Lightbox Modal for Gallery Photos
-       ========================================================================== */
-    const lightboxModal = document.getElementById('lightboxModal');
-    const lightboxBackdrop = document.getElementById('lightboxBackdrop');
-    const lightboxClose = document.getElementById('lightboxClose');
-    const lightboxImageContainer = document.getElementById('lightboxImageContainer');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    function openLightbox(galleryKey) {
-        const imageUrl = galleryImages[galleryKey];
-        const caption = galleryCaptions[galleryKey] || "Anandha Nursery & Primary School";
-
-        lightboxImageContainer.innerHTML = '';
-
-        if (imageUrl) {
-            const img = document.createElement('img');
-            img.src = imageUrl;
-            img.alt = caption;
-            lightboxImageContainer.appendChild(img);
-            lightboxCaption.textContent = caption;
-        } else {
-            // High quality empty preview message
-            lightboxImageContainer.innerHTML = `
-                <div class="lightbox-empty-notice">
-                    <div class="lightbox-empty-icon">
-                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                            <circle cx="8.5" cy="8.5" r="1.5"/>
-                            <polyline points="21 15 16 10 5 21"/>
-                        </svg>
-                    </div>
-                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 8px;">${caption}</h3>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; max-width: 440px; margin: 0 auto;">
-                        This area is reserved for official photographs from Anandha Nursery and Primary School. Images will be updated here.
-                    </p>
-                </div>
-            `;
-            lightboxCaption.textContent = `${caption} — Reserved Photo Frame`;
-        }
-
-        lightboxModal.classList.add('active');
-        lightboxModal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-        lightboxModal.classList.remove('active');
-        lightboxModal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    }
-
-    galleryItems.forEach(item => {
-        const galleryKey = item.getAttribute('data-gallery-id');
-        item.addEventListener('click', () => openLightbox(galleryKey));
-        item.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openLightbox(galleryKey);
-            }
-        });
-    });
-
-    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('active')) {
-            closeLightbox();
-        }
-    });
 
 });

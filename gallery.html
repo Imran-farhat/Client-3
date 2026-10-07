@@ -3,251 +3,826 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the Gallery of Anandha Nursery and Primary School – Campus life, celebrations, classroom moments, creative arts, sports and more.">
+    <meta name="description" content="Explore memorable school events and celebrations at Anandha Nursery and Primary School, Melpattampakkam. Visual journey through Yellow Day, Independence Day, and Kamaraj Birthday celebrations.">
     <title>Our Gallery | Anandha Nursery and Primary School | Melpattampakkam</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpeg" href="logo.jpeg">
 
     <style>
-        /* Push content below fixed navbar on inner pages */
-        .page-hero-spacer { height: 90px; }
+        /* --------------------------------------------------------------------------
+           GALLERY PAGE - MODERN EVENT-BASED CAROUSEL ARCHITECTURE (2026 EDITION)
+           -------------------------------------------------------------------------- */
+        
+        .page-hero-spacer {
+            height: 76px;
+        }
 
-        /* ---- Gallery page clean layout ---- */
         .gallery-page-section {
-            background: linear-gradient(to bottom, #ffffff 0%, var(--canvas-bg) 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #f1f5f9 100%);
+            padding: 36px 20px 80px;
+            min-height: calc(100vh - 76px);
         }
 
-        .gallery-stats {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 22px;
+        .gallery-intro-container {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            text-align: center;
         }
-        .gallery-stat-pill {
+
+        .gallery-tag {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #fff;
-            border: 1px solid var(--border-subtle);
-            border-radius: 999px;
-            padding: 8px 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            box-shadow: 0 2px 8px rgba(14,27,56,0.05);
-        }
-        .gallery-stat-pill strong { color: var(--navy-900); }
-        .gallery-stat-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sky-blue); }
-
-        /* ---- Album stack: single column, identical widths ---- */
-        .albums-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 36px;
-            width: 100%;
-            max-width: 920px;
-            margin: 0 auto;
-        }
-
-        .album-card {
-            width: 100%;
-            background: #fff;
-            border: 1px solid rgba(226,232,240,0.9);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 12px 32px -6px rgba(14,27,56,0.08), 0 4px 12px -2px rgba(14,27,56,0.04);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .album-head {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 22px 26px;
-            border-bottom: 1px solid rgba(226,232,240,0.8);
-        }
-        .album-number {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: 0.95rem;
-            color: #fff;
-            background: linear-gradient(135deg, var(--royal-blue), var(--navy-700));
-            flex-shrink: 0;
-        }
-        .album-card:nth-child(2) .album-number {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-        }
-        .album-card:nth-child(3) .album-number {
-            background: linear-gradient(135deg, #10b981, #059669);
-        }
-        .album-titles { flex: 1; min-width: 0; }
-        .album-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 1.35rem;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            color: var(--royal-blue);
+            font-size: 0.78rem;
             font-weight: 700;
-            color: var(--navy-900);
-            line-height: 1.25;
-            margin: 0 0 4px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 999px;
+            margin-bottom: 12px;
         }
-        .album-subtitle {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin: 0;
+
+        .gallery-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.3rem, 5vw, 3.2rem);
+            font-weight: 700;
+            color: var(--navy-950);
+            line-height: 1.15;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .gallery-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin: 0 auto;
             line-height: 1.5;
         }
-        .album-count {
-            flex-shrink: 0;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--royal-blue);
-            background: rgba(37,99,235,0.08);
-            border: 1px solid rgba(37,99,235,0.18);
-            padding: 6px 12px;
-            border-radius: 999px;
-            white-space: nowrap;
+
+        /* Main Container for Gallery Views */
+        .gallery-experience-wrapper {
+            max-width: 1140px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        /* ---- Carousel viewport: identical size for every album ---- */
-        .gallery-carousel {
+        /* --------------------------------------------------------------------------
+           1. EVENT COVER CAROUSEL (LANDING VIEW)
+           -------------------------------------------------------------------------- */
+        .event-cover-view {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .event-cover-view.view-hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        .cover-stage-card {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #0a1226;
+            height: 520px;
+            background: var(--navy-950);
+            border-radius: 24px;
             overflow: hidden;
-        }
-        .gallery-slider-track {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: transform;
-        }
-        .gallery-slide {
-            flex: 0 0 100%;
-            min-width: 100%;
-            max-width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        .gallery-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-            user-select: none;
-            -webkit-user-drag: none;
-        }
-
-        .gallery-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.14);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.28);
-            color: #fff;
+            box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.25), 0 0 0 1px rgba(15, 23, 42, 0.06);
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            user-select: none;
         }
-        .gallery-arrow:hover {
-            background: rgba(56,189,248,0.38);
-            border-color: rgba(56,189,248,0.65);
-            transform: translateY(-50%) scale(1.06);
-        }
-        .gallery-arrow:active { transform: translateY(-50%) scale(0.96); }
-        .gallery-arrow-prev { left: 16px; }
-        .gallery-arrow-next { right: 16px; }
 
-        .gallery-counter {
+        /* Crossfade Container */
+        .cover-crossfade-container {
             position: absolute;
-            right: 16px;
-            bottom: 14px;
-            z-index: 10;
-            background: rgba(6,11,23,0.62);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.18);
-            color: #fff;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-variant-numeric: tabular-nums;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cover-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.35s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
 
-        /* ---- Album footer: dots + hint, identical for every album ---- */
-        .album-foot {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 16px 26px;
-            border-top: 1px solid rgba(226,232,240,0.8);
-            background: #fbfdff;
+        .cover-slide.active {
+            opacity: 1;
+            pointer-events: auto;
         }
-        .album-dots {
-            display: flex;
+
+        .cover-slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            transform: scale(1.02);
+            transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .cover-slide.active .cover-slide-img {
+            transform: scale(1);
+        }
+
+        /* Stage Overlays */
+        .cover-stage-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 17, 30, 0.2) 0%, rgba(10, 17, 30, 0.1) 40%, rgba(10, 17, 30, 0.88) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Top Tag on Cover */
+        .cover-top-badge {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            z-index: 4;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
-            flex-wrap: wrap;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 999px;
         }
-        .album-dot {
-            width: 8px;
-            height: 8px;
+
+        .cover-top-badge .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--sky-blue);
+            box-shadow: 0 0 10px var(--sky-blue);
+        }
+
+        /* Cover Meta Content Overlay */
+        .cover-meta-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 36px 36px 30px;
+            z-index: 4;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .cover-info {
+            max-width: 650px;
+        }
+
+        .cover-event-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .cover-event-desc {
+            font-size: 1.02rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.45;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Explore Action Button */
+        .cover-explore-btn {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--royal-blue);
+            color: #ffffff;
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 13px 24px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .cover-stage-card:hover .cover-explore-btn {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.55);
+        }
+
+        /* Stage Nav Buttons (Opacity Crossfade Controls) */
+        .stage-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            transition: all 0.2s ease;
+            opacity: 0.8;
+        }
+
+        .cover-stage-card:hover .stage-nav-arrow {
+            opacity: 1;
+        }
+
+        .stage-nav-arrow:hover {
+            background: var(--royal-blue);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .stage-nav-prev { left: 20px; }
+        .stage-nav-next { right: 20px; }
+
+        /* Carousel Indicators Bar */
+        .cover-indicators-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            margin-bottom: 32px;
+        }
+
+        .indicator-dot {
+            width: 10px;
+            height: 10px;
             border-radius: 999px;
             background: #cbd5e1;
             border: none;
             padding: 0;
             cursor: pointer;
-            transition: width 0.25s ease, background 0.25s ease;
-        }
-        .album-dot.active {
-            width: 26px;
-            background: linear-gradient(90deg, var(--royal-blue), var(--sky-blue));
-        }
-        .album-hint {
-            font-size: 0.78rem;
-            color: var(--text-light);
-            font-weight: 500;
-            white-space: nowrap;
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .gallery-carousel { aspect-ratio: 4 / 3; }
-            .gallery-arrow { width: 38px; height: 38px; }
-            .gallery-arrow-prev { left: 12px; }
-            .gallery-arrow-next { right: 12px; }
-            .album-head { padding: 18px 18px; gap: 12px; }
-            .album-title { font-size: 1.15rem; }
-            .album-count { display: none; }
-            .album-foot { padding: 14px 18px; }
-            .album-hint { display: none; }
+        .indicator-dot.active {
+            width: 32px;
+            background: var(--royal-blue);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+        }
+
+        /* --------------------------------------------------------------------------
+           EVENT PREVIEW SELECTOR CARDS (COMPACT ROW BELOW COVER)
+           -------------------------------------------------------------------------- */
+        .event-selector-section {
+            margin-top: 10px;
+        }
+
+        .event-selector-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .event-selector-label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--navy-800);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .event-mini-card {
+            background: #ffffff;
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            padding: 0;
+        }
+
+        .event-mini-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: 0 14px 28px -6px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.2);
+        }
+
+        .event-mini-card.active-event {
+            border-color: var(--royal-blue);
+            box-shadow: 0 0 0 2px var(--royal-blue), 0 12px 24px -4px rgba(37, 99, 235, 0.15);
+        }
+
+        .mini-card-thumb-wrap {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            background: var(--navy-900);
+        }
+
+        .mini-card-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .event-mini-card:hover .mini-card-thumb {
+            transform: scale(1.05);
+        }
+
+        .mini-card-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mini-card-body {
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .mini-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.12rem;
+            font-weight: 700;
+            color: var(--navy-950);
+            line-height: 1.3;
+        }
+
+        .mini-card-desc {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* --------------------------------------------------------------------------
+           2. EVENT PHOTO VIEWER (ACTIVE EVENT VIEW)
+           -------------------------------------------------------------------------- */
+        .event-photos-view {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .event-photos-view.view-hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        .photos-view-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .back-to-gallery-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ffffff;
+            color: var(--navy-900);
+            border: 1px solid rgba(203, 213, 225, 0.9);
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 9px 18px;
+            border-radius: 999px;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .back-to-gallery-btn:hover {
+            background: var(--navy-900);
+            color: #ffffff;
+            border-color: var(--navy-900);
+            transform: translateX(-3px);
+        }
+
+        .active-event-heading-group {
+            text-align: center;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .active-event-name {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--navy-950);
+            line-height: 1.2;
+        }
+
+        .active-event-meta-sub {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .photos-view-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .counter-badge {
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            color: var(--royal-blue);
+            font-family: var(--font-display);
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .play-pause-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid rgba(203, 213, 225, 0.9);
+            color: var(--navy-800);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .play-pause-btn:hover {
+            background: var(--royal-blue);
+            color: #ffffff;
+            border-color: var(--royal-blue);
+        }
+
+        /* Large Photo Carousel Stage */
+        .photo-stage-card {
+            position: relative;
+            width: 100%;
+            height: 560px;
+            background: #090d16;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.3), 0 0 0 1px rgba(15, 23, 42, 0.08);
+            cursor: zoom-in;
+            user-select: none;
+        }
+
+        .photo-crossfade-stage {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-photo-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            padding: 12px;
+        }
+
+        .event-photo-slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .event-photo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-stage-card:hover .event-photo-img {
+            transform: scale(1.01);
+        }
+
+        /* Photo Stage Zoom Hint */
+        .photo-zoom-hint {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Photo Caption Strip */
+        .photo-caption-bar {
+            margin-top: 14px;
+            text-align: center;
+            min-height: 28px;
+        }
+
+        .current-photo-caption {
+            font-size: 0.96rem;
+            font-weight: 600;
+            color: var(--navy-900);
+            line-height: 1.4;
+            max-width: 780px;
+            margin: 0 auto;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Filmstrip Thumbnails Row */
+        .event-filmstrip-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            overflow-x: auto;
+            padding: 4px 6px 10px;
+            scrollbar-width: thin;
+        }
+
+        .filmstrip-thumb-btn {
+            position: relative;
+            width: 76px;
+            height: 54px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            cursor: pointer;
+            padding: 0;
+            background: #0f172a;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            opacity: 0.65;
+        }
+
+        .filmstrip-thumb-btn:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .filmstrip-thumb-btn.active {
+            border-color: var(--royal-blue);
+            opacity: 1;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3), 0 4px 10px rgba(37, 99, 235, 0.2);
+        }
+
+        .filmstrip-thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --------------------------------------------------------------------------
+           3. FULLSCREEN EVENT LIGHTBOX MODAL
+           -------------------------------------------------------------------------- */
+        .event-lightbox-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            background: rgba(6, 11, 23, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            user-select: none;
+        }
+
+        .event-lightbox-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 28px;
+            z-index: 10;
+        }
+
+        .lightbox-meta {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .lightbox-event-tag {
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--sky-blue);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 999px;
+        }
+
+        .lightbox-counter-text {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .lightbox-close-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lightbox-close-btn:hover {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: rgba(239, 68, 68, 0.6);
+            color: #fca5a5;
+            transform: scale(1.05);
+        }
+
+        .lightbox-stage-area {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px 24px;
+            min-height: 0;
+        }
+
+        .lightbox-main-img {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+            transition: opacity 0.25s ease;
+        }
+
+        .lightbox-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+
+        .lightbox-nav-btn:hover {
+            background: var(--royal-blue);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .lightbox-nav-prev { left: 24px; }
+        .lightbox-nav-next { right: 24px; }
+
+        .lightbox-bottom-caption {
+            text-align: center;
+            padding: 16px 24px 22px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            font-weight: 500;
+            max-width: 760px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* --------------------------------------------------------------------------
+           RESPONSIVE BREAKPOINTS
+           -------------------------------------------------------------------------- */
+        @media (max-width: 960px) {
+            .cover-stage-card { height: 440px; }
+            .photo-stage-card { height: 460px; }
+            .event-cards-grid { grid-template-columns: repeat(2, 1fr); }
+            .event-cards-grid .event-mini-card:last-child { grid-column: span 2; }
+            .cover-meta-overlay { padding: 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+            .cover-explore-btn { align-self: flex-start; }
+        }
+
+        @media (max-width: 680px) {
+            .gallery-page-section { padding: 24px 14px 60px; }
+            .gallery-title { font-size: 2.1rem; }
+            .cover-stage-card { height: 380px; border-radius: 18px; }
+            .photo-stage-card { height: 380px; border-radius: 18px; }
+            .event-cards-grid { grid-template-columns: 1fr; }
+            .event-cards-grid .event-mini-card:last-child { grid-column: span 1; }
+            .stage-nav-arrow { width: 38px; height: 38px; top: 38%; }
+            .stage-nav-prev { left: 8px; }
+            .stage-nav-next { right: 8px; }
+            .cover-meta-overlay { padding: 16px; }
+            .cover-event-title { font-size: 1.35rem; }
+            .cover-event-desc { font-size: 0.82rem; }
+            .cover-explore-btn { padding: 9px 16px; font-size: 0.82rem; }
+            .photos-view-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .active-event-heading-group { text-align: left; }
+            .lightbox-nav-btn { width: 42px; height: 42px; }
+            .lightbox-nav-prev { left: 8px; }
+            .lightbox-nav-next { right: 8px; }
+            .lightbox-top-bar { padding: 12px 16px; }
+            .lightbox-main-img { max-width: 96vw; max-height: 72vh; }
         }
     </style>
 </head>
@@ -271,6 +846,7 @@
                 </div>
             </a>
 
+            <!-- Desktop Navigation -->
             <nav class="desktop-nav" aria-label="Primary Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
@@ -282,6 +858,7 @@
                 </ul>
             </nav>
 
+            <!-- Mobile Hamburger Button -->
             <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle mobile navigation menu">
                 <span class="hamburger-bar"></span>
                 <span class="hamburger-bar"></span>
@@ -289,6 +866,7 @@
             </button>
         </div>
 
+        <!-- Mobile Navigation Menu -->
         <div class="mobile-nav-drawer" id="mobileNav" aria-hidden="true">
             <div class="mobile-nav-inner">
                 <div class="mobile-nav-brand">
@@ -303,7 +881,7 @@
                     <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
                     <li><a href="index.html#classes" class="mobile-nav-link">Classes</a></li>
                     <li><a href="index.html#activities" class="mobile-nav-link">Activities</a></li>
-                    <li><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
+                    <li><a href="gallery.html" class="mobile-nav-link active">Gallery</a></li>
                     <li><a href="index.html#contact" class="mobile-nav-link mobile-contact-link">Contact Us</a></li>
                 </ul>
                 <div class="mobile-nav-footer">
@@ -317,164 +895,224 @@
     <div class="page-hero-spacer" aria-hidden="true"></div>
 
     <main id="mainContent">
-        <section class="section gallery-page-section" aria-labelledby="galleryHeading">
+        <section class="gallery-page-section" aria-labelledby="galleryHeading">
             <div class="section-container">
-                <div class="section-header reveal-item">
-                    <div class="section-tag">
-                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                
+                <!-- 1. Hero / Intro Header -->
+                <div class="gallery-intro-container">
+                    <div class="gallery-tag">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                             <circle cx="8.5" cy="8.5" r="1.5"/>
                             <polyline points="21 15 16 10 5 21"/>
                         </svg>
                         <span>Visual Journey</span>
                     </div>
-                    <h1 class="section-title" id="galleryHeading">Our Gallery</h1>
-                    <p class="section-subtitle">Memorable moments from Anandha Nursery and Primary School</p>
-                    <div class="title-underline"></div>
-                    <div class="gallery-stats" aria-label="Gallery summary">
-                        <span class="gallery-stat-pill"><strong>3</strong> collections</span>
-                        <span class="gallery-stat-dot" aria-hidden="true"></span>
-                        <span class="gallery-stat-pill"><strong>14</strong> photographs</span>
-                        <span class="gallery-stat-dot" aria-hidden="true"></span>
-                        <span class="gallery-stat-pill">Melpattampakkam campus</span>
+                    <h1 class="gallery-title" id="galleryHeading">Our Gallery</h1>
+                    <p class="gallery-subtitle">Memorable moments from Anandha Nursery &amp; Primary School</p>
+                </div>
+
+                <!-- 2. Main Gallery Experience Wrapper -->
+                <div class="gallery-experience-wrapper">
+
+                    <!-- ============================================================
+                         VIEW A: EVENT COVER CAROUSEL (LANDING VIEW)
+                         ============================================================ -->
+                    <div class="event-cover-view" id="eventCoverView">
+                        
+                        <!-- Main Cinematic Cover Stage -->
+                        <div class="cover-stage-card" id="coverStageCard" role="region" aria-label="Event Cover Showcase">
+                            
+                            <!-- Top Event Badge -->
+                            <div class="cover-top-badge">
+                                <span class="badge-dot" aria-hidden="true"></span>
+                                <span id="coverTopBadgeText">Featured Event</span>
+                            </div>
+
+                            <!-- Crossfading Event Covers Container -->
+                            <div class="cover-crossfade-container" id="coverCrossfadeContainer">
+                                <!-- Slides populated via JavaScript data structure -->
+                            </div>
+
+                            <!-- Ambient Gradient Overlay -->
+                            <div class="cover-stage-gradient" aria-hidden="true"></div>
+
+                            <!-- Manual Nav Arrows -->
+                            <button type="button" class="stage-nav-arrow stage-nav-prev" id="coverPrevBtn" aria-label="Previous event cover">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button type="button" class="stage-nav-arrow stage-nav-next" id="coverNextBtn" aria-label="Next event cover">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </button>
+
+                            <!-- Meta Overlay -->
+                            <div class="cover-meta-overlay">
+                                <div class="cover-info">
+                                    <h2 class="cover-event-title" id="coverEventTitle">Yellow Day Celebration</h2>
+                                    <p class="cover-event-desc" id="coverEventDesc">Colours, smiles and joyful early learning</p>
+                                </div>
+                                <div class="cover-explore-btn" id="coverExploreBtn" role="button" tabindex="0">
+                                    <span id="coverBtnText">Explore Event Photos</span>
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indicators Row (● ○ ○) -->
+                        <div class="cover-indicators-row" id="coverIndicatorsRow" role="tablist" aria-label="Event selection dots">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                        <!-- Event Selector Cards (Direct Event Jump) -->
+                        <div class="event-selector-section">
+                            <div class="event-selector-header">
+                                <span class="event-selector-label">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                                    All Event Collections
+                                </span>
+                            </div>
+                            <div class="event-cards-grid" id="eventCardsGrid">
+                                <!-- Cards populated dynamically from data -->
+                            </div>
+                        </div>
+
                     </div>
-                </div>
 
-                <div class="albums-stack">
+                    <!-- ============================================================
+                         VIEW B: EVENT PHOTO VIEWER (ACTIVE EVENT VIEW)
+                         ============================================================ -->
+                    <div class="event-photos-view view-hidden" id="eventPhotosView" aria-hidden="true">
+                        
+                        <!-- Header with Back Button, Title, and Counter -->
+                        <div class="photos-view-header">
+                            <button type="button" class="back-to-gallery-btn" id="backToGalleryBtn" aria-label="Back to Event Categories">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                                <span>← Back to Gallery</span>
+                            </button>
 
-                    <!-- Album 01 : Yellow Day -->
-                    <article class="album-card reveal-item" data-carousel>
-                        <div class="album-head">
-                            <span class="album-number" aria-hidden="true">01</span>
-                            <div class="album-titles">
-                                <h2 class="album-title">Yellow Day Celebration</h2>
-                                <p class="album-subtitle">Colours, smiles and joyful early learning</p>
+                            <div class="active-event-heading-group">
+                                <h2 class="active-event-name" id="activeEventTitle">Yellow Day Celebration</h2>
+                                <p class="active-event-meta-sub" id="activeEventSub">Colours, smiles and joyful early learning</p>
                             </div>
-                            <span class="album-count">4 photos</span>
-                        </div>
-                        <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="Yellow Day Celebration photos">
-                            <div class="gallery-slider-track">
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
-                                    <img src="school/yellow-day/001.jpeg" alt="Yellow Day Celebration — photo 1" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
-                                    <img src="school/yellow-day/002.jpeg" alt="Yellow Day Celebration — photo 2" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
-                                    <img src="school/yellow-day/003.jpeg" alt="Yellow Day Celebration — photo 3" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
-                                    <img src="school/yellow-day/004.jpeg" alt="Yellow Day Celebration — photo 4" loading="lazy">
-                                </div>
-                            </div>
-                            <button type="button" class="gallery-arrow gallery-arrow-prev" data-prev aria-label="Previous photo">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                            </button>
-                            <button type="button" class="gallery-arrow gallery-arrow-next" data-next aria-label="Next photo">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-                            </button>
-                            <span class="gallery-counter" data-counter>1 / 4</span>
-                        </div>
-                        <div class="album-foot">
-                            <div class="album-dots" data-dots role="tablist" aria-label="Choose photo"></div>
-                            <span class="album-hint">Use arrows or swipe to explore</span>
-                        </div>
-                    </article>
 
-                    <!-- Album 02 : Independence Day -->
-                    <article class="album-card reveal-item" data-carousel>
-                        <div class="album-head">
-                            <span class="album-number" aria-hidden="true">02</span>
-                            <div class="album-titles">
-                                <h2 class="album-title">Independence Day</h2>
-                                <p class="album-subtitle">Flag hoisting, parade and cultural pride</p>
+                            <div class="photos-view-actions">
+                                <span class="counter-badge" id="eventPhotoCounter">01 / 04</span>
+                                <button type="button" class="play-pause-btn" id="photoPlayPauseBtn" aria-label="Pause slideshow">
+                                    <svg id="pauseIcon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="6" y="4" width="4" height="16"/>
+                                        <rect x="14" y="4" width="4" height="16"/>
+                                    </svg>
+                                    <svg id="playIcon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                                        <polygon points="5 3 19 12 5 21 5 3"/>
+                                    </svg>
+                                </button>
                             </div>
-                            <span class="album-count">6 photos</span>
                         </div>
-                        <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="Independence Day Celebration photos">
-                            <div class="gallery-slider-track">
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 6">
-                                    <img src="school/independence-day/001.jpeg" alt="Independence Day — flag hoisting" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 6">
-                                    <img src="school/independence-day/002.jpeg" alt="Independence Day — cultural program" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 6">
-                                    <img src="school/independence-day/003.jpeg" alt="Independence Day — student activities" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 6">
-                                    <img src="school/independence-day/004.jpeg" alt="Independence Day — celebration moment" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="5 of 6">
-                                    <img src="school/independence-day/005.jpeg" alt="Independence Day — parade" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="6 of 6">
-                                    <img src="school/independence-day/006.jpeg" alt="Independence Day — school assembly" loading="lazy">
-                                </div>
-                            </div>
-                            <button type="button" class="gallery-arrow gallery-arrow-prev" data-prev aria-label="Previous photo">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                            </button>
-                            <button type="button" class="gallery-arrow gallery-arrow-next" data-next aria-label="Next photo">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-                            </button>
-                            <span class="gallery-counter" data-counter>1 / 6</span>
-                        </div>
-                        <div class="album-foot">
-                            <div class="album-dots" data-dots role="tablist" aria-label="Choose photo"></div>
-                            <span class="album-hint">Use arrows or swipe to explore</span>
-                        </div>
-                    </article>
 
-                    <!-- Album 03 : Kamaraj Birthday -->
-                    <article class="album-card reveal-item" data-carousel>
-                        <div class="album-head">
-                            <span class="album-number" aria-hidden="true">03</span>
-                            <div class="album-titles">
-                                <h2 class="album-title">Kamaraj Birthday Celebration</h2>
-                                <p class="album-subtitle">Honouring a great leader with our children</p>
+                        <!-- Active Event Large Photo Stage -->
+                        <div class="photo-stage-card" id="photoStageCard" role="region" aria-label="Active Photo Presentation">
+                            
+                            <div class="photo-zoom-hint" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                    <line x1="11" y1="8" x2="11" y2="14"/>
+                                    <line x1="8" y1="11" x2="14" y2="11"/>
+                                </svg>
+                                <span>Click photo for Fullscreen</span>
                             </div>
-                            <span class="album-count">4 photos</span>
-                        </div>
-                        <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="Kamaraj Birthday Celebration photos">
-                            <div class="gallery-slider-track">
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
-                                    <img src="school/kamaraj-bday-celeb/001.jpeg" alt="Kamaraj Birthday Celebration — photo 1" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
-                                    <img src="school/kamaraj-bday-celeb/002.jpeg" alt="Kamaraj Birthday Celebration — photo 2" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
-                                    <img src="school/kamaraj-bday-celeb/003.jpeg" alt="Kamaraj Birthday Celebration — photo 3" loading="lazy">
-                                </div>
-                                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
-                                    <img src="school/kamaraj-bday-celeb/004.jpeg" alt="Kamaraj Birthday Celebration — photo 4" loading="lazy">
-                                </div>
+
+                            <!-- Crossfading Photo Container -->
+                            <div class="photo-crossfade-stage" id="photoCrossfadeStage">
+                                <!-- Populated dynamically based on chosen event -->
                             </div>
-                            <button type="button" class="gallery-arrow gallery-arrow-prev" data-prev aria-label="Previous photo">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+
+                            <!-- Manual Nav Arrows -->
+                            <button type="button" class="stage-nav-arrow stage-nav-prev" id="photoPrevBtn" aria-label="Previous event photograph">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
                             </button>
-                            <button type="button" class="gallery-arrow gallery-arrow-next" data-next aria-label="Next photo">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                            <button type="button" class="stage-nav-arrow stage-nav-next" id="photoNextBtn" aria-label="Next event photograph">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
                             </button>
-                            <span class="gallery-counter" data-counter>1 / 4</span>
                         </div>
-                        <div class="album-foot">
-                            <div class="album-dots" data-dots role="tablist" aria-label="Choose photo"></div>
-                            <span class="album-hint">Use arrows or swipe to explore</span>
+
+                        <!-- Current Photo Caption -->
+                        <div class="photo-caption-bar">
+                            <p class="current-photo-caption" id="currentPhotoCaption">Joyful Yellow Day Assembly</p>
                         </div>
-                    </article>
+
+                        <!-- Filmstrip Thumbnails -->
+                        <div class="event-filmstrip-row" id="eventFilmstripRow" role="tablist" aria-label="Event photos strip">
+                            <!-- Populated dynamically -->
+                        </div>
+
+                    </div>
 
                 </div>
+
             </div>
         </section>
     </main>
+
+    <!-- ============================================================
+         3. FULLSCREEN EVENT LIGHTBOX
+         ============================================================ -->
+    <div class="event-lightbox-modal" id="eventLightboxModal" role="dialog" aria-modal="true" aria-label="High Resolution Event Photo Viewer">
+        <!-- Top Control Bar -->
+        <div class="lightbox-top-bar">
+            <div class="lightbox-meta">
+                <span class="lightbox-event-tag" id="lightboxEventTag">Yellow Day Celebration</span>
+                <span class="lightbox-counter-text" id="lightboxCounterText">01 / 04</span>
+            </div>
+            <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close fullscreen preview (Esc)">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Stage Area with Nav Arrows -->
+        <div class="lightbox-stage-area" id="lightboxStageArea">
+            <button type="button" class="lightbox-nav-btn lightbox-nav-prev" id="lightboxPrevBtn" aria-label="Previous photograph (Left arrow)">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <img src="images/gallery/yellow-day/cover.jpg" alt="Event Photograph Preview" class="lightbox-main-img" id="lightboxMainImg">
+
+            <button type="button" class="lightbox-nav-btn lightbox-nav-next" id="lightboxNextBtn" aria-label="Next photograph (Right arrow)">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Bottom Caption -->
+        <div class="lightbox-bottom-caption" id="lightboxBottomCaption">
+            Yellow Day celebration — Kindergarten students celebrating colours
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-ambient" aria-hidden="true"></div>
         <div class="footer-inner">
             <div class="footer-grid">
+                <!-- Col 1: School Identity -->
                 <div class="footer-col footer-col-identity">
                     <div class="footer-brand">
                         <div class="footer-logo-frame">
@@ -485,9 +1123,15 @@
                             <p class="footer-brand-subtitle">Nursery &amp; Primary School</p>
                         </div>
                     </div>
-                    <p class="footer-description">Committed to providing quality education in a caring, nurturing and child-friendly environment. Where every child is encouraged to learn, explore, grow and shine.</p>
-                    <div class="footer-motto-badge"><span>“The Future Begins Here!”</span></div>
+                    <p class="footer-description">
+                        Committed to providing quality education in a caring, nurturing and child-friendly environment. Where every child is encouraged to learn, explore, grow and shine.
+                    </p>
+                    <div class="footer-motto-badge">
+                        <span>“The Future Begins Here!”</span>
+                    </div>
                 </div>
+
+                <!-- Col 2: Navigation -->
                 <div class="footer-col">
                     <h4 class="footer-heading">Quick Links</h4>
                     <ul class="footer-links">
@@ -499,6 +1143,8 @@
                         <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
+
+                <!-- Col 3: Academic Levels -->
                 <div class="footer-col">
                     <h4 class="footer-heading">Classes</h4>
                     <ul class="footer-class-list">
@@ -508,28 +1154,42 @@
                         <li><span>Grade 1–7</span> <small>Holistic Growth</small></li>
                     </ul>
                 </div>
+
+                <!-- Col 4: Contact Summary -->
                 <div class="footer-col">
                     <h4 class="footer-heading">School Office</h4>
                     <div class="footer-contact-items">
                         <div class="footer-contact-row">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
                             <span>Barakath Nagar, Melpattampakkam, Tamil Nadu</span>
                         </div>
                         <div class="footer-contact-row">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
                             <span>8489 58 8489 / 95 66 66 95 66</span>
                         </div>
                         <div class="footer-contact-row">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
                             <span>anandhaschoolmpm@gmail.com</span>
                         </div>
                         <div class="footer-contact-row">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
                             <span>9.00am to 5.00pm</span>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom-bar">
                 <p>&copy; 2026 Anandha Nursery and Primary School. All rights reserved.</p>
                 <div class="footer-bottom-tagline">Melpattampakkam, Cuddalore District, Tamil Nadu – 607104</div>
@@ -537,106 +1197,590 @@
         </div>
     </footer>
 
-    <button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll back to top">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M18 15l-6-6-6 6"/>
-        </svg>
-    </button>
-
-    <script src="script.js"></script>
+    <!-- ============================================================
+         JAVASCRIPT CONTROLLER: EVENT/FUNCTION ARCHITECTURE
+         ============================================================ -->
     <script>
-    // Independent gallery carousel controller — one identical instance per album card.
-    (function () {
-        function initAlbum(card) {
-            var track = card.querySelector('.gallery-slider-track');
-            var slides = Array.prototype.slice.call(card.querySelectorAll('.gallery-slide'));
-            var prevBtn = card.querySelector('[data-prev]');
-            var nextBtn = card.querySelector('[data-next]');
-            var counter = card.querySelector('[data-counter]');
-            var dotsWrap = card.querySelector('[data-dots]');
-            if (!track || slides.length === 0) return;
+        document.addEventListener('DOMContentLoaded', () => {
+            'use strict';
 
-            var total = slides.length;
-            var index = 0;
-            var dots = [];
+            /* --------------------------------------------------------------------------
+               1. REAL EVENT DATA STRUCTURE (Organized by Event / Function Folders)
+               -------------------------------------------------------------------------- */
+            const galleryEvents = [
+                {
+                    id: "yellow-day",
+                    name: "Yellow Day Celebration",
+                    description: "Colours, smiles and joyful early learning",
+                    cover: "images/gallery/yellow-day/cover.jpg",
+                    images: [
+                        { src: "images/gallery/yellow-day/cover.jpg", caption: "Joyful Yellow Day Assembly — Kindergarten learners celebrating colours in themed headgear" },
+                        { src: "images/gallery/yellow-day/02.jpg", caption: "Cheerful Young Learners — Exploring colours, fruits, and visual expressions with teachers" },
+                        { src: "images/gallery/yellow-day/03.jpg", caption: "Welcome Celebrations — Sunshine smiles and interactive paper crafts in the courtyard" },
+                        { src: "images/gallery/yellow-day/04.jpg", caption: "Interactive Classroom Activity — Teachers and little ones during festive learning hours" }
+                    ]
+                },
+                {
+                    id: "independence-day",
+                    name: "Independence Day Celebration",
+                    description: "Patriotic spirit, cultural pageantry and student unity",
+                    cover: "images/gallery/independence-day/cover.jpg",
+                    images: [
+                        { src: "images/gallery/independence-day/cover.jpg", caption: "National Pride Pageant — Young learners dressed in traditional patriotic attire" },
+                        { src: "images/gallery/independence-day/02.jpg", caption: "Campus Playground Assembly — Theatrical skit and ceremonial flag honours on stage" },
+                        { src: "images/gallery/independence-day/03.jpg", caption: "Colourful Campus Courtyard — Decorated grounds with festive canopies and student lines" },
+                        { src: "images/gallery/independence-day/04.jpg", caption: "Festive Canopies & Bunting — Proud students lined up under celebratory decorations" },
+                        { src: "images/gallery/independence-day/05.jpg", caption: "School March-Past Parade — Disciplined student marchers with tricolour sashes" },
+                        { src: "images/gallery/independence-day/06.jpg", caption: "Patriotic Costumes Showcase — Students portraying great leaders of our nation" }
+                    ]
+                },
+                {
+                    id: "kamaraj-bday-celeb",
+                    name: "Kamaraj Birthday Celebration",
+                    description: "Honouring a visionary leader and celebrating education",
+                    cover: "images/gallery/kamaraj-bday-celeb/cover.jpg",
+                    images: [
+                        { src: "images/gallery/kamaraj-bday-celeb/cover.jpg", caption: "Classroom Commemoration — Students and teachers gathering for the commemorative tribute" },
+                        { src: "images/gallery/kamaraj-bday-celeb/02.jpg", caption: "Assembly Presentation — Remembering the Kingmaker's ideals of universal schooling" },
+                        { src: "images/gallery/kamaraj-bday-celeb/03.jpg", caption: "Student Tributes — Young scholars honouring the architect of free school education" },
+                        { src: "images/gallery/kamaraj-bday-celeb/04.jpg", caption: "Campus Commemorative Assembly — Student speech alongside custom blackboard portrait" }
+                    ]
+                }
+            ];
 
-            // Build identical dots for every carousel
-            slides.forEach(function (_, i) {
-                var d = document.createElement('button');
-                d.type = 'button';
-                d.className = 'album-dot' + (i === 0 ? ' active' : '');
-                d.setAttribute('role', 'tab');
-                d.setAttribute('aria-label', 'Go to photo ' + (i + 1) + ' of ' + total);
-                d.addEventListener('click', function () { goTo(i); });
-                dotsWrap.appendChild(d);
-                dots.push(d);
-            });
+            /* --------------------------------------------------------------------------
+               2. DOM ELEMENT REFERENCES
+               -------------------------------------------------------------------------- */
+            const eventCoverView = document.getElementById('eventCoverView');
+            const eventPhotosView = document.getElementById('eventPhotosView');
+            const coverCrossfadeContainer = document.getElementById('coverCrossfadeContainer');
+            const coverStageCard = document.getElementById('coverStageCard');
+            const coverEventTitle = document.getElementById('coverEventTitle');
+            const coverEventDesc = document.getElementById('coverEventDesc');
+            const coverTopBadgeText = document.getElementById('coverTopBadgeText');
+            const coverBtnText = document.getElementById('coverBtnText');
+            const coverPrevBtn = document.getElementById('coverPrevBtn');
+            const coverNextBtn = document.getElementById('coverNextBtn');
+            const coverIndicatorsRow = document.getElementById('coverIndicatorsRow');
+            const eventCardsGrid = document.getElementById('eventCardsGrid');
 
-            function render() {
-                track.style.transform = 'translateX(-' + (index * 100) + '%)';
-                if (counter) counter.textContent = (index + 1) + ' / ' + total;
-                dots.forEach(function (d, i) {
-                    d.classList.toggle('active', i === index);
+            // Event Photo Viewer Elements
+            const backToGalleryBtn = document.getElementById('backToGalleryBtn');
+            const activeEventTitle = document.getElementById('activeEventTitle');
+            const activeEventSub = document.getElementById('activeEventSub');
+            const eventPhotoCounter = document.getElementById('eventPhotoCounter');
+            const photoCrossfadeStage = document.getElementById('photoCrossfadeStage');
+            const photoStageCard = document.getElementById('photoStageCard');
+            const photoPrevBtn = document.getElementById('photoPrevBtn');
+            const photoNextBtn = document.getElementById('photoNextBtn');
+            const currentPhotoCaption = document.getElementById('currentPhotoCaption');
+            const eventFilmstripRow = document.getElementById('eventFilmstripRow');
+            const photoPlayPauseBtn = document.getElementById('photoPlayPauseBtn');
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+
+            // Lightbox Elements
+            const eventLightboxModal = document.getElementById('eventLightboxModal');
+            const lightboxMainImg = document.getElementById('lightboxMainImg');
+            const lightboxEventTag = document.getElementById('lightboxEventTag');
+            const lightboxCounterText = document.getElementById('lightboxCounterText');
+            const lightboxBottomCaption = document.getElementById('lightboxBottomCaption');
+            const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+            const lightboxPrevBtn = document.getElementById('lightboxPrevBtn');
+            const lightboxNextBtn = document.getElementById('lightboxNextBtn');
+
+            /* --------------------------------------------------------------------------
+               3. STATE CONTROLLERS
+               -------------------------------------------------------------------------- */
+            let currentCoverIdx = 0;
+            let coverCarouselTimer = null;
+            const COVER_DURATION = 4800; // ~4.8s per cover
+
+            let activeEvent = null;
+            let currentPhotoIdx = 0;
+            let photoCarouselTimer = null;
+            let isPhotoPlaying = true;
+            const PHOTO_DURATION = 4600; // ~4.6s per photo
+
+            /* --------------------------------------------------------------------------
+               4. INITIALIZE EVENT COVERS CAROUSEL
+               -------------------------------------------------------------------------- */
+            function initCoverCarousel() {
+                coverCrossfadeContainer.innerHTML = '';
+                coverIndicatorsRow.innerHTML = '';
+                eventCardsGrid.innerHTML = '';
+
+                galleryEvents.forEach((ev, idx) => {
+                    // 1. Cover Slide
+                    const slide = document.createElement('div');
+                    slide.className = `cover-slide ${idx === 0 ? 'active' : ''}`;
+                    slide.setAttribute('data-cover-idx', idx);
+                    slide.innerHTML = `<img src="${ev.cover}" alt="${ev.name}" class="cover-slide-img" ${idx === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}>`;
+                    coverCrossfadeContainer.appendChild(slide);
+
+                    // 2. Indicator Dot
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = `indicator-dot ${idx === 0 ? 'active' : ''}`;
+                    dot.setAttribute('aria-label', `Go to ${ev.name}`);
+                    dot.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        setCoverIndex(idx);
+                        startCoverTimer();
+                    });
+                    coverIndicatorsRow.appendChild(dot);
+
+                    // 3. Mini Event Card
+                    const card = document.createElement('div');
+                    card.className = `event-mini-card ${idx === 0 ? 'active-event' : ''}`;
+                    card.setAttribute('role', 'button');
+                    card.setAttribute('tabindex', '0');
+                    card.setAttribute('aria-label', `View ${ev.name} photos`);
+                    card.innerHTML = `
+                        <div class="mini-card-thumb-wrap">
+                            <img src="${ev.cover}" alt="${ev.name}" class="mini-card-thumb" loading="lazy">
+                            <span class="mini-card-badge">${ev.images.length} Photos</span>
+                        </div>
+                        <div class="mini-card-body">
+                            <h3 class="mini-card-title">${ev.name}</h3>
+                            <p class="mini-card-desc">${ev.description}</p>
+                        </div>
+                    `;
+                    card.addEventListener('click', () => {
+                        openEventPhotos(ev);
+                    });
+                    card.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            openEventPhotos(ev);
+                        }
+                    });
+                    eventCardsGrid.appendChild(card);
                 });
-                slides.forEach(function (s, i) {
-                    s.setAttribute('aria-label', (i + 1) + ' of ' + total);
+
+                updateCoverUI(0);
+                startCoverTimer();
+            }
+
+            function updateCoverUI(index) {
+                const ev = galleryEvents[index];
+                if (!ev) return;
+
+                // Update text with soft transition
+                coverEventTitle.textContent = ev.name;
+                coverEventDesc.textContent = ev.description;
+                coverTopBadgeText.textContent = `Event 0${index + 1} of 0${galleryEvents.length}`;
+                coverBtnText.textContent = `Explore ${ev.name} (${ev.images.length} Photos)`;
+
+                // Update crossfade slides
+                const slides = coverCrossfadeContainer.querySelectorAll('.cover-slide');
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+
+                // Update dots
+                const dots = coverIndicatorsRow.querySelectorAll('.indicator-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+
+                // Update selector cards
+                const cards = eventCardsGrid.querySelectorAll('.event-mini-card');
+                cards.forEach((card, i) => {
+                    card.classList.toggle('active-event', i === index);
                 });
             }
 
-            function goTo(i) {
-                index = ((i % total) + total) % total;
-                render();
+            function setCoverIndex(index) {
+                currentCoverIdx = (index + galleryEvents.length) % galleryEvents.length;
+                updateCoverUI(currentCoverIdx);
             }
 
-            if (prevBtn) prevBtn.addEventListener('click', function () { goTo(index - 1); });
-            if (nextBtn) nextBtn.addEventListener('click', function () { goTo(index + 1); });
+            function advanceCover() {
+                setCoverIndex(currentCoverIdx + 1);
+            }
 
-            // Touch swipe — same behaviour on all carousels
-            var startX = 0, dx = 0, dragging = false;
-            var viewport = card.querySelector('.gallery-carousel');
-            viewport.addEventListener('touchstart', function (e) {
-                dragging = true;
-                startX = e.touches[0].clientX;
-                dx = 0;
-            }, { passive: true });
-            viewport.addEventListener('touchmove', function (e) {
-                if (!dragging) return;
-                dx = e.touches[0].clientX - startX;
-            }, { passive: true });
-            viewport.addEventListener('touchend', function () {
-                if (!dragging) return;
-                dragging = false;
-                if (Math.abs(dx) > 40) goTo(index + (dx < 0 ? 1 : -1));
-            }, { passive: true });
+            function startCoverTimer() {
+                stopCoverTimer();
+                coverCarouselTimer = setInterval(advanceCover, COVER_DURATION);
+            }
 
-            // Mouse drag (desktop) for a clean UX
-            var mDown = false, mStart = 0, mDx = 0;
-            viewport.addEventListener('mousedown', function (e) {
-                mDown = true; mStart = e.clientX; mDx = 0;
+            function stopCoverTimer() {
+                if (coverCarouselTimer) {
+                    clearInterval(coverCarouselTimer);
+                    coverCarouselTimer = null;
+                }
+            }
+
+            // Cover Navigation listeners
+            if (coverPrevBtn) {
+                coverPrevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setCoverIndex(currentCoverIdx - 1);
+                    startCoverTimer();
+                });
+            }
+            if (coverNextBtn) {
+                coverNextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setCoverIndex(currentCoverIdx + 1);
+                    startCoverTimer();
+                });
+            }
+
+            // Clicking Cover Stage Card opens the active event photos!
+            if (coverStageCard) {
+                coverStageCard.addEventListener('click', () => {
+                    const ev = galleryEvents[currentCoverIdx];
+                    if (ev) openEventPhotos(ev);
+                });
+                coverStageCard.addEventListener('mouseenter', stopCoverTimer);
+                coverStageCard.addEventListener('mouseleave', startCoverTimer);
+            }
+
+            /* --------------------------------------------------------------------------
+               5. EVENT PHOTO VIEWER CONTROLLER
+               -------------------------------------------------------------------------- */
+            function openEventPhotos(eventData) {
+                stopCoverTimer();
+                activeEvent = eventData;
+                currentPhotoIdx = 0;
+                isPhotoPlaying = true;
+                updatePlayPauseState();
+
+                // Switch views with smooth crossfade
+                eventCoverView.classList.add('view-hidden');
+                eventCoverView.setAttribute('aria-hidden', 'true');
+                
+                eventPhotosView.classList.remove('view-hidden');
+                eventPhotosView.setAttribute('aria-hidden', 'false');
+
+                // Update Header
+                activeEventTitle.textContent = eventData.name;
+                activeEventSub.textContent = eventData.description;
+
+                // Populate Photo Slides & Filmstrip
+                photoCrossfadeStage.innerHTML = '';
+                eventFilmstripRow.innerHTML = '';
+
+                eventData.images.forEach((imgObj, i) => {
+                    // Slide
+                    const slide = document.createElement('div');
+                    slide.className = `event-photo-slide ${i === 0 ? 'active' : ''}`;
+                    slide.setAttribute('data-photo-idx', i);
+                    slide.innerHTML = `<img src="${imgObj.src}" alt="${imgObj.caption}" class="event-photo-img" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}>`;
+                    photoCrossfadeStage.appendChild(slide);
+
+                    // Filmstrip thumbnail
+                    const thumbBtn = document.createElement('button');
+                    thumbBtn.type = 'button';
+                    thumbBtn.className = `filmstrip-thumb-btn ${i === 0 ? 'active' : ''}`;
+                    thumbBtn.setAttribute('aria-label', `Jump to photo ${i + 1}`);
+                    thumbBtn.innerHTML = `<img src="${imgObj.src}" alt="Thumb ${i + 1}" class="filmstrip-thumb-img">`;
+                    thumbBtn.addEventListener('click', () => {
+                        setPhotoIndex(i);
+                        startPhotoTimer();
+                    });
+                    eventFilmstripRow.appendChild(thumbBtn);
+                });
+
+                updatePhotoUI(0);
+                startPhotoTimer();
+
+                // Smoothly scroll stage into view if needed
+                const yOffset = -90;
+                const y = eventPhotosView.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+
+            function closeEventPhotos() {
+                stopPhotoTimer();
+                activeEvent = null;
+
+                eventPhotosView.classList.add('view-hidden');
+                eventPhotosView.setAttribute('aria-hidden', 'true');
+
+                eventCoverView.classList.remove('view-hidden');
+                eventCoverView.setAttribute('aria-hidden', 'false');
+
+                updateCoverUI(currentCoverIdx);
+                startCoverTimer();
+            }
+
+            function updatePhotoUI(index) {
+                if (!activeEvent || !activeEvent.images[index]) return;
+
+                const currentImg = activeEvent.images[index];
+                const total = activeEvent.images.length;
+
+                // Update Counter & Caption
+                eventPhotoCounter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+                currentPhotoCaption.textContent = currentImg.caption;
+
+                // Update crossfade slides
+                const slides = photoCrossfadeStage.querySelectorAll('.event-photo-slide');
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+
+                // Update filmstrip buttons
+                const thumbs = eventFilmstripRow.querySelectorAll('.filmstrip-thumb-btn');
+                thumbs.forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+
+                // Center active thumbnail in filmstrip
+                if (thumbs[index]) {
+                    thumbs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
+            }
+
+            function setPhotoIndex(index) {
+                if (!activeEvent) return;
+                currentPhotoIdx = (index + activeEvent.images.length) % activeEvent.images.length;
+                updatePhotoUI(currentPhotoIdx);
+            }
+
+            function advancePhoto() {
+                setPhotoIndex(currentPhotoIdx + 1);
+            }
+
+            function startPhotoTimer() {
+                stopPhotoTimer();
+                if (isPhotoPlaying) {
+                    photoCarouselTimer = setInterval(advancePhoto, PHOTO_DURATION);
+                }
+            }
+
+            function stopPhotoTimer() {
+                if (photoCarouselTimer) {
+                    clearInterval(photoCarouselTimer);
+                    photoCarouselTimer = null;
+                }
+            }
+
+            function updatePlayPauseState() {
+                if (isPhotoPlaying) {
+                    pauseIcon.style.display = 'block';
+                    playIcon.style.display = 'none';
+                    photoPlayPauseBtn.setAttribute('aria-label', 'Pause slideshow');
+                } else {
+                    pauseIcon.style.display = 'none';
+                    playIcon.style.display = 'block';
+                    photoPlayPauseBtn.setAttribute('aria-label', 'Play slideshow');
+                }
+            }
+
+            // Back button
+            if (backToGalleryBtn) {
+                backToGalleryBtn.addEventListener('click', closeEventPhotos);
+            }
+
+            // Photo manual navigation
+            if (photoPrevBtn) {
+                photoPrevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setPhotoIndex(currentPhotoIdx - 1);
+                    startPhotoTimer();
+                });
+            }
+            if (photoNextBtn) {
+                photoNextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setPhotoIndex(currentPhotoIdx + 1);
+                    startPhotoTimer();
+                });
+            }
+
+            // Play/Pause button
+            if (photoPlayPauseBtn) {
+                photoPlayPauseBtn.addEventListener('click', () => {
+                    isPhotoPlaying = !isPhotoPlaying;
+                    updatePlayPauseState();
+                    if (isPhotoPlaying) {
+                        startPhotoTimer();
+                    } else {
+                        stopPhotoTimer();
+                    }
+                });
+            }
+
+            // Clicking photo stage opens Lightbox!
+            if (photoStageCard) {
+                photoStageCard.addEventListener('click', () => {
+                    openLightbox(currentPhotoIdx);
+                });
+                photoStageCard.addEventListener('mouseenter', stopPhotoTimer);
+                photoStageCard.addEventListener('mouseleave', () => {
+                    if (isPhotoPlaying) startPhotoTimer();
+                });
+            }
+
+            /* --------------------------------------------------------------------------
+               6. FULLSCREEN EVENT LIGHTBOX
+               -------------------------------------------------------------------------- */
+            let lightboxIdx = 0;
+
+            function openLightbox(index) {
+                if (!activeEvent || !activeEvent.images[index]) return;
+                stopPhotoTimer();
+
+                lightboxIdx = index;
+                updateLightboxUI();
+
+                eventLightboxModal.classList.add('active');
+                eventLightboxModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                eventLightboxModal.classList.remove('active');
+                eventLightboxModal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                if (isPhotoPlaying) startPhotoTimer();
+            }
+
+            function updateLightboxUI() {
+                if (!activeEvent || !activeEvent.images[lightboxIdx]) return;
+                const photo = activeEvent.images[lightboxIdx];
+                const total = activeEvent.images.length;
+
+                lightboxEventTag.textContent = activeEvent.name;
+                lightboxCounterText.textContent = `${String(lightboxIdx + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+                lightboxBottomCaption.textContent = photo.caption;
+
+                lightboxMainImg.style.opacity = '0';
+                setTimeout(() => {
+                    lightboxMainImg.src = photo.src;
+                    lightboxMainImg.alt = photo.caption;
+                    lightboxMainImg.style.opacity = '1';
+                }, 80);
+            }
+
+            function setLightboxIndex(index) {
+                if (!activeEvent) return;
+                lightboxIdx = (index + activeEvent.images.length) % activeEvent.images.length;
+                updateLightboxUI();
+                setPhotoIndex(lightboxIdx); // Sync with background stage
+            }
+
+            if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+            if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', () => setLightboxIndex(lightboxIdx - 1));
+            if (lightboxNextBtn) lightboxNextBtn.addEventListener('click', () => setLightboxIndex(lightboxIdx + 1));
+
+            // Close when clicking modal backdrop
+            if (eventLightboxModal) {
+                eventLightboxModal.addEventListener('click', (e) => {
+                    if (e.target === eventLightboxModal || e.target.id === 'lightboxStageArea') {
+                        closeLightbox();
+                    }
+                });
+            }
+
+            /* --------------------------------------------------------------------------
+               7. KEYBOARD CONTROLS & MOBILE TOUCH SWIPES
+               -------------------------------------------------------------------------- */
+            document.addEventListener('keydown', (e) => {
+                // If Lightbox is open:
+                if (eventLightboxModal.classList.contains('active')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') setLightboxIndex(lightboxIdx - 1);
+                    if (e.key === 'ArrowRight') setLightboxIndex(lightboxIdx + 1);
+                    return;
+                }
+
+                // If Event Photos View is active:
+                if (activeEvent && !eventPhotosView.classList.contains('view-hidden')) {
+                    if (e.key === 'Escape') closeEventPhotos();
+                    if (e.key === 'ArrowLeft') { setPhotoIndex(currentPhotoIdx - 1); startPhotoTimer(); }
+                    if (e.key === 'ArrowRight') { setPhotoIndex(currentPhotoIdx + 1); startPhotoTimer(); }
+                    return;
+                }
+
+                // If Landing Cover View is active:
+                if (!eventCoverView.classList.contains('view-hidden')) {
+                    if (e.key === 'ArrowLeft') { setCoverIndex(currentCoverIdx - 1); startCoverTimer(); }
+                    if (e.key === 'ArrowRight') { setCoverIndex(currentCoverIdx + 1); startCoverTimer(); }
+                }
             });
-            window.addEventListener('mouseup', function () {
-                if (!mDown) return;
-                mDown = false;
-                if (Math.abs(mDx) > 40) goTo(index + (mDx < 0 ? 1 : -1));
-            });
-            viewport.addEventListener('mousemove', function (e) {
-                if (mDown) mDx = e.clientX - mStart;
-            });
-            viewport.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
-            // Keyboard when focused inside the card
-            card.addEventListener('keydown', function (e) {
-                if (e.key === 'ArrowRight') goTo(index + 1);
-                if (e.key === 'ArrowLeft') goTo(index - 1);
-            });
+            // Touch Swipe Handler helper
+            function attachSwipe(element, onSwipeLeft, onSwipeRight) {
+                let startX = 0;
+                let startY = 0;
+                element.addEventListener('touchstart', (e) => {
+                    if (e.touches.length === 1) {
+                        startX = e.touches[0].clientX;
+                        startY = e.touches[0].clientY;
+                    }
+                }, { passive: true });
 
-            render();
-        }
+                element.addEventListener('touchend', (e) => {
+                    if (e.changedTouches.length === 1) {
+                        const diffX = e.changedTouches[0].clientX - startX;
+                        const diffY = e.changedTouches[0].clientY - startY;
+                        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+                            if (diffX > 0) onSwipeRight();
+                            else onSwipeLeft();
+                        }
+                    }
+                }, { passive: true });
+            }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('[data-carousel]').forEach(initAlbum);
+            if (coverStageCard) {
+                attachSwipe(coverStageCard, () => { setCoverIndex(currentCoverIdx + 1); startCoverTimer(); }, () => { setCoverIndex(currentCoverIdx - 1); startCoverTimer(); });
+            }
+            if (photoStageCard) {
+                attachSwipe(photoStageCard, () => { setPhotoIndex(currentPhotoIdx + 1); startPhotoTimer(); }, () => { setPhotoIndex(currentPhotoIdx - 1); startPhotoTimer(); });
+            }
+            if (eventLightboxModal) {
+                attachSwipe(eventLightboxModal, () => setLightboxIndex(lightboxIdx + 1), () => setLightboxIndex(lightboxIdx - 1));
+            }
+
+            /* --------------------------------------------------------------------------
+               8. MOBILE NAVIGATION DRAWER TOGGLE
+               -------------------------------------------------------------------------- */
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMobileMenu(forceClose = false) {
+                const isOpen = forceClose ? false : !mobileNav.classList.contains('open');
+                if (isOpen) {
+                    mobileNav.classList.add('open');
+                    mobileMenuToggle.classList.add('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'true');
+                    mobileNav.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileNav.classList.remove('open');
+                    mobileMenuToggle.classList.remove('active');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    mobileNav.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (mobileMenuToggle && mobileNav) {
+                mobileMenuToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                });
+
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', () => toggleMobileMenu(true));
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                        toggleMobileMenu(true);
+                    }
+                });
+            }
+
+            // Start up the Cover Carousel
+            initCoverCarousel();
         });
-    })();
     </script>
 </body>
 </html>

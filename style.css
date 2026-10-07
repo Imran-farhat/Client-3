@@ -88,7 +88,6 @@ html {
 #about,
 #classes,
 #activities,
-#gallery,
 #contact,
 .section[id] {
     scroll-margin-top: 88px;
@@ -1168,152 +1167,7 @@ ul {
     letter-spacing: 0.02em;
 }
 
-/* --------------------------------------------------------------------------
-   10. Gallery Section & Bento Grid Placeholders
-   -------------------------------------------------------------------------- */
-.gallery-section {
-    background: var(--canvas-bg);
-}
 
-.gallery-bento-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    grid-template-rows: 240px 240px;
-    gap: 24px;
-}
-
-.gallery-item {
-    position: relative;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    cursor: pointer;
-    box-shadow: var(--card-glass-shadow);
-    transition: transform var(--transition-bounce), box-shadow var(--transition-smooth);
-    background: var(--navy-900);
-}
-
-.gallery-item:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--card-hover-shadow);
-}
-
-.gallery-featured {
-    grid-row: span 2;
-}
-
-.gallery-placeholder-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(circle at 60% 30%, #172554 0%, #0a1128 75%, #050914 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: inherit;
-    overflow: hidden;
-    padding: 30px;
-    text-align: center;
-}
-
-/* Subtle Shimmer for Empty Gallery State */
-.gallery-placeholder-wrapper::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.04) 45%,
-        rgba(255, 255, 255, 0.08) 50%,
-        rgba(255, 255, 255, 0.04) 55%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    background-size: 250% 250%;
-    animation: placeholderShimmer 10s infinite linear;
-    pointer-events: none;
-}
-
-.gallery-empty-state {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: #ffffff;
-}
-
-.empty-state-lens {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--sky-blue);
-    margin-bottom: 6px;
-    transition: transform var(--transition-bounce), background 0.3s ease;
-}
-
-.gallery-item:hover .empty-state-lens {
-    transform: scale(1.12);
-    background: rgba(56, 189, 248, 0.2);
-}
-
-.empty-state-tag {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-gold);
-    background: rgba(245, 158, 11, 0.12);
-    padding: 3px 10px;
-    border-radius: var(--radius-full);
-}
-
-.empty-state-caption {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.empty-state-note {
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* When images are dynamically populated in the gallery */
-.gallery-populated-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.gallery-item:hover .gallery-populated-img {
-    transform: scale(1.07);
-}
-
-.gallery-img-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(6, 11, 23, 0.85) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: flex-end;
-    padding: 24px;
-    color: #ffffff;
-}
-
-.gallery-item:hover .gallery-img-overlay {
-    opacity: 1;
-}
 
 /* --------------------------------------------------------------------------
    11. Contact Section
@@ -1616,105 +1470,7 @@ ul {
     color: rgba(255, 255, 255, 0.45);
 }
 
-/* --------------------------------------------------------------------------
-   13. Gallery Lightbox Modal
-   -------------------------------------------------------------------------- */
-.lightbox-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
 
-.lightbox-modal.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.lightbox-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(6, 11, 23, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-}
-
-.lightbox-content {
-    position: relative;
-    z-index: 10;
-    max-width: 900px;
-    width: 100%;
-    background: var(--navy-900);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-xl);
-    padding: 24px;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.lightbox-close:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: rotate(90deg);
-}
-
-.lightbox-image-container {
-    width: 100%;
-    max-height: 65vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: var(--radius-lg);
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.lightbox-image-container img {
-    max-width: 100%;
-    max-height: 65vh;
-    object-fit: contain;
-    border-radius: var(--radius-md);
-}
-
-.lightbox-empty-notice {
-    padding: 60px 30px;
-    text-align: center;
-    color: #ffffff;
-}
-
-.lightbox-empty-icon {
-    color: var(--sky-blue);
-    margin-bottom: 16px;
-}
-
-.lightbox-caption {
-    margin-top: 16px;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.85);
-    text-align: center;
-}
 
 /* --------------------------------------------------------------------------
    14. Scroll-to-Top Floating Button
@@ -1786,20 +1542,7 @@ ul {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .gallery-bento-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-    }
 
-    .gallery-featured {
-        grid-column: span 2;
-        grid-row: auto;
-        height: 320px;
-    }
-
-    .gallery-item {
-        height: 220px;
-    }
 
     .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -1913,18 +1656,7 @@ ul {
         grid-template-columns: 1fr;
     }
 
-    .gallery-bento-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .gallery-featured {
-        grid-column: span 1;
-        height: 260px;
-    }
-
-    .gallery-item {
-        height: 200px;
-    }
 
     .contact-cards-grid {
         grid-template-columns: 1fr;
