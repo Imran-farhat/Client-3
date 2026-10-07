@@ -83,6 +83,17 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
+/* Offset sticky/fixed navbar on anchor jump & smooth scroll */
+#home,
+#about,
+#classes,
+#activities,
+#gallery,
+#contact,
+.section[id] {
+    scroll-margin-top: 88px;
+}
+
 body {
     font-family: var(--font-body);
     font-size: 1rem;
@@ -526,12 +537,12 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
-   5. Hero Section & Fullscreen Cinematic Photo Showcase
+   5. Hero Section & Cinematic Photo Showcase (Clean Cross-Fade)
    -------------------------------------------------------------------------- */
 .hero-section {
     position: relative;
     height: 100vh;
-    min-height: 600px;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -545,27 +556,13 @@ ul {
     height: 100%;
 }
 
-/* Vignette: corners-only dark frame — static above the slider, below the hero text
-   z-index 3 → above image overlay (z-index 2), below text content (z-index 10)   */
-.hero-carousel::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none; /* clicks, scroll and touch pass straight through */
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0, 0, 0, 0)    50%,
-        rgba(0, 0, 0, 0.65) 100%
-    );
-}
-
-/* Carousel Track & Slides */
+/* Carousel Track & Stacked Crossfade Slides */
 .carousel-track {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+    background-color: var(--navy-950);
 }
 
 .carousel-slide {
@@ -574,68 +571,53 @@ ul {
     width: 100%;
     height: 100%;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 1.0s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.0s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 0;
+    transition: opacity 1.5s ease-in-out;
+    pointer-events: none;
 }
 
 .carousel-slide.active {
     opacity: 1;
-    visibility: visible;
     z-index: 1;
+    pointer-events: auto;
 }
 
-/* Hero Photography (Covers Complete Area without Distortion) */
+/* Hero Photography (Natural aspect ratio, uncropped school signboard) */
 .hero-slide-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     position: absolute;
     inset: 0;
-    /* Extra scale provides bleed room so scroll-parallax translateY never exposes edges */
-    transform: scale(1.12) translateY(0px);
-    /* 200ms ease-out: snappy, responsive scroll-driven parallax */
-    transition: transform 200ms ease-out;
-    will-change: transform;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
-/* Active Ken Burns layered on top of the parallax transform */
-.carousel-slide.active .hero-slide-img {
-    /* translateY is overridden inline by JS; scale is kept here as a base */
-    transition: transform 200ms ease-out;
-}
-
-/* Specific Positioning to Guarantee Complete Upper Building & Signboard Visibility */
+/* Intelligent Positioning: Guarantees School Name & Signboard Visibility */
 .hero-img-building {
     object-position: center top;
 }
 
 .hero-img-reception {
-    object-position: center 30%;
+    object-position: center 35%;
 }
 
 .hero-img-students {
-    object-position: center 20%;
+    object-position: center 22%;
 }
 
-/* Subtle, Natural Overlay: Slightly shaded only around text, clear across building and signboard */
+/* Subtle, Natural Overlay: Soft contrast on bottom-left for text, transparent on building */
 .hero-image-overlay {
     position: absolute;
     inset: 0;
-    background: 
-        /* Localized subtle shade exclusively in the lower-left typography area */
-        radial-gradient(
-            ellipse 80% 60% at 0% 100%,
-            rgba(6, 11, 23, 0.58) 0%,
-            rgba(6, 11, 23, 0.25) 45%,
-            transparent 100%
-        ),
-        /* Very faint top gradient for minimal navbar contrast without darkening sky/signboard */
-        linear-gradient(
-            to bottom,
-            rgba(6, 11, 23, 0.35) 0%,
-            transparent 16%
-        );
+    background: linear-gradient(
+        to right,
+        rgba(6, 11, 23, 0.70) 0%,
+        rgba(6, 11, 23, 0.42) 36%,
+        rgba(6, 11, 23, 0.10) 65%,
+        transparent 100%
+    );
     pointer-events: none;
     z-index: 2;
 }
@@ -666,60 +648,62 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(14, 27, 56, 0.45);
+    background: rgba(14, 27, 56, 0.55);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: var(--radius-full);
-    padding: 5px 14px;
+    padding: 6px 16px;
     margin-bottom: 18px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .hero-meta-dot {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: var(--sky-blue);
     box-shadow: 0 0 8px var(--sky-blue);
 }
 
 .hero-meta-location {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.95);
+    color: #ffffff;
     letter-spacing: 0.04em;
 }
 
 /* Main Heading (Clean Typography directly over photograph) */
 .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(2.3rem, 5vw, 4.1rem);
+    font-size: clamp(2.2rem, 4.8vw, 3.8rem);
     font-weight: 700;
-    line-height: 1.14;
+    line-height: 1.15;
     color: #ffffff;
     letter-spacing: -0.02em;
     margin-bottom: 16px;
-    text-shadow: 0 3px 20px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 .hero-title-highlight {
-    background: linear-gradient(135deg, #ffffff 40%, var(--sky-blue) 100%);
+    color: #38bdf8;
+    background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    text-shadow: none;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
 }
 
 /* Supporting Subtitle */
 .hero-subtitle {
-    font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    font-size: clamp(1.02rem, 1.5vw, 1.25rem);
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.96);
     font-weight: 400;
-    max-width: 640px;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
+    max-width: 620px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 /* --------------------------------------------------------------------------
@@ -1877,12 +1861,30 @@ ul {
 
     .hero-section {
         height: 100vh;
-        min-height: 540px;
+        min-height: 100svh;
     }
 
-    /* Intelligent mobile positioning: center on entrance and signboard */
+    /* Intelligent mobile positioning: prioritize school building & signboard */
     .hero-img-building {
         object-position: 65% top;
+    }
+
+    .hero-img-reception {
+        object-position: 50% 35%;
+    }
+
+    .hero-img-students {
+        object-position: 50% 20%;
+    }
+
+    .hero-image-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(6, 11, 23, 0.45) 0%,
+            rgba(6, 11, 23, 0.15) 35%,
+            rgba(6, 11, 23, 0.65) 68%,
+            rgba(6, 11, 23, 0.88) 100%
+        );
     }
 
     .hero-overlay-content {

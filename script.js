@@ -84,33 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* ==========================================================================
-       Scroll-Driven Parallax for Hero Images
-       Applies a fast translateY shift to all three hero photos as the user scrolls.
-       depth: 0.3 → visible, snappy movement with minimal scroll distance.
-       CSS transition (200ms ease-out) makes every shift feel instant.
-       ========================================================================== */
-    const heroSlideImgs = document.querySelectorAll('.hero-slide-img');
-    const PARALLAX_DEPTH = 0.3; // 30% of scrollY → fast and responsive
-
-    function applyHeroParallax() {
-        const scrollY = window.scrollY;
-        // Only apply while the hero section is in view
-        const heroSection = document.getElementById('home');
-        const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
-        if (scrollY > heroHeight) return;
-
-        const shift = scrollY * PARALLAX_DEPTH;
-        heroSlideImgs.forEach(img => {
-            // scale(1.12) keeps bleed; translateY shifts the image downward as page scrolls up
-            img.style.transform = `scale(1.12) translateY(${shift}px)`;
-        });
-    }
-
     window.addEventListener('scroll', handleScrollEffects, { passive: true });
-    window.addEventListener('scroll', applyHeroParallax, { passive: true });
     handleScrollEffects();
-    applyHeroParallax();
 
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', () => {
@@ -172,89 +147,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       4. Automatic Hero Carousel (3 Local Photographs, Fullscreen Continuous)
+       4. Hero Carousel — Cinematic Cross-Fade (3 Photographs: 0 -> 1 -> 2 -> 0)
+       --------------------------------------------------------------------------
+       Slide 1: School Main Building (Default first slide)
+       Slide 2: School Reception
+       Slide 3: Students Group Photo
+       --------------------------------------------------------------------------
+       Smooth opacity transition (~1.5s), no slide movement, no empty flash
        ========================================================================== */
-    const heroCarousel = document.getElementById('heroCarousel');
     const slides = document.querySelectorAll('.carousel-slide');
-    
+    const SLIDE_DURATION = 5500; // 5.5 seconds per slide
     let currentSlide = 0;
-    const totalSlides = slides.length; // Exactly 3 slides
-    let slideInterval = null;
-    const autoPlayDelay = 3600; // 3.6 seconds per slide for responsive, engaging flow
+    let carouselTimer = null;
 
-    function goToSlide(index) {
+    function showSlide(nextIndex) {
         if (!slides.length) return;
+        const prevIndex = currentSlide;
+        currentSlide = (nextIndex + slides.length) % slides.length;
 
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (index + totalSlides) % totalSlides;
-        slides[currentSlide].classList.add('active');
+        slides.forEach((slide, idx) => {
+            if (idx === currentSlide) {
+                // Incoming slide sits on top and fades in
+                slide.style.zIndex = '2';
+                slide.classList.add('active');
+            } else if (idx === prevIndex) {
+                // Outgoing slide sits below while smoothly fading out
+                slide.style.zIndex = '1';
+                slide.classList.remove('active');
+            } else {
+                slide.style.zIndex = '0';
+                slide.classList.remove('active');
+            }
+        });
     }
 
-    function nextSlide() {
-        goToSlide(currentSlide + 1);
+    function advanceSlide() {
+        showSlide(currentSlide + 1);
     }
 
-    function prevSlide() {
-        goToSlide(currentSlide - 1);
-    }
-
-    function startAutoPlay() {
-        stopAutoPlay();
-        slideInterval = setInterval(nextSlide, autoPlayDelay);
-    }
-
-    function stopAutoPlay() {
-        if (slideInterval) {
-            clearInterval(slideInterval);
-            slideInterval = null;
-        }
+    function startCarousel() {
+        if (carouselTimer) clearInterval(carouselTimer);
+        carouselTimer = setInterval(advanceSlide, SLIDE_DURATION);
     }
 
     if (slides.length > 0) {
-        // Pause on mouse hover if desired
-        if (heroCarousel) {
-            heroCarousel.addEventListener('mouseenter', stopAutoPlay);
-            heroCarousel.addEventListener('mouseleave', startAutoPlay);
-        }
-
-        // Keyboard navigation (Left / Right Arrow) for accessibility
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                nextSlide();
-                startAutoPlay();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-                startAutoPlay();
+        // Guarantee slide 0 (School Main Building) is first and visible
+        slides.forEach((slide, idx) => {
+            if (idx === 0) {
+                slide.style.zIndex = '2';
+                slide.classList.add('active');
+            } else {
+                slide.style.zIndex = '0';
+                slide.classList.remove('active');
             }
         });
-
-        // Touch swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        heroCarousel.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        heroCarousel.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const swipeDistance = touchEndX - touchStartX;
-            if (Math.abs(swipeDistance) > 40) {
-                if (swipeDistance < 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
-                }
-                startAutoPlay();
-            }
-        }, { passive: true });
-
-        // Start automatic continuous carousel
-        startAutoPlay();
+        currentSlide = 0;
+        startCarousel();
     }
 
     /* ==========================================================================
-       5. Smooth Anchor Scrolling with Precise Offset
+       5. Smooth Anchor Scrolling with Fixed Navbar Offset
        ========================================================================== */
     const allInternalLinks = document.querySelectorAll('a[href^="#"]');
 
@@ -266,7 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                const headerHeight = 80;
+                const header = document.getElementById('siteHeader');
+                const headerHeight = header ? header.offsetHeight : 88;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
@@ -274,9 +227,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
+
+                if (history.pushState) {
+                    history.pushState(null, '', targetId);
+                }
             }
         });
     });
+
+    // Handle initial hash navigation when entering from another page (e.g. index.html#classes)
+    if (window.location.hash) {
+        const hashTarget = document.querySelector(window.location.hash);
+        if (hashTarget) {
+            setTimeout(() => {
+                const header = document.getElementById('siteHeader');
+                const headerHeight = header ? header.offsetHeight : 88;
+                const elementPosition = hashTarget.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+    }
 
     /* ==========================================================================
        6. Active Navigation Link on Scroll
@@ -285,7 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const desktopNavLinks = document.querySelectorAll('.desktop-nav .nav-link');
 
     function updateActiveNavLink() {
-        const scrollPosition = window.scrollY + 140;
+        const header = document.getElementById('siteHeader');
+        const headerHeight = header ? header.offsetHeight : 88;
+        const scrollPosition = window.scrollY + headerHeight + 50;
 
         navSections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -294,9 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 desktopNavLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
+                    const href = link.getAttribute('href');
+                    if (href === `#${sectionId}` || href === `index.html#${sectionId}`) {
                         link.classList.add('active');
+                    } else if (href.startsWith('#') || href.startsWith('index.html#')) {
+                        link.classList.remove('active');
                     }
                 });
             }
@@ -304,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+    updateActiveNavLink();
 
     /* ==========================================================================
        7. Scroll Reveal Observer (Smooth Staggered Animations)

@@ -13,6 +13,10 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpeg" href="logo.jpeg">
+    <!-- Preload Hero Photographs for Instant Cinematic Cross-Fade -->
+    <link rel="preload" as="image" href="school/school-building.jpg">
+    <link rel="preload" as="image" href="school/reception.jpg">
+    <link rel="preload" as="image" href="school/students.jpg">
 </head>
 <body>
     <!-- Background Ambient Glow Blobs -->
@@ -37,12 +41,12 @@
             <!-- Desktop Navigation -->
             <nav class="desktop-nav" aria-label="Primary Navigation">
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="about.html" class="nav-link">About Us</a></li>
-                    <li><a href="classes.html" class="nav-link">Classes</a></li>
-                    <li><a href="activities.html" class="nav-link">Activities</a></li>
+                    <li><a href="#classes" class="nav-link">Classes</a></li>
+                    <li><a href="#activities" class="nav-link">Activities</a></li>
                     <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li><a href="contact.html" class="nav-link nav-contact-btn">Contact</a></li>
+                    <li><a href="#contact" class="nav-link nav-contact-btn">Contact</a></li>
                 </ul>
             </nav>
 
@@ -65,12 +69,12 @@
                     </div>
                 </div>
                 <ul class="mobile-nav-links">
-                    <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                    <li><a href="#home" class="mobile-nav-link">Home</a></li>
                     <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
-                    <li><a href="classes.html" class="mobile-nav-link">Classes</a></li>
-                    <li><a href="activities.html" class="mobile-nav-link">Activities</a></li>
+                    <li><a href="#classes" class="mobile-nav-link">Classes</a></li>
+                    <li><a href="#activities" class="mobile-nav-link">Activities</a></li>
                     <li><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
-                    <li><a href="contact.html" class="mobile-nav-link mobile-contact-link">Contact Us</a></li>
+                    <li><a href="#contact" class="mobile-nav-link mobile-contact-link">Contact Us</a></li>
                 </ul>
                 <div class="mobile-nav-footer">
                     <p class="mobile-motto">“The Future Begins Here!”</p>
@@ -85,7 +89,7 @@
         <section class="hero-section" id="home" aria-label="Anandha Nursery and Primary School">
             <div class="hero-carousel" id="heroCarousel" role="region" aria-roledescription="carousel" aria-label="Campus Showcase">
                 
-                <!-- Carousel Slides (Strictly 3 Local Photographs) -->
+                <!-- Carousel Slides (Strictly 3 Local Photographs in Exact Order) -->
                 <div class="carousel-track" id="carouselTrack">
                     <!-- Slide 1: School Main Building (Default / First Slide) -->
                     <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="1 of 3" data-slide-index="0">
@@ -95,13 +99,13 @@
 
                     <!-- Slide 2: School Reception -->
                     <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" data-slide-index="1">
-                        <img src="school/reception.jpg" alt="Anandha Nursery and Primary School Reception and Lobby" class="hero-slide-img hero-img-reception" loading="lazy">
+                        <img src="school/reception.jpg" alt="Anandha Nursery and Primary School Reception and Lobby" class="hero-slide-img hero-img-reception">
                         <div class="hero-image-overlay" aria-hidden="true"></div>
                     </div>
 
                     <!-- Slide 3: Students Group Photo -->
                     <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" data-slide-index="2">
-                        <img src="school/students.jpg" alt="Anandha Nursery and Primary School Students" class="hero-slide-img hero-img-students" loading="lazy">
+                        <img src="school/students.jpg" alt="Anandha Nursery and Primary School Students" class="hero-slide-img hero-img-students">
                         <div class="hero-image-overlay" aria-hidden="true"></div>
                     </div>
                 </div>
@@ -665,12 +669,12 @@
                 <div class="footer-col">
                     <h4 class="footer-heading">Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#home">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="classes.html">Classes Offered</a></li>
-                        <li><a href="activities.html">School Activities</a></li>
+                        <li><a href="#classes">Classes Offered</a></li>
+                        <li><a href="#activities">School Activities</a></li>
                         <li><a href="gallery.html">Our Gallery</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
 
