@@ -15,31 +15,7 @@
         /* Push content below fixed navbar on inner pages */
         .page-hero-spacer { height: 96px; }
 
-        /* ============================================================
-           ABOUT PAGE — Header hardening (scoped override)
-           Guarantees the fixed navbar stays a crisp solid-white bar
-           with dark high-contrast text on this all-white page, even
-           if the global stylesheet is cached/stale or loses a
-           specificity fight. Mirrors the global Section 4 rules.
-           ============================================================ */
-        header#siteHeader.site-header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
-        }
-        header#siteHeader.site-header .brand-title { color: #0f172a; }
-        header#siteHeader.site-header .brand-subtitle { color: #1d4ed8; }
-        header#siteHeader.site-header .brand-location { color: #475569; }
-        header#siteHeader.site-header .nav-link { color: #334155; }
-        header#siteHeader.site-header .nav-link:hover { color: #0f172a; background: #f1f5f9; }
-        header#siteHeader.site-header .nav-link.active { color: #1e40af; background: #dbeafe; }
-        header#siteHeader.site-header .nav-contact-btn { background: #2563eb; color: #ffffff; }
-        header#siteHeader.site-header .nav-contact-btn:hover { background: #1d4ed8; color: #ffffff; }
-        header#siteHeader.site-header .hamburger-bar { background: #0f172a; }
-        header#siteHeader.site-header .mobile-menu-toggle { background: #ffffff; border: 1px solid rgba(15, 23, 42, 0.15); }
+        /* Uses global Apple iOS Liquid Glass Floating Capsule navbar from style.css */
 
         /* ============================================================
            ABOUT PAGE — Tagline badges row

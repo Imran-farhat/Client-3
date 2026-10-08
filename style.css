@@ -196,70 +196,96 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
-   4. Global Header / Navbar — high-contrast light glass (site-wide)
-   Aliases: .navbar === .site-header, .logo === .brand-logo/.brand-title
+   4. Global Header / Navbar — Apple iOS Liquid Glass Floating Capsule
+   Dynamic Island inspired floating pill with rich refraction, specular rim & blur
    -------------------------------------------------------------------------- */
 .site-header,
 .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 1280px;
     z-index: 1000;
     padding: 0;
-    background: #ffffff;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
-    transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(28px) saturate(190%) contrast(100%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(100%);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 
+        0 10px 32px -4px rgba(15, 23, 42, 0.08),
+        0 4px 12px -2px rgba(15, 23, 42, 0.04),
+        inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Specular Liquid Top Sheen */
+.site-header::before,
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9) 50%, transparent);
+    pointer-events: none;
+    border-radius: 9999px;
 }
 
 .nav-container {
-    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 40px;
+    padding: 8px 18px 8px 12px;
     background: transparent;
     border: none;
-    border-radius: 0;
+    border-radius: 9999px;
     box-shadow: none;
     transition: padding 0.35s ease;
 }
 
-/* Header Scrolled State — stays solid light so text never loses contrast,
-   including on all-white pages like about.html */
+/* Header Scrolled State — refined frosted liquid glass depth */
 .site-header.scrolled,
 .navbar.scrolled {
-    background: #ffffff;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid #e2e8f0;
-    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.14);
+    top: 10px;
+    background: rgba(255, 255, 255, 0.84);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 
+        0 14px 38px -4px rgba(15, 23, 42, 0.12),
+        0 6px 16px -2px rgba(15, 23, 42, 0.06),
+        inset 0 1px 2px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .site-header.scrolled .nav-container {
-    padding: 10px 40px;
+    padding: 6px 16px 6px 10px;
 }
 
 /* Brand Link */
 .brand-link {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .brand-logo-frame {
-    width: 62px;
-    height: 62px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     overflow: hidden;
     background: #ffffff;
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
-    border: 2px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 
+        0 4px 14px rgba(15, 23, 42, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -268,12 +294,12 @@ ul {
 }
 
 .site-header.scrolled .brand-logo-frame {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
 }
 
 .brand-link:hover .brand-logo-frame {
-    transform: scale(1.06) rotate(-2deg);
+    transform: scale(1.05) rotate(-2deg);
 }
 
 .brand-logo,
@@ -291,32 +317,32 @@ ul {
 .brand-title {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 1.55rem;
-    line-height: 1.08;
+    font-size: 1.45rem;
+    line-height: 1.05;
     color: #0f172a;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     transition: color 0.3s ease;
 }
 
 .brand-subtitle {
-    font-size: 0.86rem;
+    font-size: 0.78rem;
     font-weight: 700;
     color: #1d4ed8;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     transition: color 0.3s ease;
     margin-top: 2px;
 }
 
 .brand-location {
-    font-size: 0.78rem;
-    color: #475569;
+    font-size: 0.72rem;
+    color: #64748b;
     font-weight: 500;
     letter-spacing: 0.02em;
     transition: color 0.3s ease;
 }
 
-/* Scrolled text colors — identical to default so contrast never flips */
+/* Scrolled text colors — identical to default for stable clarity */
 .site-header.scrolled .brand-title {
     color: #0f172a;
 }
@@ -326,10 +352,10 @@ ul {
 }
 
 .site-header.scrolled .brand-location {
-    color: #475569;
+    color: #64748b;
 }
 
-/* Desktop Nav Links */
+/* Desktop Nav Links — Apple Liquid Glass Capsule Pills */
 .desktop-nav {
     display: flex;
     align-items: center;
@@ -338,27 +364,40 @@ ul {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
 }
 
 .nav-link {
     position: relative;
-    padding: 9px 18px;
-    font-size: 1rem;
+    padding: 8px 16px;
+    font-size: 0.96rem;
     font-weight: 600;
     color: #334155;
-    border-radius: var(--radius-full);
-    transition: all var(--transition-fast);
+    border-radius: 9999px;
+    transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid transparent;
 }
 
 .nav-link:hover {
     color: #0f172a;
-    background: #f1f5f9;
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 
+        0 4px 12px rgba(15, 23, 42, 0.05),
+        inset 0 1px 1px rgba(255, 255, 255, 0.95);
+    transform: translateY(-1px);
 }
 
+/* Active Liquid Tint Pill */
 .nav-link.active {
-    color: #1e40af;
-    background: #dbeafe;
+    color: #1d4ed8;
+    background: rgba(37, 99, 235, 0.12);
+    border-color: rgba(37, 99, 235, 0.22);
+    box-shadow: 
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.8),
+        0 2px 8px rgba(37, 99, 235, 0.10);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .site-header.scrolled .nav-link {
@@ -367,29 +406,39 @@ ul {
 
 .site-header.scrolled .nav-link:hover {
     color: #0f172a;
-    background: #f1f5f9;
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(255, 255, 255, 0.95);
 }
 
 .site-header.scrolled .nav-link.active {
-    color: #1e40af;
-    background: #dbeafe;
+    color: #1d4ed8;
+    background: rgba(37, 99, 235, 0.14);
+    border-color: rgba(37, 99, 235, 0.24);
 }
 
+/* Apple iOS Action Pill (Contact Button) */
 .nav-contact-btn {
-    background: #2563eb !important;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
     color: #ffffff !important;
-    padding: 9px 24px !important;
-    font-size: 1rem !important;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
-    margin-left: 8px;
-    border: 1px solid #1d4ed8 !important;
+    padding: 8px 22px !important;
+    font-size: 0.96rem !important;
+    font-weight: 600 !important;
+    border-radius: 9999px !important;
+    margin-left: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 
+        0 4px 14px rgba(37, 99, 235, 0.38),
+        inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .nav-contact-btn:hover {
-    background: #1d4ed8 !important;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
     color: #ffffff !important;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.45);
+    transform: translateY(-1.5px) scale(1.02) !important;
+    box-shadow: 
+        0 6px 20px rgba(37, 99, 235, 0.48),
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.65) !important;
 }
 
 /* Mobile Toggle — dark icon on light header, always visible */
@@ -1564,16 +1613,24 @@ ul {
 
 /* Mobile & Small Tablets */
 @media (max-width: 768px) {
-    .site-header {
-        padding: 0;
+    .site-header,
+    .navbar {
+        top: 10px;
+        width: calc(100% - 20px);
+        border-radius: 9999px;
     }
 
-    .site-header.scrolled .nav-container {
-        padding: 8px 18px;
+    .site-header.scrolled,
+    .navbar.scrolled {
+        top: 8px;
     }
 
     .nav-container {
-        padding: 10px 18px;
+        padding: 6px 14px 6px 8px;
+    }
+
+    .site-header.scrolled .nav-container {
+        padding: 5px 12px 5px 6px;
     }
 
     .desktop-nav {
@@ -1581,37 +1638,84 @@ ul {
     }
 
     .brand-link {
-        gap: 11px;
+        gap: 10px;
     }
 
     .brand-logo-frame {
-        width: 50px;
-        height: 50px;
-    }
-
-    .site-header.scrolled .brand-logo-frame {
         width: 44px;
         height: 44px;
     }
 
+    .site-header.scrolled .brand-logo-frame {
+        width: 38px;
+        height: 38px;
+    }
+
     .brand-title {
-        font-size: 1.32rem;
+        font-size: 1.22rem;
     }
 
     .brand-subtitle {
-        font-size: 0.75rem;
+        font-size: 0.68rem;
     }
 
     .brand-location {
-        font-size: 0.68rem;
+        font-size: 0.64rem;
     }
 
     .mobile-menu-toggle {
         display: flex;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
     }
 
     .mobile-nav-drawer {
         display: block;
+        top: 68px;
+        left: 10px;
+        right: 10px;
+        border-radius: 26px;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(32px) saturate(200%);
+        -webkit-backdrop-filter: blur(32px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.85);
+        box-shadow: 
+            0 24px 50px -10px rgba(15, 23, 42, 0.18),
+            inset 0 1px 2px rgba(255, 255, 255, 0.95);
+    }
+
+    .mobile-nav-brand {
+        border-bottom-color: rgba(15, 23, 42, 0.08);
+    }
+
+    .mobile-brand-title {
+        color: #0f172a;
+    }
+
+    .mobile-brand-sub {
+        color: #64748b;
+    }
+
+    .mobile-nav-link {
+        color: #1e293b;
+        border-radius: 14px;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link.active {
+        background: rgba(37, 99, 235, 0.08);
+        color: #1d4ed8;
+    }
+
+    .mobile-nav-footer {
+        border-top-color: rgba(15, 23, 42, 0.08);
+    }
+
+    .mobile-timing {
+        color: #64748b;
     }
 
     .hero-section {
