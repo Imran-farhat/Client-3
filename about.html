@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Anandha Nursery and Primary School in Melpattampakkam, Cuddalore District, Tamil Nadu. Our vision, mission, campus highlights and commitment to quality foundational education.">
+    <meta name="description"
+        content="About Anandha Nursery and Primary School in Melpattampakkam, Cuddalore District, Tamil Nadu. Our vision, mission, campus highlights and commitment to quality foundational education.">
     <title>About Us | Anandha Nursery and Primary School | Melpattampakkam</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpeg" href="logo.jpeg">
     <style>
         /* Push content below fixed navbar on inner pages */
-        .page-hero-spacer { height: 96px; }
+        .page-hero-spacer {
+            height: 96px;
+        }
 
         /* Uses global Apple iOS Liquid Glass Floating Capsule navbar from style.css */
 
@@ -27,6 +33,7 @@
             gap: 10px;
             margin-top: 20px;
         }
+
         .about-badge-pill {
             display: inline-flex;
             align-items: center;
@@ -41,12 +48,28 @@
             color: #0e1b38;
             box-shadow: 0 6px 18px -6px rgba(14, 27, 56, 0.12);
         }
+
         .about-badge-pill .badge-dot {
-            width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
         }
-        .badge-dot.dot-sky { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; }
-        .badge-dot.dot-amber { background: #f59e0b; box-shadow: 0 0 8px #f59e0b; }
-        .badge-dot.dot-green { background: #10b981; box-shadow: 0 0 8px #10b981; }
+
+        .badge-dot.dot-sky {
+            background: #38bdf8;
+            box-shadow: 0 0 8px #38bdf8;
+        }
+
+        .badge-dot.dot-amber {
+            background: #f59e0b;
+            box-shadow: 0 0 8px #f59e0b;
+        }
+
+        .badge-dot.dot-green {
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+        }
 
         /* ============================================================
            3D CIRCLING CAROUSEL — Coverflow / perspective carousel
@@ -65,13 +88,17 @@
             overflow: hidden;
             text-align: center;
         }
+
         .campus-3d-wrap::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 5px;
             background: linear-gradient(90deg, #2563eb, #38bdf8, #fbbf24);
         }
+
         .campus-3d-kicker {
             display: inline-flex;
             align-items: center;
@@ -88,6 +115,7 @@
             text-transform: uppercase;
             margin-bottom: 12px;
         }
+
         .campus-3d-title {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: clamp(1.5rem, 3vw, 2rem);
@@ -95,12 +123,14 @@
             color: #0a1226;
             margin-bottom: 8px;
         }
+
         .campus-3d-sub {
             font-size: 0.95rem;
             color: #64748b;
             max-width: 560px;
             margin: 0 auto 8px;
         }
+
         .cover-3d-viewport {
             position: relative;
             perspective: 1400px;
@@ -112,6 +142,7 @@
             touch-action: pan-y;
             outline: none;
         }
+
         .cover-3d-track {
             position: relative;
             width: 100%;
@@ -119,6 +150,7 @@
             transform-style: preserve-3d;
             -webkit-transform-style: preserve-3d;
         }
+
         .cover-3d-slide {
             position: absolute;
             top: 50%;
@@ -132,12 +164,13 @@
             border: 4px solid #ffffff;
             box-shadow: 0 24px 48px -12px rgba(14, 27, 56, 0.28), 0 8px 16px -4px rgba(14, 27, 56, 0.12);
             transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                        filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+                opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity, filter;
             cursor: pointer;
             user-select: none;
         }
+
         .cover-3d-slide img {
             width: 100%;
             height: 100%;
@@ -146,15 +179,19 @@
             pointer-events: none;
             -webkit-user-drag: none;
         }
+
         .cover-caption {
             position: absolute;
-            left: 0; right: 0; bottom: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             padding: 28px 16px 14px;
-            background: linear-gradient(to top, rgba(6,11,23,0.82) 0%, rgba(6,11,23,0.35) 55%, transparent 100%);
+            background: linear-gradient(to top, rgba(6, 11, 23, 0.82) 0%, rgba(6, 11, 23, 0.35) 55%, transparent 100%);
             color: #fff;
             text-align: left;
             pointer-events: none;
         }
+
         .cover-caption span {
             display: block;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -162,13 +199,17 @@
             font-weight: 800;
             letter-spacing: 0.01em;
         }
+
         .cover-caption small {
             display: block;
             font-size: 0.76rem;
             font-weight: 500;
-            color: rgba(255,255,255,0.82);
+            color: rgba(255, 255, 255, 0.82);
         }
-        .cover-3d-slide[data-offset="0"] { cursor: default; }
+
+        .cover-3d-slide[data-offset="0"] {
+            cursor: default;
+        }
 
         /* Floor reflection / glow under active slide */
         .cover-floor-glow {
@@ -178,7 +219,7 @@
             transform: translateX(-50%);
             width: min(460px, 60%);
             height: 26px;
-            background: radial-gradient(ellipse at center, rgba(37,99,235,0.28) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.28) 0%, transparent 70%);
             filter: blur(8px);
             pointer-events: none;
         }
@@ -192,25 +233,29 @@
             margin-top: 18px;
             flex-wrap: wrap;
         }
+
         .cover-arrow {
-            width: 46px; height: 46px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             background: #ffffff;
-            border: 1px solid rgba(148,163,184,0.3);
+            border: 1px solid rgba(148, 163, 184, 0.3);
             color: #0e1b38;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 16px -4px rgba(14,27,56,0.18);
+            box-shadow: 0 6px 16px -4px rgba(14, 27, 56, 0.18);
             transition: all 0.25s ease;
         }
+
         .cover-arrow:hover {
             background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 100%);
             color: #fff;
             border-color: transparent;
             transform: translateY(-2px);
-            box-shadow: 0 10px 22px -4px rgba(37,99,235,0.45);
+            box-shadow: 0 10px 22px -4px rgba(37, 99, 235, 0.45);
         }
+
         .cover-counter {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 0.88rem;
@@ -219,7 +264,12 @@
             min-width: 62px;
             font-variant-numeric: tabular-nums;
         }
-        .cover-counter strong { color: #0a1226; font-size: 1.05rem; }
+
+        .cover-counter strong {
+            color: #0a1226;
+            font-size: 1.05rem;
+        }
+
         .cover-dots {
             display: flex;
             align-items: center;
@@ -228,19 +278,27 @@
             margin-top: 14px;
             flex-wrap: wrap;
         }
+
         .cover-dot {
-            width: 10px; height: 10px;
+            width: 10px;
+            height: 10px;
             border-radius: 9999px;
             background: #cbd5e1;
             transition: all 0.3s ease;
             padding: 0;
         }
-        .cover-dot:hover { background: #93c5fd; transform: scale(1.15); }
+
+        .cover-dot:hover {
+            background: #93c5fd;
+            transform: scale(1.15);
+        }
+
         .cover-dot.active {
             width: 30px;
             background: linear-gradient(90deg, #2563eb, #38bdf8);
-            box-shadow: 0 4px 10px -2px rgba(37,99,235,0.5);
+            box-shadow: 0 4px 10px -2px rgba(37, 99, 235, 0.5);
         }
+
         .cover-hint {
             margin-top: 12px;
             font-size: 0.78rem;
@@ -249,30 +307,70 @@
 
         /* Responsive */
         @media (max-width: 860px) {
-            .cover-3d-viewport { height: 360px; }
-            .cover-3d-slide { width: min(440px, 74%); }
-            .campus-3d-wrap { padding: 32px 18px 26px; }
+            .cover-3d-viewport {
+                height: 360px;
+            }
+
+            .cover-3d-slide {
+                width: min(440px, 74%);
+            }
+
+            .campus-3d-wrap {
+                padding: 32px 18px 26px;
+            }
         }
+
         @media (max-width: 560px) {
-            .cover-3d-viewport { height: 300px; }
+            .cover-3d-viewport {
+                height: 300px;
+            }
+
             .cover-3d-slide {
                 width: 82%;
                 border-width: 3px;
                 border-radius: 16px;
             }
-            .cover-caption { padding: 22px 12px 10px; }
-            .cover-caption span { font-size: 0.86rem; }
-            .cover-caption small { font-size: 0.7rem; }
-            .cover-arrow { width: 42px; height: 42px; }
-            .campus-3d-wrap { border-radius: 20px; margin-bottom: 36px; }
-            .about-badges-row { gap: 8px; }
-            .about-badge-pill { font-size: 0.76rem; padding: 7px 13px; }
+
+            .cover-caption {
+                padding: 22px 12px 10px;
+            }
+
+            .cover-caption span {
+                font-size: 0.86rem;
+            }
+
+            .cover-caption small {
+                font-size: 0.7rem;
+            }
+
+            .cover-arrow {
+                width: 42px;
+                height: 42px;
+            }
+
+            .campus-3d-wrap {
+                border-radius: 20px;
+                margin-bottom: 36px;
+            }
+
+            .about-badges-row {
+                gap: 8px;
+            }
+
+            .about-badge-pill {
+                font-size: 0.76rem;
+                padding: 7px 13px;
+            }
         }
+
         @media (prefers-reduced-motion: reduce) {
-            .cover-3d-slide { transition-duration: 0.01ms !important; }
+            .cover-3d-slide {
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Background Ambient Glow Blobs -->
     <div class="ambient-glow glow-blob-1" aria-hidden="true"></div>
@@ -307,7 +405,8 @@
             </nav>
 
             <!-- Mobile Hamburger Button -->
-            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle mobile navigation menu">
+            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-expanded="false"
+                aria-controls="mobileNav" aria-label="Toggle mobile navigation menu">
                 <span class="hamburger-bar"></span>
                 <span class="hamburger-bar"></span>
                 <span class="hamburger-bar"></span>
@@ -350,8 +449,9 @@
             <div class="section-container">
                 <div class="section-header reveal-item">
                     <div class="section-tag">
-                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        <svg class="tag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                         <span>Foundational Excellence</span>
                     </div>
@@ -359,16 +459,20 @@
                     <div class="title-underline"></div>
                     <!-- Tagline badges -->
                     <div class="about-badges-row" aria-label="School highlights">
-                        <span class="about-badge-pill"><span class="badge-dot dot-sky"></span>Child-Friendly Campus</span>
+                        <span class="about-badge-pill"><span class="badge-dot dot-sky"></span>Child-Friendly
+                            Campus</span>
                         <span class="about-badge-pill"><span class="badge-dot dot-amber"></span>Pre-KG to Grade 7</span>
-                        <span class="about-badge-pill"><span class="badge-dot dot-green"></span>Play-Based Foundation</span>
+                        <span class="about-badge-pill"><span class="badge-dot dot-green"></span>Play-Based
+                            Foundation</span>
                     </div>
                 </div>
 
                 <div class="about-hero-card reveal-item">
                     <div class="about-quote-mark" aria-hidden="true">“</div>
                     <p class="about-lead-text">
-                        Anandha Nursery and Primary School is committed to providing quality education in a caring and child-friendly environment. We focus on creating a strong foundation during the early years of a child’s education.
+                        Anandha Nursery and Primary School is committed to providing quality education in a caring and
+                        child-friendly environment. We focus on creating a strong foundation during the early years of a
+                        child’s education.
                     </p>
                     <div class="about-signature">
                         <div class="signature-line"></div>
@@ -380,42 +484,64 @@
                 <div class="campus-3d-wrap reveal-item">
                     <span class="campus-3d-kicker">✦ Our Campus Ambience</span>
                     <h2 class="campus-3d-title">Campus Highlights in 3D</h2>
-                    <p class="campus-3d-sub">Playgrounds, classrooms and activity areas — drag, click or use arrows to explore.</p>
+                    <p class="campus-3d-sub">Playgrounds, classrooms and activity areas — drag, click or use arrows to
+                        explore.</p>
 
-                    <div class="cover-3d-viewport" id="coverViewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="School campus highlights 3D carousel">
+                    <div class="cover-3d-viewport" id="coverViewport" tabindex="0" role="region"
+                        aria-roledescription="carousel" aria-label="School campus highlights 3D carousel">
                         <div class="cover-3d-track" id="coverTrack">
                             <!-- PLACEHOLDER IMAGES: replace each src below with your own asset path.
                                  Example: src="images/your-photo.jpg". Keep alt text meaningful. -->
 
                             <!-- Slide 1: Playground stage -->
                             <!-- PLACEHOLDER: replace "images/ambience/001.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="0" role="group" aria-roledescription="slide" aria-label="1 of 5: Playground stage">
-                                <img src="images/ambience/001.jpeg" alt="Anandha School playground stage for outdoor events and sports" loading="eager" onerror="this.src='logo.jpeg'">
-                                <div class="cover-caption"><span>Playground Stage</span><small>Outdoor events &amp; sports</small></div>
+                            <div class="cover-3d-slide" data-index="0" role="group" aria-roledescription="slide"
+                                aria-label="1 of 5: Playground stage">
+                                <img src="images/ambience/001.jpeg"
+                                    alt="Anandha School playground stage for outdoor events and sports" loading="eager"
+                                    onerror="this.src='logo.jpeg'">
+                                <div class="cover-caption"><span>Playground Stage</span><small>Outdoor events &amp;
+                                        sports</small></div>
                             </div>
                             <!-- Slide 2: Open play area -->
                             <!-- PLACEHOLDER: replace "images/ambience/002.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="1" role="group" aria-roledescription="slide" aria-label="2 of 5: Open play area">
-                                <img src="images/ambience/002.jpeg" alt="Open school play ground with shade trees and activity mural wall" loading="lazy" onerror="this.src='logo.jpeg'">
-                                <div class="cover-caption"><span>Open Play Area</span><small>Safe space to run &amp; play</small></div>
+                            <div class="cover-3d-slide" data-index="1" role="group" aria-roledescription="slide"
+                                aria-label="2 of 5: Open play area">
+                                <img src="images/ambience/002.jpeg"
+                                    alt="Open school play ground with shade trees and activity mural wall"
+                                    loading="lazy" onerror="this.src='logo.jpeg'">
+                                <div class="cover-caption"><span>Open Play Area</span><small>Safe space to run &amp;
+                                        play</small></div>
                             </div>
                             <!-- Slide 3: Learning classroom -->
                             <!-- PLACEHOLDER: replace "images/ambience/004.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="2" role="group" aria-roledescription="slide" aria-label="3 of 5: Learning classroom">
-                                <img src="images/ambience/004.jpeg" alt="Colourful classroom walls with charts and learning materials" loading="lazy" onerror="this.src='logo.jpeg'">
-                                <div class="cover-caption"><span>Learning Classroom</span><small>Charts, colour &amp; curiosity</small></div>
+                            <div class="cover-3d-slide" data-index="2" role="group" aria-roledescription="slide"
+                                aria-label="3 of 5: Learning classroom">
+                                <img src="images/ambience/004.jpeg"
+                                    alt="Colourful classroom walls with charts and learning materials" loading="lazy"
+                                    onerror="this.src='logo.jpeg'">
+                                <div class="cover-caption"><span>Learning Classroom</span><small>Charts, colour &amp;
+                                        curiosity</small></div>
                             </div>
                             <!-- Slide 4: Kindergarten activity room -->
                             <!-- PLACEHOLDER: replace "images/ambience/005.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="3" role="group" aria-roledescription="slide" aria-label="4 of 5: Kindergarten activity room">
-                                <img src="images/ambience/005.jpeg" alt="Kindergarten activity room with round tables and tiny chairs" loading="lazy" onerror="this.src='logo.jpeg'">
-                                <div class="cover-caption"><span>Kindergarten Room</span><small>Play-based early learning</small></div>
+                            <div class="cover-3d-slide" data-index="3" role="group" aria-roledescription="slide"
+                                aria-label="4 of 5: Kindergarten activity room">
+                                <img src="images/ambience/005.jpeg"
+                                    alt="Kindergarten activity room with round tables and tiny chairs" loading="lazy"
+                                    onerror="this.src='logo.jpeg'">
+                                <div class="cover-caption"><span>Kindergarten Room</span><small>Play-based early
+                                        learning</small></div>
                             </div>
                             <!-- Slide 5: School corridor -->
                             <!-- PLACEHOLDER: replace "images/ambience/006.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="4" role="group" aria-roledescription="slide" aria-label="5 of 5: School corridor">
-                                <img src="images/ambience/006.jpeg" alt="Clean airy school corridor connecting classrooms" loading="lazy" onerror="this.src='logo.jpeg'">
-                                <div class="cover-caption"><span>School Corridor</span><small>Bright, airy walkways</small></div>
+                            <div class="cover-3d-slide" data-index="4" role="group" aria-roledescription="slide"
+                                aria-label="5 of 5: School corridor">
+                                <img src="images/ambience/006.jpeg"
+                                    alt="Clean airy school corridor connecting classrooms" loading="lazy"
+                                    onerror="this.src='logo.jpeg'">
+                                <div class="cover-caption"><span>School Corridor</span><small>Bright, airy
+                                        walkways</small></div>
                             </div>
                         </div>
                         <div class="cover-floor-glow" aria-hidden="true"></div>
@@ -423,17 +549,24 @@
 
                     <!-- Manual navigation: arrows + counter -->
                     <div class="cover-controls">
-                        <button type="button" class="cover-arrow" id="coverPrev" aria-label="Show previous campus photo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                        <button type="button" class="cover-arrow" id="coverPrev"
+                            aria-label="Show previous campus photo">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
                         </button>
-                        <div class="cover-counter" aria-live="polite"><strong id="coverCurrent">01</strong> / <span id="coverTotal">05</span></div>
+                        <div class="cover-counter" aria-live="polite"><strong id="coverCurrent">01</strong> / <span
+                                id="coverTotal">05</span></div>
                         <button type="button" class="cover-arrow" id="coverNext" aria-label="Show next campus photo">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M9 18l6-6-6-6" />
+                            </svg>
                         </button>
                     </div>
                     <!-- Dots (built by JS, one per slide) -->
                     <div class="cover-dots" id="coverDots" role="tablist" aria-label="Choose campus photo"></div>
-                    <p class="cover-hint">Auto-rotates every 2s · hovers to pause · swipe on mobile</p>
                 </div>
 
                 <!-- ============ 4. OUR VISION & OUR MISSION (side-by-side cards) ============ -->
@@ -443,9 +576,10 @@
                         <div class="pillar-card-glow" aria-hidden="true"></div>
                         <div class="pillar-header">
                             <div class="pillar-icon-box vision-icon-box">
-                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="3"/>
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="3" />
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                 </svg>
                             </div>
                             <div class="pillar-title-group">
@@ -454,7 +588,8 @@
                             </div>
                         </div>
                         <p class="pillar-description">
-                            To nurture confident, knowledgeable, responsible and compassionate young learners who are prepared to face the future with confidence.
+                            To nurture confident, knowledgeable, responsible and compassionate young learners who are
+                            prepared to face the future with confidence.
                         </p>
                         <div class="pillar-accent-bar vision-bar"></div>
                     </div>
@@ -464,9 +599,10 @@
                         <div class="pillar-card-glow" aria-hidden="true"></div>
                         <div class="pillar-header">
                             <div class="pillar-icon-box mission-icon-box">
-                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                                <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
                                 </svg>
                             </div>
                             <div class="pillar-title-group">
@@ -475,7 +611,9 @@
                             </div>
                         </div>
                         <p class="pillar-description">
-                            Our mission is to provide quality and meaningful education, build a strong academic foundation, encourage curiosity and independent thinking, develop communication and social skills, and promote discipline and good values.
+                            Our mission is to provide quality and meaningful education, build a strong academic
+                            foundation, encourage curiosity and independent thinking, develop communication and social
+                            skills, and promote discipline and good values.
                         </p>
                         <div class="pillar-accent-bar mission-bar"></div>
                     </div>
@@ -502,7 +640,8 @@
                         </div>
                     </div>
                     <p class="footer-description">
-                        Committed to providing quality education in a caring, nurturing and child-friendly environment. Where every child is encouraged to learn, explore, grow and shine.
+                        Committed to providing quality education in a caring, nurturing and child-friendly environment.
+                        Where every child is encouraged to learn, explore, grow and shine.
                     </p>
                     <div class="footer-motto-badge">
                         <span>“The Future Begins Here!”</span>
@@ -538,29 +677,34 @@
                     <h4 class="footer-heading">School Office</h4>
                     <div class="footer-contact-items">
                         <div class="footer-contact-row">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
                             </svg>
                             <span>Barakath Nagar, Melpattampakkam, Tamil Nadu</span>
                         </div>
                         <div class="footer-contact-row">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                             </svg>
                             <span>8489 58 8489 / 95 66 66 95 66</span>
                         </div>
                         <div class="footer-contact-row">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
                             </svg>
                             <span>anandhaschoolmpm@gmail.com</span>
                         </div>
                         <div class="footer-contact-row">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
                             </svg>
                             <span>9.00am to 5.00pm</span>
                         </div>
@@ -578,145 +722,146 @@
     <!-- Floating Scroll-to-Top Button -->
     <button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll back to top">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M18 15l-6-6-6 6"/>
+            <path d="M18 15l-6-6-6 6" />
         </svg>
     </button>
 
     <script src="script.js"></script>
     <script>
-    /* ============================================================
-       3D CIRCLING CAROUSEL — coverflow logic
-       - Auto-rotates every 3.5s, pauses on hover/focus/touch
-       - Arrows, dots, keyboard, swipe, click-to-focus side slides
-       ============================================================ */
-    (function () {
-        'use strict';
-        var viewport = document.getElementById('coverViewport');
-        var slides = Array.prototype.slice.call(document.querySelectorAll('.cover-3d-slide'));
-        var prevBtn = document.getElementById('coverPrev');
-        var nextBtn = document.getElementById('coverNext');
-        var dotsWrap = document.getElementById('coverDots');
-        var currentEl = document.getElementById('coverCurrent');
-        var totalEl = document.getElementById('coverTotal');
-        if (!viewport || !slides.length) return;
+        /* ============================================================
+           3D CIRCLING CAROUSEL — coverflow logic
+           - Auto-rotates every 3.5s, pauses on hover/focus/touch
+           - Arrows, dots, keyboard, swipe, click-to-focus side slides
+           ============================================================ */
+        (function () {
+            'use strict';
+            var viewport = document.getElementById('coverViewport');
+            var slides = Array.prototype.slice.call(document.querySelectorAll('.cover-3d-slide'));
+            var prevBtn = document.getElementById('coverPrev');
+            var nextBtn = document.getElementById('coverNext');
+            var dotsWrap = document.getElementById('coverDots');
+            var currentEl = document.getElementById('coverCurrent');
+            var totalEl = document.getElementById('coverTotal');
+            if (!viewport || !slides.length) return;
 
-        var total = slides.length;
-        var active = 0;
-        var AUTOPLAY_MS = 2000;
-        var timer = null;
-        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var total = slides.length;
+            var active = 0;
+            var AUTOPLAY_MS = 2000;
+            var timer = null;
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        function mod(n, m) { return ((n % m) + m) % m; }
-        function pad(n) { return (n < 10 ? '0' : '') + n; }
+            function mod(n, m) { return ((n % m) + m) % m; }
+            function pad(n) { return (n < 10 ? '0' : '') + n; }
 
-        // Build dots
-        var dots = slides.map(function (_, i) {
-            var d = document.createElement('button');
-            d.type = 'button';
-            d.className = 'cover-dot' + (i === 0 ? ' active' : '');
-            d.setAttribute('role', 'tab');
-            d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
-            d.addEventListener('click', function () { goTo(i); restart(); });
-            dotsWrap.appendChild(d);
-            return d;
-        });
-        if (totalEl) totalEl.textContent = pad(total);
-
-        function gaps() {
-            var w = window.innerWidth;
-            if (w < 560) return { g1: 118, g2: 196 };
-            if (w < 860) return { g1: 160, g2: 280 };
-            return { g1: 205, g2: 365 };
-        }
-
-        function render() {
-            var g = gaps();
-            slides.forEach(function (s, i) {
-                var off = mod(i - active, total);
-                if (off > total / 2) off -= total; // -3..3 for 6 slides
-                s.dataset.offset = off;
-                s.setAttribute('aria-hidden', off === 0 ? 'false' : 'true');
-                if (off === 0) {
-                    s.style.transform = 'translate(-50%,-50%) translateZ(120px) rotateY(0deg) scale(1)';
-                    s.style.zIndex = '10'; s.style.opacity = '1';
-                    s.style.filter = 'brightness(1)'; s.style.pointerEvents = 'auto';
-                } else if (off === 1) {
-                    s.style.transform = 'translate(calc(-50% + ' + g.g1 + 'px),-50%) translateZ(-40px) rotateY(-38deg) scale(0.88)';
-                    s.style.zIndex = '5'; s.style.opacity = '0.92';
-                    s.style.filter = 'brightness(0.85)'; s.style.pointerEvents = 'auto';
-                } else if (off === -1) {
-                    s.style.transform = 'translate(calc(-50% - ' + g.g1 + 'px),-50%) translateZ(-40px) rotateY(38deg) scale(0.88)';
-                    s.style.zIndex = '5'; s.style.opacity = '0.92';
-                    s.style.filter = 'brightness(0.85)'; s.style.pointerEvents = 'auto';
-                } else if (off === 2) {
-                    s.style.transform = 'translate(calc(-50% + ' + g.g2 + 'px),-50%) translateZ(-140px) rotateY(-46deg) scale(0.7)';
-                    s.style.zIndex = '2'; s.style.opacity = '0.5';
-                    s.style.filter = 'brightness(0.7)'; s.style.pointerEvents = 'auto';
-                } else if (off === -2) {
-                    s.style.transform = 'translate(calc(-50% - ' + g.g2 + 'px),-50%) translateZ(-140px) rotateY(46deg) scale(0.7)';
-                    s.style.zIndex = '2'; s.style.opacity = '0.5';
-                    s.style.filter = 'brightness(0.7)'; s.style.pointerEvents = 'auto';
-                } else {
-                    // far/back slide (6th) — tucked behind, invisible
-                    s.style.transform = 'translate(-50%,-50%) translateZ(-320px) scale(0.5)';
-                    s.style.zIndex = '0'; s.style.opacity = '0';
-                    s.style.filter = 'blur(2px) brightness(0.6)'; s.style.pointerEvents = 'none';
-                }
+            // Build dots
+            var dots = slides.map(function (_, i) {
+                var d = document.createElement('button');
+                d.type = 'button';
+                d.className = 'cover-dot' + (i === 0 ? ' active' : '');
+                d.setAttribute('role', 'tab');
+                d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+                d.addEventListener('click', function () { goTo(i); restart(); });
+                dotsWrap.appendChild(d);
+                return d;
             });
-            dots.forEach(function (d, i) { d.classList.toggle('active', i === active); });
-            if (currentEl) currentEl.textContent = pad(active + 1);
-        }
+            if (totalEl) totalEl.textContent = pad(total);
 
-        function goTo(i) { active = mod(i, total); render(); }
-        function next() { goTo(active + 1); }
-        function prev() { goTo(active - 1); }
+            function gaps() {
+                var w = window.innerWidth;
+                if (w < 560) return { g1: 118, g2: 196 };
+                if (w < 860) return { g1: 160, g2: 280 };
+                return { g1: 205, g2: 365 };
+            }
 
-        function start() {
-            if (reduceMotion || timer) return;
-            timer = setInterval(next, AUTOPLAY_MS);
-        }
-        function stop() { if (timer) { clearInterval(timer); timer = null; } }
-        function restart() { stop(); start(); }
+            function render() {
+                var g = gaps();
+                slides.forEach(function (s, i) {
+                    var off = mod(i - active, total);
+                    if (off > total / 2) off -= total; // -3..3 for 6 slides
+                    s.dataset.offset = off;
+                    s.setAttribute('aria-hidden', off === 0 ? 'false' : 'true');
+                    if (off === 0) {
+                        s.style.transform = 'translate(-50%,-50%) translateZ(120px) rotateY(0deg) scale(1)';
+                        s.style.zIndex = '10'; s.style.opacity = '1';
+                        s.style.filter = 'brightness(1)'; s.style.pointerEvents = 'auto';
+                    } else if (off === 1) {
+                        s.style.transform = 'translate(calc(-50% + ' + g.g1 + 'px),-50%) translateZ(-40px) rotateY(-38deg) scale(0.88)';
+                        s.style.zIndex = '5'; s.style.opacity = '0.92';
+                        s.style.filter = 'brightness(0.85)'; s.style.pointerEvents = 'auto';
+                    } else if (off === -1) {
+                        s.style.transform = 'translate(calc(-50% - ' + g.g1 + 'px),-50%) translateZ(-40px) rotateY(38deg) scale(0.88)';
+                        s.style.zIndex = '5'; s.style.opacity = '0.92';
+                        s.style.filter = 'brightness(0.85)'; s.style.pointerEvents = 'auto';
+                    } else if (off === 2) {
+                        s.style.transform = 'translate(calc(-50% + ' + g.g2 + 'px),-50%) translateZ(-140px) rotateY(-46deg) scale(0.7)';
+                        s.style.zIndex = '2'; s.style.opacity = '0.5';
+                        s.style.filter = 'brightness(0.7)'; s.style.pointerEvents = 'auto';
+                    } else if (off === -2) {
+                        s.style.transform = 'translate(calc(-50% - ' + g.g2 + 'px),-50%) translateZ(-140px) rotateY(46deg) scale(0.7)';
+                        s.style.zIndex = '2'; s.style.opacity = '0.5';
+                        s.style.filter = 'brightness(0.7)'; s.style.pointerEvents = 'auto';
+                    } else {
+                        // far/back slide (6th) — tucked behind, invisible
+                        s.style.transform = 'translate(-50%,-50%) translateZ(-320px) scale(0.5)';
+                        s.style.zIndex = '0'; s.style.opacity = '0';
+                        s.style.filter = 'blur(2px) brightness(0.6)'; s.style.pointerEvents = 'none';
+                    }
+                });
+                dots.forEach(function (d, i) { d.classList.toggle('active', i === active); });
+                if (currentEl) currentEl.textContent = pad(active + 1);
+            }
 
-        // Arrows
-        if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
-        if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+            function goTo(i) { active = mod(i, total); render(); }
+            function next() { goTo(active + 1); }
+            function prev() { goTo(active - 1); }
 
-        // Click a side preview to bring it to center
-        slides.forEach(function (s, i) {
-            s.addEventListener('click', function () { if (i !== active) { goTo(i); restart(); } });
-        });
+            function start() {
+                if (reduceMotion || timer) return;
+                timer = setInterval(next, AUTOPLAY_MS);
+            }
+            function stop() { if (timer) { clearInterval(timer); timer = null; } }
+            function restart() { stop(); start(); }
 
-        // Hover-pause (desktop) + focus-pause (a11y)
-        viewport.addEventListener('mouseenter', stop);
-        viewport.addEventListener('mouseleave', start);
-        viewport.addEventListener('focusin', stop);
-        viewport.addEventListener('focusout', start);
+            // Arrows
+            if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+            if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
 
-        // Keyboard
-        viewport.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowRight') { next(); restart(); }
-            else if (e.key === 'ArrowLeft') { prev(); restart(); }
-        });
+            // Click a side preview to bring it to center
+            slides.forEach(function (s, i) {
+                s.addEventListener('click', function () { if (i !== active) { goTo(i); restart(); } });
+            });
 
-        // Touch swipe
-        var startX = 0, dx = 0, touching = false;
-        viewport.addEventListener('touchstart', function (e) {
-            touching = true; startX = e.touches[0].clientX; dx = 0; stop();
-        }, { passive: true });
-        viewport.addEventListener('touchmove', function (e) {
-            if (touching) dx = e.touches[0].clientX - startX;
-        }, { passive: true });
-        viewport.addEventListener('touchend', function () {
-            touching = false;
-            if (Math.abs(dx) > 40) { if (dx < 0) next(); else prev(); }
+            // Hover-pause (desktop) + focus-pause (a11y)
+            viewport.addEventListener('mouseenter', stop);
+            viewport.addEventListener('mouseleave', start);
+            viewport.addEventListener('focusin', stop);
+            viewport.addEventListener('focusout', start);
+
+            // Keyboard
+            viewport.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') { next(); restart(); }
+                else if (e.key === 'ArrowLeft') { prev(); restart(); }
+            });
+
+            // Touch swipe
+            var startX = 0, dx = 0, touching = false;
+            viewport.addEventListener('touchstart', function (e) {
+                touching = true; startX = e.touches[0].clientX; dx = 0; stop();
+            }, { passive: true });
+            viewport.addEventListener('touchmove', function (e) {
+                if (touching) dx = e.touches[0].clientX - startX;
+            }, { passive: true });
+            viewport.addEventListener('touchend', function () {
+                touching = false;
+                if (Math.abs(dx) > 40) { if (dx < 0) next(); else prev(); }
+                start();
+            });
+
+            window.addEventListener('resize', render);
+            render();
             start();
-        });
-
-        window.addEventListener('resize', render);
-        render();
-        start();
-    })();
+        })();
     </script>
 </body>
+
 </html>
