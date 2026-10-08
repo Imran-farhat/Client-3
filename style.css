@@ -690,7 +690,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 5vw 120px;
+    padding: 0 5vw 76px;
     max-width: 1400px;
     margin: 0 auto;
     left: 0;
@@ -698,23 +698,27 @@ ul {
     pointer-events: none;
 }
 
-/* Polymorphic Frosted Glass Blur & Gradient Fade at Hero Bottom */
+/* Polymorphic Frosted Glass Fade — ONLY at the very bottom cutting edge, NOT mid-image */
 .hero-bottom-fade {
     position: absolute;
     bottom: -1px;
     left: 0;
     right: 0;
-    height: 160px;
+    height: 72px;   /* Thin strip right at the cut point only */
+    /* Gradient starts fully transparent → opaque white only at the last ~30% */
     background: linear-gradient(
         to bottom,
-        rgba(248, 250, 252, 0) 0%,
-        rgba(248, 250, 252, 0.20) 25%,
-        rgba(248, 250, 252, 0.60) 60%,
-        rgba(248, 250, 252, 0.92) 85%,
+        transparent 0%,
+        transparent 40%,
+        rgba(248, 250, 252, 0.55) 72%,
+        rgba(248, 250, 252, 0.90) 90%,
         #f8fafc 100%
     );
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    /* Mask: blur is ONLY applied in the bottom 40% of this element so it doesn't pollute the photo above */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 38%, black 72%, black 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, transparent 38%, black 72%, black 100%);
     pointer-events: none;
     z-index: 6;
 }
@@ -1821,7 +1825,7 @@ ul {
     }
 
     .hero-bottom-fade {
-        height: 80px;
+        display: none; /* Mobile uses flex column layout, no hard cut to dissolve */
     }
 
     .vision-mission-grid {
