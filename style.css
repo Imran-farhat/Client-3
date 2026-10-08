@@ -1866,27 +1866,255 @@ ul {
         padding: 12px 24px;
     }
 
+    /* General Section Spacing on Mobile */
+    .section {
+        padding: 46px 16px;
+    }
+
+    .section-header {
+        margin-bottom: 24px;
+    }
+
+    .section-tag {
+        font-size: 0.74rem;
+        padding: 4px 12px;
+        margin-bottom: 8px;
+    }
+
+    .section-title {
+        font-size: clamp(1.55rem, 5.5vw, 1.95rem);
+        line-height: 1.2;
+        margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+        font-size: 0.88rem;
+        line-height: 1.45;
+    }
+
+    .title-underline {
+        margin-top: 10px;
+        width: 40px;
+        height: 3px;
+    }
+
+    /* 1. About Lead Hero Card — Fine & Compact Mobile Size */
+    .about-hero-card {
+        padding: 20px 18px 18px 20px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 16px -2px rgba(14, 27, 56, 0.08);
+    }
+
+    .about-hero-card::before {
+        width: 4px;
+    }
+
+    .about-quote-mark {
+        font-size: 3.2rem;
+        top: 2px;
+        right: 12px;
+        opacity: 0.7;
+    }
+
+    .about-lead-text {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        margin-bottom: 14px;
+        font-weight: 500;
+    }
+
+    .about-signature {
+        gap: 10px;
+    }
+
+    .signature-line {
+        width: 24px;
+        height: 2px;
+    }
+
+    .signature-text {
+        font-size: 0.72rem;
+        letter-spacing: 0.03em;
+    }
+
+    /* 2. Vision & Mission Cards — Fine & Compact Mobile Size */
     .vision-mission-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
     }
 
+    .pillar-card {
+        padding: 16px 16px 14px;
+        border-radius: 16px;
+        box-shadow: 0 4px 14px -2px rgba(14, 27, 56, 0.07);
+    }
+
+    .pillar-header {
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+
+    .pillar-icon-box {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+    }
+
+    .pillar-icon-box svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .pillar-pretitle {
+        font-size: 0.68rem;
+        letter-spacing: 0.06em;
+    }
+
+    .pillar-title {
+        font-size: 1.15rem;
+        line-height: 1.2;
+    }
+
+    .pillar-description {
+        font-size: 0.86rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+    .pillar-accent-bar {
+        height: 3px;
+    }
+
+    /* 3. Classes Offered Cards — Compact 2-Column Mobile Grid */
     .classes-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 
+    .class-card {
+        padding: 14px 12px 12px;
+        border-radius: 14px;
+        box-shadow: 0 4px 14px -2px rgba(14, 27, 56, 0.06);
+    }
+
+    .class-watermark {
+        font-size: 1.8rem;
+        top: 6px;
+        right: 8px;
+        opacity: 0.08;
+    }
+
+    .class-icon-wrapper {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+    }
+
+    .class-icon-wrapper svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .class-stage-pill {
+        font-size: 0.62rem;
+        padding: 2px 7px;
+        margin-bottom: 6px;
+    }
+
+    .class-title {
+        font-size: 1.05rem;
+        line-height: 1.2;
+        margin-bottom: 4px;
+    }
+
+    .class-description {
+        font-size: 0.78rem;
+        line-height: 1.35;
+        margin-bottom: 10px;
+    }
+
+    .class-card-footer {
+        padding-top: 8px;
+        font-size: 0.72rem;
+    }
+
+    /* 4. Activities Cards — Compact 2-Column Mobile Grid */
     .activities-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 
+    .activity-card {
+        padding: 12px 12px;
+        gap: 10px;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(10, 18, 38, 0.04);
+    }
 
+    .activity-icon-container {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+    }
 
+    .activity-icon-container svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .activity-title {
+        font-size: 0.92rem;
+        margin-bottom: 2px;
+    }
+
+    .activity-description {
+        font-size: 0.76rem;
+        line-height: 1.35;
+    }
+
+    /* 5. Contact Cards — Compact Mobile Cards */
     .contact-cards-grid {
         grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .contact-card {
+        padding: 16px 16px;
+        border-radius: 14px;
+        box-shadow: 0 4px 14px -2px rgba(14, 27, 56, 0.06);
+    }
+
+    .contact-icon-frame {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .contact-icon-frame svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .contact-meta-label {
+        font-size: 0.68rem;
+        margin-bottom: 2px;
+    }
+
+    .contact-title {
+        font-size: 1.05rem;
+        margin-bottom: 4px;
+    }
+
+    .contact-value {
+        font-size: 0.88rem;
     }
 
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
     }
 
     .footer-bottom-bar {
@@ -1931,19 +2159,19 @@ ul {
     }
 
     .about-hero-card {
-        padding: 30px 20px;
+        padding: 18px 15px 15px 16px;
     }
 
     .about-lead-text {
-        font-size: 1.05rem;
+        font-size: 0.88rem;
     }
 
     .pillar-card {
-        padding: 28px 20px;
+        padding: 14px 14px 12px;
     }
 
     .class-card {
-        padding: 28px 20px;
+        padding: 12px 10px 10px;
     }
 }
 
