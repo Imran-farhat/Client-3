@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroImages = [
         "school/school-building.jpg", // 1. School main building (First / default)
         "school/reception.jpg",       // 2. School reception (Second slide)
-        "school/students.jpg"         // 3. Students group photo (Third slide)
+        "school/students1.png"        // 3. Students group photo (Third slide)
     ];
 
 
