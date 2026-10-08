@@ -131,9 +131,9 @@
             background: #0a1226;
             border: 4px solid #ffffff;
             box-shadow: 0 24px 48px -12px rgba(14, 27, 56, 0.28), 0 8px 16px -4px rgba(14, 27, 56, 0.12);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                        filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity, filter;
             cursor: pointer;
             user-select: none;
@@ -389,37 +389,31 @@
 
                             <!-- Slide 1: Playground stage -->
                             <!-- PLACEHOLDER: replace "images/ambience/001.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="0" role="group" aria-roledescription="slide" aria-label="1 of 6: Playground stage">
+                            <div class="cover-3d-slide" data-index="0" role="group" aria-roledescription="slide" aria-label="1 of 5: Playground stage">
                                 <img src="images/ambience/001.jpeg" alt="Anandha School playground stage for outdoor events and sports" loading="eager" onerror="this.src='logo.jpeg'">
                                 <div class="cover-caption"><span>Playground Stage</span><small>Outdoor events &amp; sports</small></div>
                             </div>
                             <!-- Slide 2: Open play area -->
                             <!-- PLACEHOLDER: replace "images/ambience/002.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="1" role="group" aria-roledescription="slide" aria-label="2 of 6: Open play area">
+                            <div class="cover-3d-slide" data-index="1" role="group" aria-roledescription="slide" aria-label="2 of 5: Open play area">
                                 <img src="images/ambience/002.jpeg" alt="Open school play ground with shade trees and activity mural wall" loading="lazy" onerror="this.src='logo.jpeg'">
                                 <div class="cover-caption"><span>Open Play Area</span><small>Safe space to run &amp; play</small></div>
                             </div>
-                            <!-- Slide 3: Primary classroom -->
-                            <!-- PLACEHOLDER: replace "images/ambience/003.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="2" role="group" aria-roledescription="slide" aria-label="3 of 6: Primary classroom">
-                                <img src="images/ambience/003.jpeg" alt="Bright primary classroom with blackboard and study desks" loading="lazy" onerror="this.src='logo.jpeg'">
-                                <div class="cover-caption"><span>Primary Classroom</span><small>Focused learning space</small></div>
-                            </div>
-                            <!-- Slide 4: Learning classroom -->
+                            <!-- Slide 3: Learning classroom -->
                             <!-- PLACEHOLDER: replace "images/ambience/004.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="3" role="group" aria-roledescription="slide" aria-label="4 of 6: Learning classroom">
+                            <div class="cover-3d-slide" data-index="2" role="group" aria-roledescription="slide" aria-label="3 of 5: Learning classroom">
                                 <img src="images/ambience/004.jpeg" alt="Colourful classroom walls with charts and learning materials" loading="lazy" onerror="this.src='logo.jpeg'">
                                 <div class="cover-caption"><span>Learning Classroom</span><small>Charts, colour &amp; curiosity</small></div>
                             </div>
-                            <!-- Slide 5: Kindergarten activity room -->
+                            <!-- Slide 4: Kindergarten activity room -->
                             <!-- PLACEHOLDER: replace "images/ambience/005.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="4" role="group" aria-roledescription="slide" aria-label="5 of 6: Kindergarten activity room">
+                            <div class="cover-3d-slide" data-index="3" role="group" aria-roledescription="slide" aria-label="4 of 5: Kindergarten activity room">
                                 <img src="images/ambience/005.jpeg" alt="Kindergarten activity room with round tables and tiny chairs" loading="lazy" onerror="this.src='logo.jpeg'">
                                 <div class="cover-caption"><span>Kindergarten Room</span><small>Play-based early learning</small></div>
                             </div>
-                            <!-- Slide 6: School corridor -->
+                            <!-- Slide 5: School corridor -->
                             <!-- PLACEHOLDER: replace "images/ambience/006.jpeg" with your asset path -->
-                            <div class="cover-3d-slide" data-index="5" role="group" aria-roledescription="slide" aria-label="6 of 6: School corridor">
+                            <div class="cover-3d-slide" data-index="4" role="group" aria-roledescription="slide" aria-label="5 of 5: School corridor">
                                 <img src="images/ambience/006.jpeg" alt="Clean airy school corridor connecting classrooms" loading="lazy" onerror="this.src='logo.jpeg'">
                                 <div class="cover-caption"><span>School Corridor</span><small>Bright, airy walkways</small></div>
                             </div>
@@ -432,14 +426,14 @@
                         <button type="button" class="cover-arrow" id="coverPrev" aria-label="Show previous campus photo">
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
                         </button>
-                        <div class="cover-counter" aria-live="polite"><strong id="coverCurrent">01</strong> / <span id="coverTotal">06</span></div>
+                        <div class="cover-counter" aria-live="polite"><strong id="coverCurrent">01</strong> / <span id="coverTotal">05</span></div>
                         <button type="button" class="cover-arrow" id="coverNext" aria-label="Show next campus photo">
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
                         </button>
                     </div>
                     <!-- Dots (built by JS, one per slide) -->
                     <div class="cover-dots" id="coverDots" role="tablist" aria-label="Choose campus photo"></div>
-                    <p class="cover-hint">Auto-rotates every 3.5s · hovers to pause · swipe on mobile</p>
+                    <p class="cover-hint">Auto-rotates every 2s · hovers to pause · swipe on mobile</p>
                 </div>
 
                 <!-- ============ 4. OUR VISION & OUR MISSION (side-by-side cards) ============ -->
@@ -608,7 +602,7 @@
 
         var total = slides.length;
         var active = 0;
-        var AUTOPLAY_MS = 3500;
+        var AUTOPLAY_MS = 2000;
         var timer = null;
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
