@@ -682,7 +682,7 @@ ul {
     z-index: 2;
 }
 
-/* Overlay Content (Positioned towards bottom-left gracefully with generous clearance) */
+/* Overlay Content (Positioned towards bottom-left gracefully) */
 .hero-overlay-content {
     position: absolute;
     inset: 0;
@@ -690,37 +690,12 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 5vw 76px;
+    padding: 0 5vw 64px;
     max-width: 1400px;
     margin: 0 auto;
     left: 0;
     right: 0;
     pointer-events: none;
-}
-
-/* Polymorphic Frosted Glass Fade — ONLY at the very bottom cutting edge, NOT mid-image */
-.hero-bottom-fade {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 72px;   /* Thin strip right at the cut point only */
-    /* Gradient starts fully transparent → opaque white only at the last ~30% */
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        transparent 40%,
-        rgba(248, 250, 252, 0.55) 72%,
-        rgba(248, 250, 252, 0.90) 90%,
-        #f8fafc 100%
-    );
-    /* Mask: blur is ONLY applied in the bottom 40% of this element so it doesn't pollute the photo above */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 38%, black 72%, black 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, transparent 38%, black 72%, black 100%);
-    pointer-events: none;
-    z-index: 6;
 }
 
 .hero-content-wrapper {
@@ -1822,10 +1797,6 @@ ul {
         font-size: 0.94rem;
         line-height: 1.5;
         color: rgba(255, 255, 255, 0.9);
-    }
-
-    .hero-bottom-fade {
-        display: none; /* Mobile uses flex column layout, no hard cut to dissolve */
     }
 
     .vision-mission-grid {
