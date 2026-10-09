@@ -1002,19 +1002,6 @@
                                 <h2 class="active-event-name" id="activeEventTitle">Yellow Day Celebration</h2>
                                 <p class="active-event-meta-sub" id="activeEventSub">Colours, smiles and joyful early learning</p>
                             </div>
-
-                            <div class="photos-view-actions">
-                                <span class="counter-badge" id="eventPhotoCounter">01 / 04</span>
-                                <button type="button" class="play-pause-btn" id="photoPlayPauseBtn" aria-label="Pause slideshow">
-                                    <svg id="pauseIcon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="6" y="4" width="4" height="16"/>
-                                        <rect x="14" y="4" width="4" height="16"/>
-                                    </svg>
-                                    <svg id="playIcon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
-                                        <polygon points="5 3 19 12 5 21 5 3"/>
-                                    </svg>
-                                </button>
-                            </div>
                         </div>
 
                         <!-- Active Event Large Photo Stage -->
@@ -1514,7 +1501,9 @@
                 const total = activeEvent.images.length;
 
                 // Update Counter & Caption
-                eventPhotoCounter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+                if (eventPhotoCounter) {
+                    eventPhotoCounter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+                }
                 currentPhotoCaption.textContent = currentImg.caption;
 
                 // Update crossfade slides
@@ -1560,13 +1549,14 @@
             }
 
             function updatePlayPauseState() {
+                if (!photoPlayPauseBtn) return;
                 if (isPhotoPlaying) {
-                    pauseIcon.style.display = 'block';
-                    playIcon.style.display = 'none';
+                    if (pauseIcon) pauseIcon.style.display = 'block';
+                    if (playIcon) playIcon.style.display = 'none';
                     photoPlayPauseBtn.setAttribute('aria-label', 'Pause slideshow');
                 } else {
-                    pauseIcon.style.display = 'none';
-                    playIcon.style.display = 'block';
+                    if (pauseIcon) pauseIcon.style.display = 'none';
+                    if (playIcon) playIcon.style.display = 'block';
                     photoPlayPauseBtn.setAttribute('aria-label', 'Play slideshow');
                 }
             }
