@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
        Smooth opacity transition (~1.5s), no slide movement, no empty flash
        ========================================================================== */
     const slides = document.querySelectorAll('.carousel-slide');
-    const SLIDE_DURATION = 2500; // Fast & lively 2.5 seconds per slide
+    const SLIDE_DURATION = 3500; // Balanced & comfortable 3.5 seconds per slide (moderated from 2.5s)
     let currentSlide = 0;
     let carouselTimer = null;
 

@@ -632,7 +632,7 @@ ul {
     height: 100%;
     opacity: 0;
     z-index: 0;
-    transition: opacity 0.65s ease-in-out;
+    transition: opacity 0.75s ease-in-out;
     pointer-events: none;
 }
 
