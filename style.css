@@ -673,17 +673,17 @@ ul {
     -webkit-user-drag: none;
 }
 
-/* Intelligent Positioning: Guarantees School Name & Signboard Visibility */
+/* Intelligent Positioning: Guarantees School Name, Building Facade & Entrance Visibility */
 .hero-img-building {
-    object-position: center top;
+    object-position: center 42%;
 }
 
 .hero-img-reception {
-    object-position: center 35%;
+    object-position: center 42%;
 }
 
 .hero-img-students {
-    object-position: center 22%;
+    object-position: center 30%;
 }
 
 /* Subtle, Natural Overlay: Soft contrast on bottom-left for text, transparent on building */
@@ -692,14 +692,14 @@ ul {
     inset: 0;
     background:
         linear-gradient(to bottom,
-            rgba(6, 11, 23, 0.45) 0%,
-            transparent 22%,
+            rgba(6, 11, 23, 0.40) 0%,
+            transparent 18%,
             transparent 65%,
-            rgba(6, 11, 23, 0.40) 100%),
+            rgba(6, 11, 23, 0.45) 100%),
         linear-gradient(to right,
-            rgba(6, 11, 23, 0.72) 0%,
-            rgba(6, 11, 23, 0.44) 38%,
-            rgba(6, 11, 23, 0.10) 68%,
+            rgba(6, 11, 23, 0.58) 0%,
+            rgba(6, 11, 23, 0.32) 36%,
+            rgba(6, 11, 23, 0.08) 60%,
             transparent 100%);
     pointer-events: none;
     z-index: 2;
@@ -722,7 +722,7 @@ ul {
 }
 
 .hero-content-wrapper {
-    max-width: 780px;
+    max-width: 650px;
     pointer-events: auto;
 }
 
@@ -1770,8 +1770,9 @@ address.contact-value {
 
     .hero-section {
         position: relative;
-        height: 100vh;
-        min-height: 100svh;
+        height: 100svh;
+        min-height: 560px;
+        max-height: 860px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1816,28 +1817,30 @@ address.contact-value {
         background: var(--navy-950);
     }
 
+    /* Mobile Focal Points: Centered on signboards, facades & subjects */
     .hero-img-building {
-        object-position: center top;
+        object-position: 45% 36%;
     }
 
     .hero-img-reception {
-        object-position: center 35%;
+        object-position: center 40%;
     }
 
     .hero-img-students {
-        object-position: 50% 20%;
+        object-position: center 26%;
     }
 
-    /* Smooth contrast gradient over photograph: protects top navbar & guarantees white text readability */
+    /* Natural mobile contrast gradient: clear center window keeps photos bright, dark bottom ensures legibility */
     .hero-image-overlay {
         background: linear-gradient(to bottom,
-                rgba(6, 11, 23, 0.52) 0%,
-                rgba(6, 11, 23, 0.16) 24%,
-                rgba(6, 11, 23, 0.48) 54%,
-                rgba(6, 11, 23, 0.88) 100%);
+                rgba(6, 11, 23, 0.45) 0%,
+                transparent 16%,
+                transparent 48%,
+                rgba(6, 11, 23, 0.55) 72%,
+                rgba(6, 11, 23, 0.84) 100%);
     }
 
-    /* Content directly overlaid on background photo (AMS Reference Layout) */
+    /* Content directly overlaid on background photo (Compact & Mobile-Fit) */
     .hero-overlay-content {
         position: absolute;
         inset: 0;
@@ -1845,7 +1848,7 @@ address.contact-value {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding: 0 24px 52px;
+        padding: 0 20px max(30px, env(safe-area-inset-bottom, 30px));
         max-width: 100%;
         margin: 0;
         pointer-events: none;
@@ -1856,22 +1859,24 @@ address.contact-value {
     }
 
     .hero-kicker {
-        font-size: 0.92rem;
-        letter-spacing: 0.07em;
-        margin-bottom: 10px;
+        font-size: 0.82rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
     }
 
     .hero-title {
-        font-size: clamp(2.1rem, 7.8vw, 2.9rem);
-        line-height: 1.12;
-        margin-bottom: 12px;
-        text-shadow: 0 3px 14px rgba(0, 0, 0, 0.85);
+        font-size: clamp(1.75rem, 6.8vw, 2.3rem);
+        line-height: 1.15;
+        margin-bottom: 10px;
+        text-shadow: 0 3px 14px rgba(0, 0, 0, 0.9);
     }
 
     .hero-subtitle {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 20px;
+        font-size: 0.88rem;
+        line-height: 1.45;
+        margin-bottom: 16px;
+        max-width: 95%;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
     }
 
     .hero-actions {
@@ -1879,8 +1884,8 @@ address.contact-value {
     }
 
     .hero-btn-enroll {
-        font-size: 0.95rem;
-        padding: 12px 24px;
+        font-size: 0.90rem;
+        padding: 11px 22px;
     }
 
     /* General Section Spacing on Mobile */
@@ -2151,28 +2156,31 @@ address.contact-value {
     }
 
     .hero-kicker {
-        font-size: 0.85rem;
-        letter-spacing: 0.06em;
-        margin-bottom: 8px;
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 5px;
     }
 
     .hero-title {
-        font-size: clamp(1.95rem, 8.5vw, 2.45rem);
-        line-height: 1.12;
+        font-size: clamp(1.55rem, 6.4vw, 1.95rem);
+        line-height: 1.15;
+        margin-bottom: 6px;
     }
 
     .hero-subtitle {
-        font-size: 0.88rem;
-        margin-bottom: 18px;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        margin-bottom: 14px;
+        max-width: 100%;
     }
 
     .hero-overlay-content {
-        padding: 0 18px 42px;
+        padding: 0 16px max(24px, env(safe-area-inset-bottom, 24px));
     }
 
     .hero-btn-enroll {
-        font-size: 0.92rem;
-        padding: 11px 22px;
+        font-size: 0.88rem;
+        padding: 10px 20px;
     }
 
     .about-hero-card {
