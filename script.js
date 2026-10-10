@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
        Slide 3: Students Group Photo — THIRD slide
        ========================================================================== */
     const heroImages = [
-        "school/school-building.jpg", // 1. School main building (First / default)
+        "school/school-building.jpeg", // 1. School main building (First / default)
         "school/reception.jpg",       // 2. School reception (Second slide)
         "school/students1.png"        // 3. Students group photo (Third slide)
     ];
