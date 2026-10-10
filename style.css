@@ -673,9 +673,10 @@ ul {
     -webkit-user-drag: none;
 }
 
-/* Intelligent Positioning: Guarantees School Name, Building Facade & Entrance Visibility */
+/* Full Building Visible — pinned to top so sky, "ANANDHA SCHOOL", and full signboard are never cropped */
 .hero-img-building {
-    object-position: center 42%;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .hero-img-reception {
@@ -1817,9 +1818,11 @@ address.contact-value {
         background: var(--navy-950);
     }
 
-    /* Mobile Focal Points: Centered on signboards, facades & subjects */
+    /* Mobile: 1920x1080 pinned to top with emblem and entrance centered */
     .hero-img-building {
-        object-position: 45% 36%;
+        object-fit: cover;
+        object-position: 42% top;
+        background: none;
     }
 
     .hero-img-reception {
