@@ -673,10 +673,10 @@ ul {
     -webkit-user-drag: none;
 }
 
-/* Full Building Visible — 16:9 landscape framing showing sky, signage, facade, entrance and gate */
+/* Full Building Visible — anchored near top so blue signboard sits with breathing room below navbar */
 .hero-img-building {
     object-fit: cover;
-    object-position: center 35%;
+    object-position: center 10%;
 }
 
 .hero-img-reception {
@@ -1818,10 +1818,10 @@ address.contact-value {
         background: var(--navy-950);
     }
 
-    /* Mobile: 16:9 framing centered on emblem, signboard and building entrance */
+    /* Mobile: 16:9 framing with clear breathing room above emblem and signboard */
     .hero-img-building {
         object-fit: cover;
-        object-position: 46% 30%;
+        object-position: 46% 15%;
         background: none;
     }
 
