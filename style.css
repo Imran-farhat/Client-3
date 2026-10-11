@@ -621,7 +621,7 @@ ul {
 .hero-section {
     position: relative;
     height: 100vh;
-    min-height: 100svh;
+    min-height: clamp(600px, 92vh, 900px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -673,10 +673,10 @@ ul {
     -webkit-user-drag: none;
 }
 
-/* Full Building Visible — pinned to top so sky, "ANANDHA SCHOOL", and full signboard are never cropped */
+/* Full Building Visible — wider architectural view showing upper signage, facade, entrance & gate */
 .hero-img-building {
     object-fit: cover;
-    object-position: center top;
+    object-position: center 22%;
 }
 
 .hero-img-reception {
@@ -1818,10 +1818,10 @@ address.contact-value {
         background: var(--navy-950);
     }
 
-    /* Mobile: 1920x1080 pinned to top with emblem and entrance centered */
+    /* Mobile: School emblem, signboard & entrance framed with full vertical building visibility */
     .hero-img-building {
         object-fit: cover;
-        object-position: 42% top;
+        object-position: 45% 18%;
         background: none;
     }
 
