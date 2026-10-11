@@ -1771,12 +1771,10 @@ address.contact-value {
 
     .hero-section {
         position: relative;
-        height: 100svh;
-        min-height: 560px;
-        max-height: 860px;
+        min-height: 100svh;
+        height: auto;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
         background-color: var(--navy-950);
         overflow: hidden;
         padding: 0;
@@ -1785,21 +1783,24 @@ address.contact-value {
     .hero-carousel {
         position: relative;
         width: 100%;
-        height: 100%;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
     }
 
-    /* Full-bleed background viewport cover photo matching AMS College style */
+    /* Mobile Carousel Photo Showcase (~52vh): shows full building, complete signboard & entrance */
     .carousel-track {
-        position: absolute;
-        inset: 0;
+        position: relative;
         width: 100%;
-        height: 100%;
+        height: 52svh;
+        min-height: 350px;
+        max-height: 460px;
         margin: 0;
         border-radius: 0;
         aspect-ratio: auto;
         box-shadow: none;
         background-color: var(--navy-950);
+        overflow: hidden;
     }
 
     .carousel-slide {
@@ -1818,10 +1819,10 @@ address.contact-value {
         background: var(--navy-950);
     }
 
-    /* Mobile: 16:9 framing with clear breathing room above emblem and signboard */
+    /* Mobile: Centered on full school title & main entrance, with breathing room below navbar */
     .hero-img-building {
         object-fit: cover;
-        object-position: 46% 15%;
+        object-position: center 8%;
         background: none;
     }
 
@@ -1833,28 +1834,33 @@ address.contact-value {
         object-position: center 26%;
     }
 
-    /* Natural mobile contrast gradient: clear center window keeps photos bright, dark bottom ensures legibility */
+    /* Natural mobile contrast gradient: keeps photo bright and clear */
     .hero-image-overlay {
         background: linear-gradient(to bottom,
-                rgba(6, 11, 23, 0.45) 0%,
-                transparent 16%,
-                transparent 48%,
-                rgba(6, 11, 23, 0.55) 72%,
-                rgba(6, 11, 23, 0.84) 100%);
+                rgba(6, 11, 23, 0.40) 0%,
+                transparent 22%,
+                transparent 65%,
+                rgba(6, 11, 23, 0.85) 100%);
     }
 
-    /* Content directly overlaid on background photo (Compact & Mobile-Fit) */
+    /* Content card flowing directly below photo for 100% photo visibility */
     .hero-overlay-content {
-        position: absolute;
-        inset: 0;
+        position: relative;
         z-index: 10;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        padding: 0 20px max(30px, env(safe-area-inset-bottom, 30px));
+        justify-content: flex-start;
+        padding: 24px 20px max(32px, env(safe-area-inset-bottom, 32px));
         max-width: 100%;
-        margin: 0;
-        pointer-events: none;
+        margin: -24px 0 0 0;
+        background: linear-gradient(180deg, rgba(6, 11, 23, 0.94) 0%, var(--navy-950) 100%);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px 24px 0 0;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.5);
+        flex: 1;
+        pointer-events: auto;
     }
 
     .hero-content-wrapper {
