@@ -621,7 +621,7 @@ ul {
 .hero-section {
     position: relative;
     height: 100vh;
-    min-height: clamp(600px, 92vh, 900px);
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -673,10 +673,10 @@ ul {
     -webkit-user-drag: none;
 }
 
-/* Full Building Visible — wider architectural view showing upper signage, facade, entrance & gate */
+/* Full Building Visible — 16:9 landscape framing showing sky, signage, facade, entrance and gate */
 .hero-img-building {
     object-fit: cover;
-    object-position: center 22%;
+    object-position: center 35%;
 }
 
 .hero-img-reception {
@@ -1818,10 +1818,10 @@ address.contact-value {
         background: var(--navy-950);
     }
 
-    /* Mobile: School emblem, signboard & entrance framed with full vertical building visibility */
+    /* Mobile: 16:9 framing centered on emblem, signboard and building entrance */
     .hero-img-building {
         object-fit: cover;
-        object-position: 45% 18%;
+        object-position: 46% 30%;
         background: none;
     }
 
