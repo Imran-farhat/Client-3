@@ -1208,6 +1208,153 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
+   8b. Classroom Showcase Extension (10 Individual Class Cards)
+   -------------------------------------------------------------------------- */
+.classroom-showcase-wrap {
+    margin-top: 56px;
+    padding-top: 24px;
+}
+
+.classroom-showcase-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.classroom-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+}
+
+.classroom-divider-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--royal-blue);
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    padding: 5px 14px;
+    border-radius: var(--radius-full);
+}
+
+.classroom-showcase-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.classroom-showcase-title {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--navy-900);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+.classroom-showcase-subtitle {
+    font-size: 0.96rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.55;
+}
+
+/* 10 Classroom Cards Grid — 5 columns on desktop for 2 balanced rows */
+.classroom-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+/* Individual Classroom Card */
+.classroom-card {
+    position: relative;
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 14px 14px 18px;
+    box-shadow: var(--card-glass-shadow);
+    transition: transform var(--transition-bounce), box-shadow var(--transition-smooth), border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.classroom-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-hover-shadow);
+    border-color: rgba(37, 99, 235, 0.35);
+}
+
+/* Empty Image Container — strictly 4:3, neutral, subtle border, rounded */
+.classroom-image-container {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
+    background: linear-gradient(145deg, #f8fafc 0%, #edf2f7 100%);
+    border: 1px solid rgba(203, 213, 225, 0.7);
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+}
+
+/* When photographs are attached later */
+.classroom-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+    transition: transform var(--transition-bounce);
+}
+
+.classroom-card:hover .classroom-card-img {
+    transform: scale(1.05);
+}
+
+/* Card Body & Typography */
+.classroom-card-body {
+    padding: 14px 2px 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.classroom-stage-pill {
+    align-self: flex-start;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--surface-alt);
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+}
+
+.classroom-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--navy-900);
+    margin-bottom: 6px;
+    line-height: 1.25;
+}
+
+.classroom-card-desc {
+    font-size: 0.84rem;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
    9. School Activities Section
    -------------------------------------------------------------------------- */
 .activities-section {
@@ -1649,6 +1796,11 @@ address.contact-value {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .classroom-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
     .activities-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1926,6 +2078,10 @@ address.contact-value {
         background: none;
     }
 
+    .hero-img-assembly {
+        object-position: center 20%;
+    }
+
     .hero-img-reception {
         object-position: center 40%;
     }
@@ -1934,29 +2090,14 @@ address.contact-value {
         object-position: center 26%;
     }
 
-    /* Subtle Cinematic Dark Gradient Overlay: Keeps building visible, maximizes text legibility */
+    /* Vignette Overlay Removed in Mobile View */
     .hero-image-overlay {
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(to bottom,
-                rgba(6, 11, 23, 0.65) 0%,
-                rgba(6, 11, 23, 0.25) 18%,
-                transparent 34%,
-                transparent 55%,
-                rgba(6, 11, 23, 0.50) 80%,
-                rgba(6, 11, 23, 0.85) 100%),
-            linear-gradient(to right,
-                rgba(6, 11, 23, 0.72) 0%,
-                rgba(6, 11, 23, 0.40) 55%,
-                rgba(6, 11, 23, 0.15) 85%,
-                transparent 100%);
-        pointer-events: none;
-        z-index: 2;
+        display: none !important;
+        background: none !important;
     }
 
     /* --------------------------------------------------------------------------
-       3. Hero Text Layout: Left-Aligned, Vertically Centered in Available Area
+       3. Hero Text Layout: Left-Aligned, Anchored to Bottom on Mobile
        -------------------------------------------------------------------------- */
     .hero-overlay-content {
         position: absolute;
@@ -1964,8 +2105,8 @@ address.contact-value {
         z-index: 10;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        padding: calc(64px + env(safe-area-inset-top, 0px)) 22px max(32px, env(safe-area-inset-bottom, 24px));
+        justify-content: flex-end;
+        padding: 0 22px max(32px, env(safe-area-inset-bottom, 24px));
         max-width: 100%;
         margin: 0;
         pointer-events: none;
@@ -2003,10 +2144,10 @@ address.contact-value {
     .hero-subtitle {
         font-size: 0.92rem;
         line-height: 1.5;
-        color: rgba(255, 255, 255, 0.92);
+        color: #ffffff;
         margin-bottom: 22px;
         max-width: 95%;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.85);
     }
 
     .hero-actions {
@@ -2152,6 +2293,15 @@ address.contact-value {
     .classes-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
+    }
+
+    .classroom-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .classroom-showcase-title {
+        font-size: 1.55rem;
     }
 
     .class-card {
@@ -2312,10 +2462,12 @@ address.contact-value {
         line-height: 1.4;
         margin-bottom: 14px;
         max-width: 100%;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.85);
     }
 
     .hero-overlay-content {
-        padding: 0 16px max(24px, env(safe-area-inset-bottom, 24px));
+        justify-content: flex-end;
+        padding: 0 16px max(24px, env(safe-area-inset-bottom, 20px));
     }
 
     .hero-btn-enroll {
@@ -2337,6 +2489,31 @@ address.contact-value {
 
     .class-card {
         padding: 12px 10px 10px;
+    }
+
+    .classroom-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .classroom-card {
+        padding: 10px 10px 14px;
+        border-radius: 14px;
+    }
+
+    .classroom-card-title {
+        font-size: 1.05rem;
+    }
+
+    .classroom-card-desc {
+        font-size: 0.74rem;
+        line-height: 1.35;
+    }
+
+    .classroom-stage-pill {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        margin-bottom: 6px;
     }
 }
 

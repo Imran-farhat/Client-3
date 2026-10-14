@@ -270,4 +270,40 @@ document.addEventListener('DOMContentLoaded', () => {
         revealItems.forEach(item => item.classList.add('revealed'));
     }
 
+    /* ==========================================================================
+       8. Classroom Cards Image Configuration (Classes Section)
+       --------------------------------------------------------------------------
+       Assign your local photograph paths here when ready:
+       e.g. 'pre-kg': 'images/classes/pre-kg.jpg'
+       The script will automatically render the image into the card with 4:3 cover fit.
+       If left empty (''), the container remains a clean, neutral, empty frame.
+       ========================================================================== */
+    const classroomPhotos = {
+        'pre-kg': '',
+        'lkg': '',
+        'ukg': '',
+        'grade-1': '',
+        'grade-2': '',
+        'grade-3': '',
+        'grade-4': '',
+        'grade-5': '',
+        'grade-6': 'classes/6thstd.png',
+        'grade-7': ''
+    };
+
+    function initClassroomPhotos() {
+        Object.entries(classroomPhotos).forEach(([classKey, imgPath]) => {
+            if (!imgPath || !imgPath.trim()) return;
+            const container = document.querySelector(`.classroom-image-container[data-class="${classKey}"]`);
+            if (container) {
+                const card = container.closest('.classroom-card');
+                const title = card ? card.querySelector('.classroom-card-title')?.textContent || classKey : classKey;
+                container.innerHTML = `<img src="${imgPath}" alt="${title} Classroom" class="classroom-card-img" loading="lazy">`;
+                container.classList.add('has-photo');
+            }
+        });
+    }
+
+    initClassroomPhotos();
+
 });
