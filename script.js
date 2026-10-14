@@ -108,11 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       4. Hero Carousel — Cinematic Cross-Fade (3 Photographs: 0 -> 1 -> 2 -> 0)
+       4. Hero Carousel — Cinematic Cross-Fade (4 Photographs: 0 -> 1 -> 2 -> 3 -> 0)
        --------------------------------------------------------------------------
        Slide 1: School Main Building (Default first slide)
-       Slide 2: School Reception
-       Slide 3: Students Group Photo
+       Slide 2: School Morning Assembly on Playground
+       Slide 3: School Reception
+       Slide 4: Students Group Photo
        --------------------------------------------------------------------------
        Smooth opacity transition (~1.5s), no slide movement, no empty flash
        ========================================================================== */

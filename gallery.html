@@ -145,35 +145,6 @@
             z-index: 2;
         }
 
-        /* Top Tag on Cover */
-        .cover-top-badge {
-            position: absolute;
-            top: 24px;
-            left: 24px;
-            z-index: 4;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: 999px;
-        }
-
-        .cover-top-badge .badge-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--sky-blue);
-            box-shadow: 0 0 10px var(--sky-blue);
-        }
 
         /* Cover Meta Content Overlay */
         .cover-meta-overlay {
@@ -371,19 +342,6 @@
             transform: scale(1.05);
         }
 
-        .mini-card-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(8px);
-            color: #ffffff;
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 3px 10px;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
 
         .mini-card-body {
             padding: 16px 18px;
@@ -921,11 +879,6 @@
                         <!-- Main Cinematic Cover Stage -->
                         <div class="cover-stage-card" id="coverStageCard" role="region" aria-label="Event Cover Showcase">
                             
-                            <!-- Top Event Badge -->
-                            <div class="cover-top-badge">
-                                <span class="badge-dot" aria-hidden="true"></span>
-                                <span id="coverTopBadgeText">Featured Event</span>
-                            </div>
 
                             <!-- Crossfading Event Covers Container -->
                             <div class="cover-crossfade-container" id="coverCrossfadeContainer">
@@ -954,7 +907,7 @@
                                     <p class="cover-event-desc" id="coverEventDesc">Colours, smiles and joyful early learning</p>
                                 </div>
                                 <div class="cover-explore-btn" id="coverExploreBtn" role="button" tabindex="0">
-                                    <span id="coverBtnText">Explore Event Photos</span>
+                                    <span id="coverBtnText">Explore Event</span>
                                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
                                         <polyline points="9 18 15 12 9 6"></polyline>
                                     </svg>
@@ -1235,10 +1188,10 @@
                     id: "pta-meeting",
                     name: "Parent-Teacher Meeting",
                     description: "Building strong partnerships between parents and teachers",
-                    cover: "images/pta-meeting/001.jpeg",
+                    cover: "images/pta-meeting/Bright Classroom Parent-Teacher Meeting.png",
                     images: [
-                        { src: "images/pta-meeting/001.jpeg", caption: "Parent-Teacher Meeting — Families and teachers gathered in the school assembly" },
-                        { src: "images/pta-meeting/Bright Classroom Parent-Teacher Meeting.png", caption: "Open Discussion Forum — Parents and teachers sharing progress under cheerful decor" },
+                        { src: "images/pta-meeting/Bright Classroom Parent-Teacher Meeting.png", caption: "Parent-Teacher Interaction — Families and teachers discussing student progress" },
+                        { src: "images/pta-meeting/Colorful Parent-Teacher Meeting Classroom.png", caption: "Teacher-Parent Consultation — Personal guidance and feedback session" },
                         { src: "images/pta-meeting/Colorful Classroom Chalkboard Welcome.png", caption: "Warm Welcome Board — Colourful chalkboard greeting parents to the meeting" },
                         { src: "images/pta-meeting/Colorful Classroom Learning Wall Display.png", caption: "Learning Wall Showcase — Student work and charts proudly displayed for parents" },
                         { src: "images/pta-meeting/Colorful Classroom Learning Wall.png", caption: "Classroom Learning Corner — Vibrant educational displays reviewed with families" },
@@ -1256,7 +1209,6 @@
             const coverStageCard = document.getElementById('coverStageCard');
             const coverEventTitle = document.getElementById('coverEventTitle');
             const coverEventDesc = document.getElementById('coverEventDesc');
-            const coverTopBadgeText = document.getElementById('coverTopBadgeText');
             const coverBtnText = document.getElementById('coverBtnText');
             const coverPrevBtn = document.getElementById('coverPrevBtn');
             const coverNextBtn = document.getElementById('coverNextBtn');
@@ -1338,7 +1290,6 @@
                     card.innerHTML = `
                         <div class="mini-card-thumb-wrap">
                             <img src="${ev.cover}" alt="${ev.name}" class="mini-card-thumb" loading="lazy">
-                            <span class="mini-card-badge">${ev.images.length} Photos</span>
                         </div>
                         <div class="mini-card-body">
                             <h3 class="mini-card-title">${ev.name}</h3>
@@ -1368,8 +1319,7 @@
                 // Update text with soft transition
                 coverEventTitle.textContent = ev.name;
                 coverEventDesc.textContent = ev.description;
-                coverTopBadgeText.textContent = `Event 0${index + 1} of 0${galleryEvents.length}`;
-                coverBtnText.textContent = `Explore ${ev.name} (${ev.images.length} Photos)`;
+                coverBtnText.textContent = `Explore ${ev.name}`;
 
                 // Update crossfade slides
                 const slides = coverCrossfadeContainer.querySelectorAll('.cover-slide');
