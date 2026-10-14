@@ -283,7 +283,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'lkg': '',
         'ukg': '',
         'grade-1': '',
-        'grade-2': '',
+        'grade-2-a': 'classes/2ndstd1.jpeg',
+        'grade-2-b': 'classes/2ndstd.png',
         'grade-3': '',
         'grade-4': '',
         'grade-5': '',
@@ -292,13 +293,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function initClassroomPhotos() {
-        Object.entries(classroomPhotos).forEach(([classKey, imgPath]) => {
-            if (!imgPath || !imgPath.trim()) return;
+        Object.entries(classroomPhotos).forEach(([classKey, imgData]) => {
+            if (!imgData) return;
             const container = document.querySelector(`.classroom-image-container[data-class="${classKey}"]`);
-            if (container) {
+            if (!container) return;
+            // If already statically set with photos in HTML, skip manual overwrite
+            if (container.querySelectorAll('img').length > 0) {
+                container.classList.add('has-photo');
+                return;
+            }
+            if (typeof imgData === 'string' && imgData.trim()) {
                 const card = container.closest('.classroom-card');
                 const title = card ? card.querySelector('.classroom-card-title')?.textContent || classKey : classKey;
-                container.innerHTML = `<img src="${imgPath}" alt="${title} Classroom" class="classroom-card-img" loading="lazy">`;
+                container.innerHTML = `<img src="${imgData}" alt="${title} Classroom" class="classroom-card-img" loading="lazy">`;
                 container.classList.add('has-photo');
             }
         });
@@ -321,28 +328,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const classLightboxCaption = document.getElementById('classLightboxCaption');
     const classLightboxCloseBtn = document.getElementById('classLightboxCloseBtn');
     const classLightboxBackdrop = document.getElementById('classroomLightboxBackdrop');
+    const modalSectionSwitcher = document.getElementById('modalSectionSwitcher');
 
     function openClassroomModal(card) {
         if (!classLightboxModal || !card) return;
         const img = card.querySelector('.classroom-card-img');
         if (!img || !img.src) return;
 
-        const title = card.querySelector('.classroom-card-title')?.textContent.trim() || 'Classroom';
+        const classKey = card.dataset.class || '';
+        const isGrade2 = classKey === 'grade-2-a' || classKey === 'grade-2-b';
+
+        const baseTitle = card.querySelector('.classroom-card-title')?.textContent.trim() || 'Classroom';
         const stage = card.querySelector('.classroom-stage-pill')?.textContent.trim() || '';
         const desc = card.querySelector('.classroom-card-desc')?.textContent.trim() || '';
 
+        // If viewing Grade 2, display the quick section switcher pills in modal header
+        if (modalSectionSwitcher) {
+            modalSectionSwitcher.style.display = isGrade2 ? 'inline-flex' : 'none';
+            if (isGrade2) {
+                const currentSec = classKey === 'grade-2-b' ? 'b' : 'a';
+                modalSectionSwitcher.querySelectorAll('.modal-sec-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.sec === currentSec);
+                });
+            }
+        }
+
         classLightboxImg.src = img.src;
-        classLightboxImg.alt = img.alt || `${title} Classroom Photograph`;
-        if (classLightboxTag) classLightboxTag.textContent = title;
+        classLightboxImg.alt = img.alt || `${baseTitle} Classroom Photograph`;
+        if (classLightboxTag) classLightboxTag.textContent = baseTitle;
         if (classLightboxStagePill) {
             classLightboxStagePill.textContent = stage;
             classLightboxStagePill.style.display = stage ? 'inline-block' : 'none';
         }
-        if (classLightboxCaption) classLightboxCaption.textContent = desc ? `${title} — ${desc}` : title;
+        if (classLightboxCaption) classLightboxCaption.textContent = desc ? `${baseTitle} — ${desc}` : baseTitle;
 
         classLightboxModal.classList.add('active');
         classLightboxModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+    }
+
+    // Modal Section Switcher click (toggle between Sec A & Sec B while in modal preview)
+    if (modalSectionSwitcher) {
+        modalSectionSwitcher.addEventListener('click', (e) => {
+            const btn = e.target.closest('.modal-sec-btn');
+            if (!btn) return;
+            const sec = btn.dataset.sec;
+            modalSectionSwitcher.querySelectorAll('.modal-sec-btn').forEach(b => b.classList.toggle('active', b === btn));
+
+            const targetCard = document.querySelector(`.classroom-card[data-class="grade-2-${sec}"]`);
+            if (targetCard) {
+                const targetImg = targetCard.querySelector('.classroom-card-img');
+                const title = targetCard.querySelector('.classroom-card-title')?.textContent.trim() || `Grade 2 - Sec ${sec.toUpperCase()}`;
+                const desc = targetCard.querySelector('.classroom-card-desc')?.textContent.trim() || '';
+                const stage = targetCard.querySelector('.classroom-stage-pill')?.textContent.trim() || 'Primary';
+
+                if (targetImg && targetImg.src) {
+                    classLightboxImg.src = targetImg.src;
+                    classLightboxImg.alt = targetImg.alt || `${title} Classroom Photograph`;
+                    if (classLightboxTag) classLightboxTag.textContent = title;
+                    if (classLightboxStagePill) classLightboxStagePill.textContent = stage;
+                    if (classLightboxCaption) classLightboxCaption.textContent = desc ? `${title} — ${desc}` : title;
+                }
+            }
+        });
     }
 
     function closeClassroomModal() {

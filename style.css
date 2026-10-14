@@ -1263,10 +1263,10 @@ ul {
     line-height: 1.55;
 }
 
-/* 10 Classroom Cards Grid — 5 columns on desktop for 2 balanced rows */
+/* Classroom Cards Grid — Responsive multi-column layout for 11 classroom cards */
 .classroom-cards-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 20px;
 }
 
@@ -1345,6 +1345,48 @@ ul {
     transform: scale(1.1);
     background-color: var(--royal-blue);
     border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Card Section Switcher (Grade 2 Sec A / Sec B) */
+.card-section-switcher {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 4;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(6, 11, 23, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 2px;
+}
+
+.sec-pill-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    line-height: 1.2;
+}
+
+.sec-pill-btn:hover {
+    color: #ffffff;
+}
+
+.sec-pill-btn.active {
+    background: var(--royal-blue);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 /* Card Body & Typography */
@@ -1463,6 +1505,42 @@ ul {
     border: 1px solid rgba(56, 189, 248, 0.35);
     padding: 3px 10px;
     border-radius: var(--radius-full);
+}
+
+/* Modal Section Switcher */
+.modal-section-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 999px;
+    padding: 2px;
+    gap: 3px;
+    margin-left: 8px;
+}
+
+.modal-sec-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-sec-btn:hover {
+    color: #ffffff;
+}
+
+.modal-sec-btn.active {
+    background: var(--royal-blue);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .classroom-lightbox-close {
