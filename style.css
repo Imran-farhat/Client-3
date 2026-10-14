@@ -1317,6 +1317,36 @@ ul {
     transform: scale(1.05);
 }
 
+/* Photo Image Container with Touch/Click Indicator */
+.classroom-image-container.has-photo {
+    cursor: pointer;
+}
+
+.classroom-image-container.has-photo::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(6, 11, 23, 0.72) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='14' height='14' fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") no-repeat center;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    opacity: 0.88;
+    transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.classroom-card:hover .classroom-image-container.has-photo::after {
+    opacity: 1;
+    transform: scale(1.1);
+    background-color: var(--royal-blue);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
 /* Card Body & Typography */
 .classroom-card-body {
     padding: 14px 2px 0;
@@ -1352,6 +1382,171 @@ ul {
     line-height: 1.45;
     color: var(--text-secondary);
     margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8c. Classroom Image Pop-up Lightbox Modal
+   -------------------------------------------------------------------------- */
+.classroom-lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.classroom-lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.classroom-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 11, 23, 0.90);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    cursor: pointer;
+}
+
+.classroom-lightbox-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    max-width: 96vw;
+    max-height: 94vh;
+    width: auto;
+    margin: auto;
+    transform: scale(0.94);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.classroom-lightbox-modal.active .classroom-lightbox-container {
+    transform: scale(1);
+}
+
+.classroom-lightbox-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px 12px;
+    gap: 12px;
+}
+
+.classroom-lightbox-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.classroom-lightbox-tag {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.classroom-lightbox-stage-pill {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--sky-blue);
+    background: rgba(56, 189, 248, 0.16);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+}
+
+.classroom-lightbox-close {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.classroom-lightbox-close:hover,
+.classroom-lightbox-close:active {
+    background: rgba(239, 68, 68, 0.35);
+    border-color: rgba(239, 68, 68, 0.6);
+    color: #fca5a5;
+    transform: scale(1.08);
+}
+
+.classroom-lightbox-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 92vw;
+    max-height: 76vh;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #000000;
+}
+
+.classroom-lightbox-img {
+    display: block;
+    max-width: 92vw;
+    max-height: 76vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.classroom-lightbox-bottom-bar {
+    padding: 12px 6px 0;
+    text-align: center;
+}
+
+.classroom-lightbox-caption {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    line-height: 1.45;
+}
+
+@media (max-width: 600px) {
+    .classroom-lightbox-stage {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+
+    .classroom-lightbox-img {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+
+    .classroom-lightbox-tag {
+        font-size: 1.05rem;
+    }
+
+    .classroom-lightbox-stage-pill {
+        font-size: 0.65rem;
+        padding: 2px 8px;
+    }
+
+    .classroom-lightbox-caption {
+        font-size: 0.8rem;
+    }
 }
 
 /* --------------------------------------------------------------------------

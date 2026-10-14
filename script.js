@@ -306,4 +306,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initClassroomPhotos();
 
+    // Ensure all containers with photos have .has-photo
+    document.querySelectorAll('.classroom-image-container').forEach(c => {
+        if (c.querySelector('img')) c.classList.add('has-photo');
+    });
+
+    /* ==========================================================================
+       9. Classroom Image Pop-up Modal (Touch & Click to View)
+       ========================================================================== */
+    const classLightboxModal = document.getElementById('classroomLightboxModal');
+    const classLightboxImg = document.getElementById('classLightboxImg');
+    const classLightboxTag = document.getElementById('classLightboxTag');
+    const classLightboxStagePill = document.getElementById('classLightboxStagePill');
+    const classLightboxCaption = document.getElementById('classLightboxCaption');
+    const classLightboxCloseBtn = document.getElementById('classLightboxCloseBtn');
+    const classLightboxBackdrop = document.getElementById('classroomLightboxBackdrop');
+
+    function openClassroomModal(card) {
+        if (!classLightboxModal || !card) return;
+        const img = card.querySelector('.classroom-card-img');
+        if (!img || !img.src) return;
+
+        const title = card.querySelector('.classroom-card-title')?.textContent.trim() || 'Classroom';
+        const stage = card.querySelector('.classroom-stage-pill')?.textContent.trim() || '';
+        const desc = card.querySelector('.classroom-card-desc')?.textContent.trim() || '';
+
+        classLightboxImg.src = img.src;
+        classLightboxImg.alt = img.alt || `${title} Classroom Photograph`;
+        if (classLightboxTag) classLightboxTag.textContent = title;
+        if (classLightboxStagePill) {
+            classLightboxStagePill.textContent = stage;
+            classLightboxStagePill.style.display = stage ? 'inline-block' : 'none';
+        }
+        if (classLightboxCaption) classLightboxCaption.textContent = desc ? `${title} — ${desc}` : title;
+
+        classLightboxModal.classList.add('active');
+        classLightboxModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeClassroomModal() {
+        if (!classLightboxModal) return;
+        classLightboxModal.classList.remove('active');
+        classLightboxModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            if (!classLightboxModal.classList.contains('active')) {
+                classLightboxImg.src = '';
+            }
+        }, 300);
+    }
+
+    // Attach click/touch to all classroom image containers
+    const classroomGrid = document.getElementById('classroomCardsGrid');
+    if (classroomGrid) {
+        classroomGrid.addEventListener('click', (e) => {
+            const card = e.target.closest('.classroom-card');
+            if (!card) return;
+            const container = e.target.closest('.classroom-image-container');
+            const img = card.querySelector('.classroom-card-img');
+            if ((container && img) || e.target.classList.contains('classroom-card-img')) {
+                openClassroomModal(card);
+            }
+        });
+    }
+
+    if (classLightboxCloseBtn) classLightboxCloseBtn.addEventListener('click', closeClassroomModal);
+    if (classLightboxBackdrop) classLightboxBackdrop.addEventListener('click', closeClassroomModal);
+
+    // Keyboard support (Escape key)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && classLightboxModal && classLightboxModal.classList.contains('active')) {
+            closeClassroomModal();
+        }
+    });
+
 });
