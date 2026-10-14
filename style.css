@@ -1263,10 +1263,10 @@ ul {
     line-height: 1.55;
 }
 
-/* Classroom Cards Grid — Responsive multi-column layout for 11 classroom cards */
+/* Classroom Cards Grid — 4 columns desktop for 8 cards (2 balanced rows of 4) */
 .classroom-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
@@ -1397,6 +1397,14 @@ ul {
     flex-grow: 1;
 }
 
+.classroom-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
 .classroom-stage-pill {
     align-self: flex-start;
     font-size: 0.68rem;
@@ -1407,7 +1415,24 @@ ul {
     background: var(--surface-alt);
     padding: 3px 8px;
     border-radius: var(--radius-full);
-    margin-bottom: 8px;
+}
+
+.classroom-card-meta .classroom-stage-pill {
+    margin-bottom: 0;
+}
+
+.classroom-sections-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--royal-blue);
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.22);
+    padding: 2px 7px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
 }
 
 .classroom-card-title {
@@ -2070,7 +2095,7 @@ address.contact-value {
     }
 
     .classroom-cards-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 16px;
     }
 

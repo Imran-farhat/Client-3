@@ -271,25 +271,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       8. Classroom Cards Image Configuration (Classes Section)
-       --------------------------------------------------------------------------
-       Assign your local photograph paths here when ready:
-       e.g. 'pre-kg': 'images/classes/pre-kg.jpg'
-       The script will automatically render the image into the card with 4:3 cover fit.
-       If left empty (''), the container remains a clean, neutral, empty frame.
+       8. Classroom Image Dynamic Loader & Configuration (LKG to Grade 7)
        ========================================================================== */
     const classroomPhotos = {
-        'pre-kg': '',
-        'lkg': '',
-        'ukg': '',
-        'grade-1': '',
-        'grade-2-a': 'classes/2ndstd1.jpeg',
-        'grade-2-b': 'classes/2ndstd.png',
-        'grade-3': '',
-        'grade-4': '',
-        'grade-5': '',
+        'lkg': 'classes/LKG.jpeg',
+        'grade-1': {
+            'a': 'classes/1st a.jpeg',
+            'b': 'classes/1st b.jpeg'
+        },
+        'grade-2': {
+            'a': 'classes/2ndstd1.jpeg',
+            'b': 'classes/2ndstd.png'
+        },
+        'grade-3': 'classes/3rd.jpeg',
+        'grade-4': 'classes/4.jpeg',
+        'grade-5': {
+            'a': 'classes/5th a.jpeg',
+            'b': 'classes/5th b.jpeg'
+        },
         'grade-6': 'classes/6thstd.png',
-        'grade-7': ''
+        'grade-7': 'classes/7th.jpeg'
     };
 
     function initClassroomPhotos() {
@@ -305,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (typeof imgData === 'string' && imgData.trim()) {
                 const card = container.closest('.classroom-card');
                 const title = card ? card.querySelector('.classroom-card-title')?.textContent || classKey : classKey;
-                container.innerHTML = `<img src="${imgData}" alt="${title} Classroom" class="classroom-card-img" loading="lazy">`;
+                container.innerHTML = `<img src="${imgData}" alt="${title} Classroom Photograph" class="classroom-card-img" loading="lazy">`;
                 container.classList.add('has-photo');
             }
         });
@@ -330,65 +331,111 @@ document.addEventListener('DOMContentLoaded', () => {
     const classLightboxBackdrop = document.getElementById('classroomLightboxBackdrop');
     const modalSectionSwitcher = document.getElementById('modalSectionSwitcher');
 
+    let currentModalCard = null;
+
+    // In-Card Section Switcher: Smoothly toggle Sec A / Sec B photo on cards with sections
+    document.addEventListener('click', (e) => {
+        const secBtn = e.target.closest('.sec-pill-btn');
+        if (!secBtn) return;
+        e.stopPropagation();
+        e.preventDefault();
+        const switcher = secBtn.closest('.card-section-switcher');
+        const container = switcher.closest('.classroom-image-container');
+        const sec = secBtn.dataset.sec;
+
+        switcher.querySelectorAll('.sec-pill-btn').forEach(btn => {
+            const isActive = btn === secBtn;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        container.querySelectorAll('.classroom-card-img').forEach(img => {
+            const isMatch = img.dataset.sec === sec;
+            img.style.display = isMatch ? 'block' : 'none';
+            img.classList.toggle('active-sec-img', isMatch);
+        });
+    });
+
     function openClassroomModal(card) {
         if (!classLightboxModal || !card) return;
-        const img = card.querySelector('.classroom-card-img');
-        if (!img || !img.src) return;
+        currentModalCard = card;
 
-        const classKey = card.dataset.class || '';
-        const isGrade2 = classKey === 'grade-2-a' || classKey === 'grade-2-b';
+        // Find the visible or active section image on the card
+        let img = card.querySelector('.classroom-card-img.active-sec-img');
+        if (!img || img.style.display === 'none') {
+            const visibleImgs = Array.from(card.querySelectorAll('.classroom-card-img')).filter(i => i.style.display !== 'none');
+            img = visibleImgs[0] || card.querySelector('.classroom-card-img');
+        }
+        if (!img || !img.src) return;
 
         const baseTitle = card.querySelector('.classroom-card-title')?.textContent.trim() || 'Classroom';
         const stage = card.querySelector('.classroom-stage-pill')?.textContent.trim() || '';
         const desc = card.querySelector('.classroom-card-desc')?.textContent.trim() || '';
+        const hasSections = card.querySelector('.card-section-switcher') !== null;
 
-        // If viewing Grade 2, display the quick section switcher pills in modal header
+        // Display the modal section switcher if the card has multiple sections
         if (modalSectionSwitcher) {
-            modalSectionSwitcher.style.display = isGrade2 ? 'inline-flex' : 'none';
-            if (isGrade2) {
-                const currentSec = classKey === 'grade-2-b' ? 'b' : 'a';
+            modalSectionSwitcher.style.display = hasSections ? 'inline-flex' : 'none';
+            if (hasSections) {
+                const currentSec = img.dataset.sec || 'a';
                 modalSectionSwitcher.querySelectorAll('.modal-sec-btn').forEach(btn => {
                     btn.classList.toggle('active', btn.dataset.sec === currentSec);
                 });
             }
         }
 
+        const secLabel = (hasSections && img.dataset.sec) ? ` — Section ${img.dataset.sec.toUpperCase()}` : '';
+        const fullTitle = `${baseTitle}${secLabel}`;
+
         classLightboxImg.src = img.src;
-        classLightboxImg.alt = img.alt || `${baseTitle} Classroom Photograph`;
-        if (classLightboxTag) classLightboxTag.textContent = baseTitle;
+        classLightboxImg.alt = img.alt || `${fullTitle} Classroom Photograph`;
+        if (classLightboxTag) classLightboxTag.textContent = fullTitle;
         if (classLightboxStagePill) {
             classLightboxStagePill.textContent = stage;
             classLightboxStagePill.style.display = stage ? 'inline-block' : 'none';
         }
-        if (classLightboxCaption) classLightboxCaption.textContent = desc ? `${baseTitle} — ${desc}` : baseTitle;
+        if (classLightboxCaption) classLightboxCaption.textContent = desc ? `${fullTitle} — ${desc}` : fullTitle;
 
         classLightboxModal.classList.add('active');
         classLightboxModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     }
 
-    // Modal Section Switcher click (toggle between Sec A & Sec B while in modal preview)
+    // Modal Section Switcher click: toggle between Sec A & Sec B while in modal preview
     if (modalSectionSwitcher) {
         modalSectionSwitcher.addEventListener('click', (e) => {
             const btn = e.target.closest('.modal-sec-btn');
-            if (!btn) return;
+            if (!btn || !currentModalCard) return;
             const sec = btn.dataset.sec;
             modalSectionSwitcher.querySelectorAll('.modal-sec-btn').forEach(b => b.classList.toggle('active', b === btn));
 
-            const targetCard = document.querySelector(`.classroom-card[data-class="grade-2-${sec}"]`);
-            if (targetCard) {
-                const targetImg = targetCard.querySelector('.classroom-card-img');
-                const title = targetCard.querySelector('.classroom-card-title')?.textContent.trim() || `Grade 2 - Sec ${sec.toUpperCase()}`;
-                const desc = targetCard.querySelector('.classroom-card-desc')?.textContent.trim() || '';
-                const stage = targetCard.querySelector('.classroom-stage-pill')?.textContent.trim() || 'Primary';
+            // Sync the card's section switcher
+            const cardSwitcher = currentModalCard.querySelector('.card-section-switcher');
+            if (cardSwitcher) {
+                cardSwitcher.querySelectorAll('.sec-pill-btn').forEach(b => {
+                    const isActive = b.dataset.sec === sec;
+                    b.classList.toggle('active', isActive);
+                    b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+            }
 
-                if (targetImg && targetImg.src) {
-                    classLightboxImg.src = targetImg.src;
-                    classLightboxImg.alt = targetImg.alt || `${title} Classroom Photograph`;
-                    if (classLightboxTag) classLightboxTag.textContent = title;
-                    if (classLightboxStagePill) classLightboxStagePill.textContent = stage;
-                    if (classLightboxCaption) classLightboxCaption.textContent = desc ? `${title} — ${desc}` : title;
-                }
+            // Sync the card's visible images
+            const targetImg = currentModalCard.querySelector(`.classroom-card-img[data-sec="${sec}"]`);
+            if (targetImg) {
+                currentModalCard.querySelectorAll('.classroom-card-img').forEach(i => {
+                    const isMatch = i === targetImg;
+                    i.style.display = isMatch ? 'block' : 'none';
+                    i.classList.toggle('active-sec-img', isMatch);
+                });
+
+                const baseTitle = currentModalCard.querySelector('.classroom-card-title')?.textContent.trim() || 'Classroom';
+                const desc = currentModalCard.querySelector('.classroom-card-desc')?.textContent.trim() || '';
+                const fullTitle = `${baseTitle} — Section ${sec.toUpperCase()}`;
+
+                classLightboxImg.src = targetImg.src;
+                classLightboxImg.alt = targetImg.alt || `${fullTitle} Classroom Photograph`;
+                if (classLightboxTag) classLightboxTag.textContent = fullTitle;
+                if (classLightboxCaption) classLightboxCaption.textContent = desc ? `${fullTitle} — ${desc}` : fullTitle;
             }
         });
     }
@@ -401,6 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             if (!classLightboxModal.classList.contains('active')) {
                 classLightboxImg.src = '';
+                currentModalCard = null;
             }
         }, 300);
     }
@@ -409,6 +457,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const classroomGrid = document.getElementById('classroomCardsGrid');
     if (classroomGrid) {
         classroomGrid.addEventListener('click', (e) => {
+            // Ignore direct clicks on section pills
+            if (e.target.closest('.card-section-switcher')) return;
             const card = e.target.closest('.classroom-card');
             if (!card) return;
             const container = e.target.closest('.classroom-image-container');
