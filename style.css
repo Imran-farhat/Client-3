@@ -901,7 +901,7 @@ ul {
     border-radius: var(--radius-xl);
     padding: 48px;
     box-shadow: var(--card-glass-shadow);
-    margin-bottom: 48px;
+    margin-bottom: 28px;
     overflow: hidden;
 }
 
@@ -956,6 +956,170 @@ ul {
     color: var(--text-muted);
     letter-spacing: 0.04em;
     text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Staff Profiles Showcase (About Us Section)
+   Layout follows handwritten reference:
+   - Row 1 (3 cards): Abdul Rahman, Abdul Razak, Nachiyar
+   - Row 2 (2 cards): Valarmathy, R. Ranjani B.Sc,B. Ed (centered horizontally under Row 1)
+   ========================================================================== */
+.staff-profiles-section {
+    margin-bottom: 48px;
+    position: relative;
+    scroll-margin-top: 104px;
+    /* Ensure fixed navbar never overlaps or hides first card */
+}
+
+.staff-section-header {
+    text-align: center;
+    margin-bottom: 24px;
+    /* Clean spacing without unnecessary empty space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.staff-section-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.8vw, 1.95rem);
+    font-weight: 700;
+    color: var(--navy-900);
+    margin-top: 8px;
+    letter-spacing: -0.01em;
+}
+
+.staff-title-underline {
+    margin: 10px auto 0;
+}
+
+/* Single ordered CSS Grid:
+   Desktop: 6 columns
+   - Cards 1, 2, 3: span 2 each (Row 1: exactly 3 cards)
+   - Card 4: starts at col 2, spans 2 (cols 2 & 3)
+   - Card 5: spans 2 (cols 4 & 5)
+   Cols 1 and 6 are empty in Row 2, perfectly centering the 2 cards horizontally underneath Row 1.
+*/
+.staff-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 28px;
+    max-width: 1040px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.staff-card {
+    grid-column: span 2;
+    position: relative;
+    background: var(--surface-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    padding: 30px 22px 24px;
+    box-shadow: var(--card-glass-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform var(--transition-bounce), box-shadow var(--transition-smooth), border-color 0.3s ease;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Second row: exactly 2 cards centered underneath Row 1 */
+.staff-card:nth-child(4) {
+    grid-column: 2 / span 2;
+}
+
+.staff-card:nth-child(5) {
+    grid-column: 4 / span 2;
+}
+
+.staff-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--royal-blue), var(--sky-blue));
+    opacity: 0.85;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.staff-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-hover-shadow);
+    border-color: rgba(37, 99, 235, 0.35);
+}
+
+.staff-card:hover::before {
+    height: 5px;
+    opacity: 1;
+}
+
+.staff-avatar-wrap {
+    position: relative;
+    width: 176px;
+    height: 176px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.45), 0 10px 28px -4px rgba(14, 27, 56, 0.16);
+    margin-bottom: 18px;
+    background-color: var(--surface-alt);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.staff-card:hover .staff-avatar-wrap {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 3px var(--royal-blue), 0 14px 34px -4px rgba(37, 99, 235, 0.28);
+}
+
+.staff-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    display: block;
+    transform: scale(1.22);
+    transform-origin: center 25%;
+    transition: transform 0.4s ease;
+}
+
+.staff-card:hover .staff-avatar-img {
+    transform: scale(1.28);
+}
+
+.staff-name {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--navy-900);
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.staff-designation {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    color: var(--royal-blue);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.staff-card:hover .staff-designation {
+    background: rgba(37, 99, 235, 0.14);
+    border-color: rgba(37, 99, 235, 0.35);
 }
 
 /* Vision & Mission Dual Cards */
@@ -2143,7 +2307,8 @@ address.contact-value {
 
     .site-header::before,
     .navbar::before {
-        display: none; /* Remove specular sheen on mobile */
+        display: none;
+        /* Remove specular sheen on mobile */
     }
 
     .site-header.scrolled,
@@ -2539,6 +2704,62 @@ address.contact-value {
         letter-spacing: 0.03em;
     }
 
+    /* Staff Profiles Showcase Tablet / Mobile */
+    .staff-profiles-section {
+        margin-bottom: 28px;
+        scroll-margin-top: 80px;
+    }
+
+    .staff-section-header {
+        margin-bottom: 18px;
+    }
+
+    .staff-section-heading {
+        font-size: clamp(1.3rem, 4.8vw, 1.6rem);
+    }
+
+    /* On wider mobile screens (601px - 860px), 2 columns maintain natural sequence */
+    .staff-cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 310px));
+        justify-content: center;
+        gap: 20px;
+        max-width: 660px;
+    }
+
+    .staff-card {
+        grid-column: auto;
+        padding: 22px 16px 18px;
+        border-radius: var(--radius-lg);
+    }
+
+    .staff-card:nth-child(4) {
+        grid-column: auto;
+    }
+
+    .staff-card:nth-child(5) {
+        grid-column: 1 / -1;
+        max-width: 310px;
+        justify-self: center;
+        width: 100%;
+    }
+
+    .staff-avatar-wrap {
+        width: 160px;
+        height: 160px;
+        margin-bottom: 14px;
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.45), 0 8px 22px -3px rgba(14, 27, 56, 0.14);
+    }
+
+    .staff-name {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+    }
+
+    .staff-designation {
+        font-size: 0.75rem;
+        padding: 3px 12px;
+    }
+
     /* 2. Vision & Mission Cards — Fine & Compact Mobile Size */
     .vision-mission-grid {
         grid-template-columns: 1fr;
@@ -2733,6 +2954,27 @@ address.contact-value {
     }
 }
 
+/* Narrow Mobile Screens: 1 Card Per Row (Abdul Rahman, Abdul Razak, Nachiyar, Valarmathy, R. Ranjani B.Sc,B. Ed) */
+@media (max-width: 600px) {
+    .staff-cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        gap: 16px;
+    }
+
+    .staff-card {
+        grid-column: auto !important;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .staff-card:nth-child(4),
+    .staff-card:nth-child(5) {
+        grid-column: auto !important;
+        max-width: 100%;
+    }
+}
+
 /* Very Small Mobile Screens */
 @media (max-width: 480px) {
     .brand-title {
@@ -2779,6 +3021,25 @@ address.contact-value {
 
     .about-lead-text {
         font-size: 0.88rem;
+    }
+
+    .staff-card {
+        padding: 18px 14px 16px;
+    }
+
+    .staff-avatar-wrap {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 12px;
+    }
+
+    .staff-name {
+        font-size: 1.05rem;
+    }
+
+    .staff-designation {
+        font-size: 0.72rem;
+        padding: 3px 10px;
     }
 
     .pillar-card {
