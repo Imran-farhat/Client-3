@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroImages = [
         "school/school-building.jpeg", // 1. School main building (First / default)
         "school/reception.jpg",       // 2. School reception (Second slide)
-        "school/students1.png"        // 3. Students group photo (Third slide)
+        "school/students1.jpeg"        // 3. Students group photo (Third slide)
     ];
 
 
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'grade-2': {
             'a': 'classes/2ndstd1.jpeg',
-            'b': 'classes/2ndstd.png'
+            'b': 'classes/2ndstd.jpeg'
         },
         'grade-3': 'classes/3rd.jpeg',
         'grade-4': 'classes/4.jpeg',
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'a': 'classes/5th a.jpeg',
             'b': 'classes/5th b.jpeg'
         },
-        'grade-6': 'classes/6thstd.png',
+        'grade-6': 'classes/6thstd.jpeg',
         'grade-7': 'classes/7th.jpeg'
     };
 

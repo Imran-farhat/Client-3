@@ -476,8 +476,8 @@
         .photo-stage-card {
             position: relative;
             width: 100%;
-            height: 560px;
-            background: #090d16;
+            height: 540px;
+            background: radial-gradient(circle at center, #1e293b 0%, #090d16 100%);
             border-radius: 22px;
             overflow: hidden;
             box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.3), 0 0 0 1px rgba(15, 23, 42, 0.08);
@@ -759,8 +759,9 @@
         @media (max-width: 680px) {
             .gallery-page-section { padding: 24px 14px 60px; }
             .gallery-title { font-size: 2.1rem; }
-            .cover-stage-card { height: 380px; border-radius: 18px; }
-            .photo-stage-card { height: 380px; border-radius: 18px; }
+            .cover-stage-card { height: clamp(260px, 68vw, 340px); border-radius: 18px; }
+            .photo-stage-card { height: clamp(260px, 68vw, 340px); border-radius: 18px; }
+            .event-photo-slide { padding: 6px; }
             .event-cards-grid { grid-template-columns: 1fr; }
             .stage-nav-arrow { width: 38px; height: 38px; top: 38%; }
             .stage-nav-prev { left: 8px; }
@@ -1185,14 +1186,14 @@
                     id: "pta-meeting",
                     name: "Parent-Teacher Meeting",
                     description: "Building strong partnerships between parents and teachers",
-                    cover: "images/pta-meeting/Bright Classroom Parent-Teacher Meeting.png",
+                    cover: "images/pta-meeting/Bright Classroom Parent-Teacher Meeting.jpeg",
                     images: [
-                        { src: "images/pta-meeting/Bright Classroom Parent-Teacher Meeting.png", caption: "Parent-Teacher Interaction — Families and teachers discussing student progress" },
-                        { src: "images/pta-meeting/Colorful Parent-Teacher Meeting Classroom.png", caption: "Teacher-Parent Consultation — Personal guidance and feedback session" },
-                        { src: "images/pta-meeting/Colorful Classroom Chalkboard Welcome.png", caption: "Warm Welcome Board — Colourful chalkboard greeting parents to the meeting" },
-                        { src: "images/pta-meeting/Colorful Classroom Learning Wall Display.png", caption: "Learning Wall Showcase — Student work and charts proudly displayed for parents" },
-                        { src: "images/pta-meeting/Colorful Classroom Learning Wall.png", caption: "Classroom Learning Corner — Vibrant educational displays reviewed with families" },
-                        { src: "images/pta-meeting/Indian Classroom Parent–Teacher Meeting.png", caption: "Community Interaction — Teachers guiding parents through classroom learning spaces" }
+                        { src: "images/pta-meeting/Bright Classroom Parent-Teacher Meeting.jpeg", caption: "Parent-Teacher Interaction — Families and teachers discussing student progress" },
+                        { src: "images/pta-meeting/Colorful Parent-Teacher Meeting Classroom.jpeg", caption: "Teacher-Parent Consultation — Personal guidance and feedback session" },
+                        { src: "images/pta-meeting/Colorful Classroom Chalkboard Welcome.jpeg", caption: "Warm Welcome Board — Colourful chalkboard greeting parents to the meeting" },
+                        { src: "images/pta-meeting/Colorful Classroom Learning Wall Display.jpeg", caption: "Learning Wall Showcase — Student work and charts proudly displayed for parents" },
+                        { src: "images/pta-meeting/Colorful Classroom Learning Wall.jpeg", caption: "Classroom Learning Corner — Vibrant educational displays reviewed with families" },
+                        { src: "images/pta-meeting/Indian Classroom Parent-Teacher Meeting.jpeg", caption: "Community Interaction — Teachers guiding parents through classroom learning spaces" }
                     ]
                 },
                 {
@@ -1430,7 +1431,7 @@
                     const slide = document.createElement('div');
                     slide.className = `event-photo-slide ${i === 0 ? 'active' : ''}`;
                     slide.setAttribute('data-photo-idx', i);
-                    slide.innerHTML = `<img src="${imgObj.src}" alt="${imgObj.caption}" class="event-photo-img" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}>`;
+                    slide.innerHTML = `<img src="${imgObj.src}" alt="${imgObj.caption}" class="event-photo-img" ${i === 0 ? 'fetchpriority="high"' : 'decoding="async"'}>`;
                     photoCrossfadeStage.appendChild(slide);
 
                     // Filmstrip thumbnail
@@ -1438,7 +1439,7 @@
                     thumbBtn.type = 'button';
                     thumbBtn.className = `filmstrip-thumb-btn ${i === 0 ? 'active' : ''}`;
                     thumbBtn.setAttribute('aria-label', `Jump to photo ${i + 1}`);
-                    thumbBtn.innerHTML = `<img src="${imgObj.src}" alt="Thumb ${i + 1}" class="filmstrip-thumb-img">`;
+                    thumbBtn.innerHTML = `<img src="${imgObj.src}" alt="Thumb ${i + 1}" class="filmstrip-thumb-img" loading="eager" decoding="async">`;
                     thumbBtn.addEventListener('click', () => {
                         setPhotoIndex(i);
                         startPhotoTimer();
