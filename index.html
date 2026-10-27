@@ -18,8 +18,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/jpeg" href="logo.jpeg">
     <!-- Preload Hero Photographs for Instant Cinematic Cross-Fade -->
-    <link rel="preload" as="image" href="school/school-building.jpeg">
-    <link rel="preload" as="image" href="school/reception.jpg">
+    <link rel="preload" as="image" href="images/Mobileviewimg/Anandha%20School%20Entrance%20in%20Sunshine.png" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="images/Mobileviewimg/Bright%20Modern%20Reception%20Lobby%20with%20Sunlit%20Stairway.png" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="school/school-building.jpeg" media="(min-width: 769px)">
+    <link rel="preload" as="image" href="school/reception.jpg" media="(min-width: 769px)">
     <link rel="preload" as="image" href="school/students1.jpeg">
 </head>
 
@@ -101,9 +103,12 @@
                     <!-- Slide 1: School Main Building (Default / First Slide) -->
                     <div class="carousel-slide active" role="group" aria-roledescription="slide" aria-label="1 of 4"
                         data-slide-index="0">
-                        <img src="school/school-building.jpeg"
-                            alt="Anandha Nursery and Primary School Main Building Entrance"
-                            class="hero-slide-img hero-img-building" fetchpriority="high">
+                        <picture class="hero-picture">
+                            <source media="(max-width: 768px)" srcset="images/Mobileviewimg/Anandha%20School%20Entrance%20in%20Sunshine.png">
+                            <img src="school/school-building.jpeg"
+                                alt="Anandha Nursery and Primary School Main Building Entrance"
+                                class="hero-slide-img hero-img-building" fetchpriority="high">
+                        </picture>
                         <div class="hero-image-overlay" aria-hidden="true"></div>
                     </div>
 
@@ -119,8 +124,11 @@
                     <!-- Slide 3: School Reception -->
                     <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 4"
                         data-slide-index="2">
-                        <img src="school/reception.jpg" alt="Anandha Nursery and Primary School Reception and Lobby"
-                            class="hero-slide-img hero-img-reception" loading="lazy">
+                        <picture class="hero-picture">
+                            <source media="(max-width: 768px)" srcset="images/Mobileviewimg/Bright%20Modern%20Reception%20Lobby%20with%20Sunlit%20Stairway.png">
+                            <img src="school/reception.jpg" alt="Anandha Nursery and Primary School Reception and Lobby"
+                                class="hero-slide-img hero-img-reception" loading="lazy">
+                        </picture>
                         <div class="hero-image-overlay" aria-hidden="true"></div>
                     </div>
 
