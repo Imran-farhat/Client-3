@@ -15,8 +15,49 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.1">
     <link rel="icon" type="image/jpeg" href="logo.jpeg">
+
+    <!-- Mobile View: Align Classroom Meta Stage Pill & Sections Badge (Cache-Busting Inline Guard) -->
+    <style>
+        @media (max-width: 768px) {
+            .classroom-card-meta {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                gap: 4px !important;
+                margin-bottom: 6px !important;
+            }
+            .classroom-stage-pill {
+                font-size: 0.58rem !important;
+                padding: 2px 6px !important;
+                letter-spacing: 0.02em !important;
+                white-space: nowrap !important;
+                line-height: 1.2 !important;
+            }
+            .classroom-card-meta .classroom-stage-pill {
+                margin-bottom: 0 !important;
+            }
+            .classroom-sections-badge {
+                font-size: 0.58rem !important;
+                padding: 2px 6px !important;
+                letter-spacing: 0.01em !important;
+                white-space: nowrap !important;
+                flex-shrink: 0 !important;
+                line-height: 1.2 !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .classroom-stage-pill {
+                font-size: 0.56rem !important;
+                padding: 2px 5px !important;
+            }
+            .classroom-sections-badge {
+                font-size: 0.56rem !important;
+                padding: 2px 5px !important;
+            }
+        }
+    </style>
     <!-- Preload Hero Photographs for Instant Cinematic Cross-Fade -->
     <link rel="preload" as="image" href="images/Mobileviewimg/Anandha%20School%20Entrance%20in%20Sunshine.png" media="(max-width: 768px)">
     <link rel="preload" as="image" href="images/Mobileviewimg/Bright%20Modern%20Reception%20Lobby%20with%20Sunlit%20Stairway.png" media="(max-width: 768px)">

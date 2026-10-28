@@ -756,6 +756,66 @@
             .cover-explore-btn { align-self: flex-start; }
         }
 
+        /* Mobile View - Compact Cover Stage & Icon Explore Button beside event title */
+        @media (max-width: 768px) {
+            .cover-meta-overlay {
+                flex-direction: row !important;
+                align-items: flex-end !important;
+                justify-content: space-between !important;
+                gap: 14px !important;
+                padding: 16px !important;
+            }
+
+            .cover-info {
+                flex: 1 !important;
+                min-width: 0 !important;
+            }
+
+            .cover-event-title {
+                font-size: clamp(1.2rem, 4.4vw, 1.45rem) !important;
+                margin-bottom: 4px !important;
+            }
+
+            .cover-event-desc {
+                font-size: clamp(0.78rem, 2.7vw, 0.85rem) !important;
+                line-height: 1.35 !important;
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2 !important;
+                line-clamp: 2 !important;
+                -webkit-box-orient: vertical !important;
+                overflow: hidden !important;
+            }
+
+            /* Transform Explore Button into circular action icon button placed beside text */
+            .cover-explore-btn {
+                align-self: flex-end !important;
+                flex-shrink: 0 !important;
+                width: 44px !important;
+                height: 44px !important;
+                min-width: 44px !important;
+                min-height: 44px !important;
+                padding: 0 !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin-bottom: 2px !important;
+                box-shadow: 0 4px 14px rgba(37, 99, 235, 0.5) !important;
+                border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+            }
+
+            #coverBtnText {
+                display: none !important;
+            }
+
+            .cover-explore-btn svg {
+                width: 20px !important;
+                height: 20px !important;
+                stroke-width: 2.5 !important;
+                transform: translateX(1px) !important;
+            }
+        }
+
         @media (max-width: 680px) {
             .gallery-page-section { padding: 24px 14px 60px; }
             .gallery-title { font-size: 2.1rem; }
@@ -766,10 +826,6 @@
             .stage-nav-arrow { width: 38px; height: 38px; top: 38%; }
             .stage-nav-prev { left: 8px; }
             .stage-nav-next { right: 8px; }
-            .cover-meta-overlay { padding: 16px; }
-            .cover-event-title { font-size: 1.35rem; }
-            .cover-event-desc { font-size: 0.82rem; }
-            .cover-explore-btn { padding: 9px 16px; font-size: 0.82rem; }
             .photos-view-header { flex-direction: column; align-items: flex-start; gap: 12px; }
             .active-event-heading-group { text-align: left; }
             .lightbox-nav-btn { width: 42px; height: 42px; }
@@ -777,6 +833,23 @@
             .lightbox-nav-next { right: 8px; }
             .lightbox-top-bar { padding: 12px 16px; }
             .lightbox-main-img { max-width: 96vw; max-height: 72vh; }
+        }
+
+        @media (max-width: 480px) {
+            .cover-meta-overlay {
+                padding: 14px 12px !important;
+                gap: 10px !important;
+            }
+            .cover-explore-btn {
+                width: 40px !important;
+                height: 40px !important;
+                min-width: 40px !important;
+                min-height: 40px !important;
+            }
+            .cover-explore-btn svg {
+                width: 18px !important;
+                height: 18px !important;
+            }
         }
     </style>
 </head>
@@ -904,7 +977,7 @@
                                     <h2 class="cover-event-title" id="coverEventTitle">Yellow Day Celebration</h2>
                                     <p class="cover-event-desc" id="coverEventDesc">Colours, smiles and joyful early learning</p>
                                 </div>
-                                <div class="cover-explore-btn" id="coverExploreBtn" role="button" tabindex="0">
+                                <div class="cover-explore-btn" id="coverExploreBtn" role="button" tabindex="0" aria-label="Explore Event">
                                     <span id="coverBtnText">Explore Event</span>
                                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
                                         <polyline points="9 18 15 12 9 6"></polyline>
@@ -1334,6 +1407,7 @@
                 coverEventTitle.textContent = ev.name;
                 coverEventDesc.textContent = ev.description;
                 coverBtnText.textContent = `Explore ${ev.name}`;
+                if (coverExploreBtn) coverExploreBtn.setAttribute("aria-label", `Explore ${ev.name}`);
 
                 // Update crossfade slides
                 const slides = coverCrossfadeContainer.querySelectorAll('.cover-slide');
@@ -1391,7 +1465,23 @@
                 });
             }
 
-            // Clicking Cover Stage Card opens the active event photos!
+            // Clicking Cover Stage Card or Explore button opens the active event photos!
+            if (coverExploreBtn) {
+                coverExploreBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const ev = galleryEvents[currentCoverIdx];
+                    if (ev) openEventPhotos(ev);
+                });
+                coverExploreBtn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const ev = galleryEvents[currentCoverIdx];
+                        if (ev) openEventPhotos(ev);
+                    }
+                });
+            }
+
             if (coverStageCard) {
                 coverStageCard.addEventListener('click', () => {
                     const ev = galleryEvents[currentCoverIdx];

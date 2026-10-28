@@ -1597,6 +1597,7 @@ ul {
     border-radius: var(--radius-full);
     letter-spacing: 0.02em;
     line-height: 1.2;
+    white-space: nowrap;
 }
 
 .classroom-card-title {
@@ -2854,6 +2855,35 @@ address.contact-value {
         box-sizing: border-box;
     }
 
+    .classroom-card-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4px;
+        margin-bottom: 6px;
+    }
+
+    .classroom-stage-pill {
+        font-size: 0.58rem;
+        padding: 2px 6px;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        line-height: 1.2;
+    }
+
+    .classroom-card-meta .classroom-stage-pill {
+        margin-bottom: 0;
+    }
+
+    .classroom-sections-badge {
+        font-size: 0.58rem;
+        padding: 2px 6px;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        flex-shrink: 0;
+        line-height: 1.2;
+    }
+
     .class-watermark {
         font-size: 1.8rem;
         top: 6px;
@@ -3146,10 +3176,28 @@ address.contact-value {
         line-height: 1.3;
     }
 
+    .classroom-card-meta {
+        gap: 4px;
+        margin-bottom: 6px;
+    }
+
     .classroom-stage-pill {
-        font-size: 0.58rem;
+        font-size: 0.56rem;
         padding: 2px 5px;
-        margin-bottom: 5px;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+
+    .classroom-card-meta .classroom-stage-pill {
+        margin-bottom: 0;
+    }
+
+    .classroom-sections-badge {
+        font-size: 0.56rem;
+        padding: 2px 5px;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
     /* Activities Cards — Extra Compact for Small Phones (<=480px, Android 360px & iPhone) */
